@@ -54,7 +54,7 @@ const Icon: React.SFC<IconProps> = props => {
 
   warning(
     Boolean(type || Component || children),
-    'Icon should have `type` prop or `component` prop or `children`.'
+    'Icon should have `type` prop or `component` prop or `children`.',
   );
 
   const classString = classNames(
@@ -62,14 +62,14 @@ const Icon: React.SFC<IconProps> = props => {
       [`m-icon`]: true,
       [`m-icon-${type}`]: Boolean(type),
     },
-    className
+    className,
   );
 
   const svgClassString = classNames(
     {
       [`m-icon-spin`]: !!spin || type === 'loading',
     },
-    svgClassName
+    svgClassName,
   );
 
   // component > children > type
@@ -94,7 +94,7 @@ const Icon: React.SFC<IconProps> = props => {
   if (children) {
     warning(
       Boolean(viewBox),
-      'Make sure that you provide correct `viewBox`' + ' prop (default `0 0 1024 1024`) to Icon.'
+      'Make sure that you provide correct `viewBox`' + ' prop (default `0 0 1024 1024`) to Icon.',
     );
 
     const innerSvgProps: CustomIconComponentProps = {

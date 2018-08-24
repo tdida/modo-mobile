@@ -41,7 +41,7 @@ export default class Agree extends React.PureComponent<AgreeProps, any> {
         onChange(!this.state.value);
       }
     }
-  };
+  }
 
   public render() {
     const { value } = this.state;
