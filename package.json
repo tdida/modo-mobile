@@ -1,20 +1,53 @@
 {
   "name": "modo-mobile",
   "version": "0.0.1",
-  "description": "modo-mobile",
-  "private": true,
-  "scripts": {
-    "start": "cross-env NODE_ENV=development concurrently \"cross-env bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng start -c ./site/bisheng.mobile.config.js\"",
-    "dist": "antd-tools run dist",
-    "compile": "antd-tools run compile",
-    "deploy": "bisheng gh-pages --push-only",
-    "prepublish": "antd-tools run guard"
+  "description": "A React Mobile UI Toolkit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tdida/modo-mobile.git"
   },
+  "keywords": [
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend",
+    "mobile",
+    "typescript"
+  ],
+  "bugs": {
+    "url": "https://github.com/tdida/modo-mobile/issues"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
   "main": "lib/index.js",
   "module": "es/index.js",
   "author": "tdida",
   "typings": "lib/index.d.ts",
   "license": "MIT",
+  "scripts": {
+    "lint": "npm run tslint && npm run srclint && npm run stylelint",
+    "srclint": "eslint site scripts --ext '.js,.jsx'",
+    "tslint": "npm run tsc && antd-tools run ts-lint",
+    "tsc": "antd-tools run tsc",
+    "demolint": "cross-env RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md' ",
+    "stylelint": "stylelint \"{site,components}/**/*.less\" --syntax less",
+    "start": "cross-env NODE_ENV=development concurrently \"cross-env bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng start -c ./site/bisheng.mobile.config.js\"",
+    "dist": "antd-tools run dist",
+    "compile": "antd-tools run compile",
+    "deploy": "bisheng gh-pages --push-only",
+    "prepublish": "antd-tools run guard",
+    "site": "cross-env NODE_ENV=production concurrently \"cross-env bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng build -c ./site/bisheng.mobile.config.js\"",
+    "lint-staged": "lint-staged",
+    "lint-staged:ts": "npm run tsc && node node_modules/tslint/bin/tslint -c node_modules/antd-tools/lib/tslint.json components/**/*.tsx",
+    "lint-staged:es": "eslint ./.eslintrc.js",
+    "lint-staged:demo": "cross-env RUN_ENV=DEMO eslint --ext '.md'"
+  },
   "dependencies": {
     "@ant-design/icons": "^0.1.2-alpha.8",
     "@ant-design/icons-react": "^0.1.2-alpha.3",
@@ -36,7 +69,6 @@
     "antd-theme-generator": "^1.0.7",
     "antd-tools": "^5.1.6",
     "autoprefixer": "^9.1.1",
-    "awesome-typescript-loader": "^5.2.0",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",
     "babel-plugin-import": "^1.8.0",
@@ -53,17 +85,21 @@
     "docsearch.js": "^2.5.2",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.2.0",
-    "http-proxy-middleware": "^0.18.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "lint-staged": "^7.2.2",
     "lz-string": "^1.4.4",
     "postcss-loader": "^3.0.0",
     "postcss-pxtorem": "^4.0.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.14.2",
     "qrcode.react": "^0.8.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-document-title": "^2.0.3",
@@ -73,10 +109,10 @@
     "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.22.1",
+    "stylelint": "^9.5.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-standard": "^18.2.0",
     "ts-loader": "^3.4.2",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.14.0",
-    "tslint-react": "^3.6.0",
     "typescript": "^3.0.1",
     "url-loader": "^1.1.1",
     "webpack": "^4.16.5",
@@ -87,5 +123,20 @@
     "webpack-hot-middleware": "^2.22.3",
     "webpack-merge": "^4.1.4",
     "webpackbar": "^2.6.3"
-  }
+  },
+  "lint-staged": {
+    "components/**/*.tsx": [
+      "npm run lint-staged:ts"
+    ],
+    "{tests,site,scripts,components}/**/*.{js,jsx}": [
+      "npm run lint-staged:es"
+    ],
+    "{site,components}/**/*.less": "stylelint --syntax less",
+    "components/*/demo/*.md": [
+      "npm run lint-staged:demo"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ]
 }

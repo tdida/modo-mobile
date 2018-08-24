@@ -1,4 +1,4 @@
-import warning from "warning";
+import warning from 'warning';
 
 const warned: { [msg: string]: boolean } = {};
 export default (valid: boolean, message: string): void => {

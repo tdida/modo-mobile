@@ -10,7 +10,6 @@ function pickerGenerator(module) {
   /* eslint-disable consistent-return */
   return markdownData => {
     const { filename } = markdownData.meta;
-    console.log(tester.test(filename));
     if (tester.test(filename)) {
       return {
         meta: markdownData.meta

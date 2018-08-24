@@ -1,55 +1,50 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "bisheng/router";
-import Menu from "antd/lib/menu";
-import Row from "antd/lib/row";
-import Col from "antd/lib/col";
-import Article from "./Article";
-import ComponentDoc from "./ComponentDoc";
-import * as utils from "../../../../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'bisheng/router';
+import Menu from 'antd/lib/menu';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Article from './Article';
+import ComponentDoc from './ComponentDoc';
+import * as utils from '../../../../utils';
+
+const {
+  object: { isRequired },
+} = PropTypes;
 
 const SubMenu = Menu.SubMenu;
 
 function getModuleData(props) {
   const pathname = props.location.pathname;
   const moduleName = /^\/?components/.test(pathname)
-    ? "components"
+    ? 'components'
     : pathname
-        .split("/")
+        .split('/')
         .filter(item => item)
         .slice(0, 1)
-        .join("/");
+        .join('/');
   const moduleData =
-    moduleName === "components" ||
-    moduleName === "docs" ||
-    moduleName === "changelog" ||
-    moduleName === "changelog-cn"
-      ? [
-          ...props.picked.components,
-          ...props.picked["docs"],
-          ...props.picked.changelog
-        ]
+    moduleName === 'components' ||
+    moduleName === 'docs' ||
+    moduleName === 'changelog' ||
+    moduleName === 'changelog-cn'
+      ? [...props.picked.components, ...props.picked.docs, ...props.picked.changelog]
       : props.picked[moduleName];
 
-  const excludedSuffix = utils.isZhCN(props.location.pathname)
-    ? "en-US.md"
-    : "zh-CN.md";
-  return moduleData.filter(
-    ({ meta }) => !meta.filename.endsWith(excludedSuffix)
-  );
+  const excludedSuffix = utils.isZhCN(props.location.pathname) ? 'en-US.md' : 'zh-CN.md';
+  return moduleData.filter(({ meta }) => !meta.filename.endsWith(excludedSuffix));
 }
 
 function getActiveMenuItem(props) {
   const children = props.params.children;
   return (
-    (children && children.replace("-cn", "")) ||
-    props.location.pathname.replace(/(^\/|-cn$)/g, "")
+    (children && children.replace('-cn', '')) || props.location.pathname.replace(/(^\/|-cn$)/g, '')
   );
 }
 
 export default class MainContent extends React.Component {
   static contextTypes = {
-    intl: PropTypes.object.isRequired
+    intl: isRequired,
   };
 
   constructor(props) {
@@ -60,25 +55,21 @@ export default class MainContent extends React.Component {
   getSideBarOpenKeys(nextProps) {
     const { pathname } = nextProps.location;
     const prevModule = this.currentModule;
-    this.currentModule = pathname.replace(/^\//).split("/")[1] || "components";
-    if (this.currentModule === "react") {
-      this.currentModule = "components";
+    this.currentModule = pathname.replace(/^\//).split('/')[1] || 'components';
+    if (this.currentModule === 'react') {
+      this.currentModule = 'components';
     }
-    const locale = utils.isZhCN(pathname) ? "zh-CN" : "en-US";
+    const locale = utils.isZhCN(pathname) ? 'zh-CN' : 'en-US';
     if (prevModule !== this.currentModule) {
       const moduleData = getModuleData(nextProps);
-      const shouldOpenKeys = Object.keys(
-        utils.getMenuItems(moduleData, locale)
-      );
+      const shouldOpenKeys = Object.keys(utils.getMenuItems(moduleData, locale));
       return shouldOpenKeys;
     }
-    return "";
+    return '';
   }
 
   fileNameToPath(filename) {
-    const snippets = filename
-      .replace(/(\/index)?((\.zh-CN)|(\.en-US))?\.md$/i, "")
-      .split("/");
+    const snippets = filename.replace(/(\/index)?((\.zh-CN)|(\.en-US))?\.md$/i, '').split('/');
     return snippets[snippets.length - 1];
   }
 
@@ -92,14 +83,12 @@ export default class MainContent extends React.Component {
         <span key="english">{item.title || item.english}</span>,
         <span className="chinese" key="chinese">
           {item.subtitle || item.chinese}
-        </span>
+        </span>,
       ];
     }
     const disabled = item.disabled;
-    let url = item.filename
-      .replace(/(\/index)?((\.zh-CN)|(\.en-US))?\.md$/i, "")
-      .toLowerCase();
-    if (item.filename.includes("zh-CN")) {
+    let url = item.filename.replace(/(\/index)?((\.zh-CN)|(\.en-US))?\.md$/i, '').toLowerCase();
+    if (item.filename.includes('zh-CN')) {
       url = `${url}-cn`;
     }
     const child = !item.link ? (
@@ -107,12 +96,7 @@ export default class MainContent extends React.Component {
         {text}
       </Link>
     ) : (
-      <a
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        disabled={disabled}
-      >
+      <a href={item.link} target="_blank" rel="noopener noreferrer" disabled={disabled}>
         {text}
       </a>
     );
@@ -125,26 +109,19 @@ export default class MainContent extends React.Component {
   }
 
   isNotTopLevel(level) {
-    return level !== "topLevel";
+    return level !== 'topLevel';
   }
 
   generateSubMenuItems(obj) {
-    const topLevel = (obj.topLevel || []).map(
-      this.generateMenuItem.bind(this, true)
-    );
+    const { themeConfig } = this.props;
+    const topLevel = (obj.topLevel || []).map(this.generateMenuItem.bind(this, true));
     const itemGroups = Object.keys(obj)
       .filter(this.isNotTopLevel)
-      .sort(
-        (a, b) =>
-          this.props.themeConfig.categoryOrder.indexOf(a) -
-          this.props.themeConfig.categoryOrder.indexOf(b)
-      )
+      .sort((a, b) => themeConfig.categoryOrder.indexOf(a) - themeConfig.categoryOrder.indexOf(b))
       .map((type, index) => {
         const groupItems = obj[type]
           .sort(
-            (a, b) =>
-              (a.title || a.english).charCodeAt(0) -
-              (b.title || b.english).charCodeAt(0)
+            (a, b) => (a.title || a.english).charCodeAt(0) - (b.title || b.english).charCodeAt(0)
           )
           .map(this.generateMenuItem.bind(this, false));
         return (
@@ -157,24 +134,19 @@ export default class MainContent extends React.Component {
   }
 
   getModuleData() {
+    const { intl } = this.context;
     const props = this.props;
     const pathname = props.location.pathname;
     const moduleName = /^components/.test(pathname)
-      ? "components"
+      ? 'components'
       : pathname
-          .split("/")
+          .split('/')
           .slice(0, 1)
-          .join("/");
+          .join('/');
     const moduleData =
-      moduleName === "components" ||
-      moduleName.includes("changelog") ||
-      moduleName === "docs"
-        ? [
-            ...props.picked.components,
-            ...props.picked["docs"],
-            ...props.picked.changelog
-          ].filter(item =>
-            item.meta.filename.includes(this.context.intl.locale)
+      moduleName === 'components' || moduleName.includes('changelog') || moduleName === 'docs'
+        ? [...props.picked.components, ...props.picked.docs, ...props.picked.changelog].filter(
+            item => item.meta.filename.includes(intl.locale)
           )
         : props.picked[moduleName];
 
@@ -182,16 +154,13 @@ export default class MainContent extends React.Component {
   }
 
   getMenuItems() {
+    const { themeConfig } = this.props;
     const moduleData = this.getModuleData();
     const menuItems = utils.getMenuItems(moduleData);
     const topLevel = this.generateSubMenuItems(menuItems.topLevel);
     const subMenu = Object.keys(menuItems)
       .filter(this.isNotTopLevel)
-      .sort(
-        (a, b) =>
-          this.props.themeConfig.categoryOrder.indexOf(a) -
-          this.props.themeConfig.categoryOrder.indexOf(b)
-      )
+      .sort((a, b) => themeConfig.categoryOrder.indexOf(a) - themeConfig.categoryOrder.indexOf(b))
       .map(category => {
         const subMenuItems = this.generateSubMenuItems(menuItems[category]);
         return (
@@ -233,13 +202,16 @@ export default class MainContent extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    const openKeys = this.getSideBarOpenKeys(nextProps);
-    if (openKeys && openKeys !== this.state.openKeys) {
-      this.setState({ openKeys });
+    const { openKeys } = this.state;
+    const nopenKeys = this.getSideBarOpenKeys(nextProps);
+    if (nopenKeys && nopenKeys !== openKeys) {
+      this.setState({ openKeys: nopenKeys });
     }
   }
+
   render() {
     const { props } = this;
+    const { openKeys } = this.state;
     const activeMenuItem = getActiveMenuItem(props);
     const menuItems = this.getMenuItems();
     const { prev, next } = this.getFooterNav(menuItems, activeMenuItem);
@@ -259,7 +231,7 @@ export default class MainContent extends React.Component {
               inlineIndent="40"
               className="aside-container menu-site"
               mode="inline"
-              openKeys={this.state.openKeys}
+              openKeys={openKeys}
               selectedKeys={[activeMenuItem]}
               onOpenChange={this.handleMenuOpenChange}
             >
@@ -271,21 +243,16 @@ export default class MainContent extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col
-            lg={{ span: 19, offset: 5 }}
-            md={{ span: 18, offset: 6 }}
-            sm={24}
-            xs={24}
-          >
+          <Col lg={{ span: 19, offset: 5 }} md={{ span: 18, offset: 6 }} sm={24} xs={24}>
             <section className="prev-next-nav">
               {prev
                 ? React.cloneElement(prev.props.children, {
-                    className: "prev-page"
+                    className: 'prev-page',
                   })
                 : null}
               {next
                 ? React.cloneElement(next.props.children, {
-                    className: "next-page"
+                    className: 'next-page',
                   })
                 : null}
             </section>

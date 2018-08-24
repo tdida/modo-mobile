@@ -4,6 +4,9 @@
 @header-height: 64px;
 @menu-item-border: 4px;
 
+@logo-font : DINAlternate-Bold, AvenirNext-Medium, Microsoft Yahei, Lato, Lucida Grande,
+Lucida Sans Unicode, Lucida Sans, Verdana, Tahoma, sans-serif !important;
+
 #header {
   transition: all 0.3s;
   background: #fff;
@@ -30,9 +33,7 @@
     color: #333;
     font-size: 16px;
     line-height: 64px;
-    font-family: DINAlternate-Bold, AvenirNext-Medium, Microsoft Yahei, Lato,
-      Lucida Grande, Lucida Sans Unicode, Lucida Sans, Verdana, Tahoma,
-      sans-serif !important;
+    font-family: @logo-font;
   }
 
   sup {
@@ -111,7 +112,7 @@
       a {
         line-height: @header-height - @menu-item-border;
         &:before {
-          bottom: 0px;
+          bottom: 0;
         }
       }
     }

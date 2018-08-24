@@ -1,21 +1,21 @@
-import { antDesignIcons } from "@ant-design/icons";
-import ReactIcon from "@ant-design/icons-react";
-import classNames from "classnames";
-import * as React from "react";
-import warning from "../_util/warning";
-import createFromIconfontCN from "./IconFont";
-import { svgBaseProps } from "./utils";
+import { antDesignIcons } from '@ant-design/icons';
+import ReactIcon from '@ant-design/icons-react';
+import classNames from 'classnames';
+import * as React from 'react';
+import warning from '../_util/warning';
+import createFromIconfontCN from './IconFont';
+import { svgBaseProps } from './utils';
 
 ReactIcon.add(...antDesignIcons);
 
-export interface ICustomIconComponentProps {
+export interface CustomIconComponentProps {
   width: string | number;
   height: string | number;
   fill: string;
   viewBox?: string;
   className?: string;
   style?: React.CSSProperties;
-  ["aria-hidden"]?: string;
+  ['aria-hidden']?: string;
 }
 
 export interface IconProps {
@@ -23,7 +23,7 @@ export interface IconProps {
   className?: string;
   title?: string;
   onClick?: React.MouseEventHandler<HTMLElement>;
-  component?: React.ComponentType<ICustomIconComponentProps>;
+  component?: React.ComponentType<CustomIconComponentProps>;
   viewBox?: string;
   spin?: boolean;
   style?: React.CSSProperties;
@@ -49,36 +49,36 @@ const Icon: React.SFC<IconProps> = props => {
     svgStyle = {},
 
     // children
-    children
+    children,
   } = props;
 
   warning(
     Boolean(type || Component || children),
-    "Icon should have `type` prop or `component` prop or `children`."
+    'Icon should have `type` prop or `component` prop or `children`.',
   );
 
   const classString = classNames(
     {
       [`m-icon`]: true,
-      [`m-icon-${type}`]: Boolean(type)
+      [`m-icon-${type}`]: Boolean(type),
     },
-    className
+    className,
   );
 
   const svgClassString = classNames(
     {
-      [`m-icon-spin`]: !!spin || type === "loading"
+      [`m-icon-spin`]: !!spin || type === 'loading',
     },
-    svgClassName
+    svgClassName,
   );
 
   // component > children > type
   if (Component) {
-    const innerSvgProps: ICustomIconComponentProps = {
+    const innerSvgProps: CustomIconComponentProps = {
       ...svgBaseProps,
       className: svgClassString,
       style: svgStyle,
-      viewBox
+      viewBox,
     };
     if (!viewBox) {
       delete innerSvgProps.viewBox;
@@ -94,13 +94,12 @@ const Icon: React.SFC<IconProps> = props => {
   if (children) {
     warning(
       Boolean(viewBox),
-      "Make sure that you provide correct `viewBox`" +
-        " prop (default `0 0 1024 1024`) to Icon."
+      'Make sure that you provide correct `viewBox`' + ' prop (default `0 0 1024 1024`) to Icon.',
     );
-    const innerSvgProps: ICustomIconComponentProps = {
+    const innerSvgProps: CustomIconComponentProps = {
       ...svgBaseProps,
       className: svgClassString,
-      style: svgStyle
+      style: svgStyle,
     };
     return (
       <i className={classString} title={title} style={style} onClick={onClick}>
@@ -119,16 +118,14 @@ const Icon: React.SFC<IconProps> = props => {
     );
   }
 
-  return (
-    <i className={classString} title={title} style={style} onClick={onClick} />
-  );
+  return <i className={classString} title={title} style={style} onClick={onClick} />;
 };
 
 export type IconType = typeof Icon & {
   createFromIconfontCN: typeof createFromIconfontCN;
 };
 
-Icon.displayName = "Icon";
+Icon.displayName = 'Icon';
 (Icon as IconType).createFromIconfontCN = createFromIconfontCN;
 
 export default Icon as IconType;

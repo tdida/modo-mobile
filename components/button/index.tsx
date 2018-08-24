@@ -1,23 +1,23 @@
-import classnames from "classnames";
-import * as React from "react";
-import Icon from "../icon";
-import { IButtonPropsType } from "./PropsType";
+import classnames from 'classnames';
+import * as React from 'react';
+import Icon from '../icon';
+import { IButtonPropsType } from './PropsType';
 
 export interface IButtonProps extends IButtonPropsType {
   prefixCls?: string;
   className?: string;
   inline?: boolean;
   icon?: string;
-  shape?: "circle" | "circle-outline";
+  shape?: 'circle' | 'circle-outline';
   style?: React.CSSProperties;
-  htmlType?: "submit" | "button" | "reset";
+  htmlType?: 'submit' | 'button' | 'reset';
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
 function isString(str: any) {
-  return typeof str === "string";
+  return typeof str === 'string';
 }
 
 // Insert one space between two chinese characters automatically.
@@ -26,23 +26,19 @@ function insertSpace(child: React.ReactChild, needInserted: boolean) {
   if (child == null) {
     return;
   }
-  const SPACE = needInserted ? " " : "";
+  const SPACE = needInserted ? ' ' : '';
   // strictNullChecks oops.
   if (
-    typeof child !== "string" &&
-    typeof child !== "number" &&
+    typeof child !== 'string' &&
+    typeof child !== 'number' &&
     isString(child.type) &&
     isTwoCNChar(child.props.children)
   ) {
-    return React.cloneElement(
-      child,
-      {},
-      child.props.children.split("").join(SPACE)
-    );
+    return React.cloneElement(child, {}, child.props.children.split('').join(SPACE));
   }
-  if (typeof child === "string") {
+  if (typeof child === 'string') {
     if (isTwoCNChar(child)) {
-      child = child.split("").join(SPACE);
+      child = child.split('').join(SPACE);
     }
     return <span>{child}</span>;
   }
@@ -50,30 +46,26 @@ function insertSpace(child: React.ReactChild, needInserted: boolean) {
 }
 
 class Button extends React.PureComponent<IButtonProps, any> {
-  public static defaultProps = {
+  static defaultProps = {
     disabled: false,
     inline: false,
     loading: false,
-    prefixCls: "m-button"
+    prefixCls: 'm-button',
   };
 
-  public handleClick: React.MouseEventHandler<
-    HTMLButtonElement | HTMLAnchorElement
-  > = e => {
+  handleClick: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = e => {
     const { onClick } = this.props;
     if (onClick) {
-      (onClick as React.MouseEventHandler<
-        HTMLButtonElement | HTMLAnchorElement
-      >)(e);
+      (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)(e);
     }
-  };
+  }
 
-  public isNeedInserted() {
+  isNeedInserted() {
     const { icon, children } = this.props;
     return React.Children.count(children) === 1 && !icon;
   }
 
-  public render() {
+  render() {
     const {
       children,
       className,
@@ -88,37 +80,35 @@ class Button extends React.PureComponent<IButtonProps, any> {
       ...restProps
     } = this.props;
 
-    let sizeCls = "";
+    let sizeCls = '';
     switch (size) {
-      case "large":
-        sizeCls = "lg";
+      case 'large':
+        sizeCls = 'lg';
         break;
-      case "small":
-        sizeCls = "sm";
+      case 'small':
+        sizeCls = 'sm';
       default:
         break;
     }
 
-    const iconType: any = loading ? "loading" : icon;
+    const iconType: any = loading ? 'loading' : icon;
     const wrapCls = classnames(prefixCls, className, {
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${sizeCls}`]: sizeCls,
       [`${prefixCls}-${shape}`]: shape,
       [`${prefixCls}-inline`]: inline || shape,
       [`${prefixCls}-loading`]: loading,
-      [`${prefixCls}-icon`]: !!iconType
+      [`${prefixCls}-icon`]: !!iconType,
     });
 
     const iconNode = iconType ? <Icon type={iconType} /> : null;
 
     const kids =
       children || children === 0
-        ? React.Children.map(children, child =>
-            insertSpace(child, this.isNeedInserted())
-          )
+        ? React.Children.map(children, child => insertSpace(child, this.isNeedInserted()))
         : null;
 
-    if ("href" in restProps) {
+    if ('href' in restProps) {
       return (
         <a {...restProps} className={wrapCls} onClick={this.handleClick}>
           {iconNode}
@@ -131,7 +121,7 @@ class Button extends React.PureComponent<IButtonProps, any> {
       return (
         <button
           {...otherProps}
-          type={htmlType || "button"}
+          type={htmlType || 'button'}
           className={wrapCls}
           onClick={this.handleClick}
         >

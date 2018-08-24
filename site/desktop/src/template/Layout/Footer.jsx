@@ -1,6 +1,6 @@
-import React from "react";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Row, Col } from "antd";
+import React from 'react';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Row, Col } from 'antd';
 
 const Footer = () => (
   <footer id="footer" className="dark">
@@ -19,20 +19,12 @@ const Footer = () => (
               </a>
             </div>
             <div>
-              <a
-                target="_blank "
-                rel="noopener noreferrer"
-                href="https://ant.design"
-              >
+              <a target="_blank " rel="noopener noreferrer" href="https://ant.design">
                 Ant Design
               </a>
             </div>
             <div>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://pro.ant.design"
-              >
+              <a target="_blank" rel="noopener noreferrer" href="https://pro.ant.design">
                 Ant Design Pro
               </a>
             </div>
@@ -53,7 +45,8 @@ const Footer = () => (
       <Col lg={4} sm={24} />
       <Col lg={20} sm={24}>
         <span style={{ marginRight: 12 }}>
-          Copyright © <FormattedMessage id="app.footer.company" />
+          <span>Copyright © </span>
+          <FormattedMessage id="app.footer.company" />
         </span>
       </Col>
     </Row>

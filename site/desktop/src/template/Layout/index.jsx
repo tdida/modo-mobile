@@ -8,6 +8,10 @@ import enLocale from '../../en-US';
 import cnLocale from '../../zh-CN';
 import * as utils from '../../../../utils';
 
+const {
+  object: { isRequired },
+} = PropTypes;
+
 if (typeof window !== 'undefined') {
   /* eslint-disable global-require */
   require('../../static/style');
@@ -17,11 +21,11 @@ if (typeof window !== 'undefined') {
   window['react-dom'] = ReactDOM;
 }
 
-
 export default class Layout extends React.Component {
   static contextTypes = {
-    router: PropTypes.object.isRequired,
+    router: isRequired,
   };
+
   constructor(props) {
     super(props);
     const { pathname } = props.location;
@@ -35,7 +39,8 @@ export default class Layout extends React.Component {
 
   componentDidMount() {
     if (typeof window.ga !== 'undefined') {
-      this.context.router.listen((loc) => {
+      const { router } = this.context;
+      router.listen(loc => {
         window.ga('send', 'pageview', loc.pathname + loc.search);
       });
     }
@@ -47,15 +52,16 @@ export default class Layout extends React.Component {
       }, 0);
     }
   }
+
   componentWillUnmount() {
     clearTimeout(this.timer);
   }
 
-  onEnterChange = (mode) => {
+  onEnterChange = mode => {
     this.setState({
       isFirstScreen: mode === 'enter',
     });
-  }
+  };
 
   render() {
     const { children, ...restProps } = this.props;

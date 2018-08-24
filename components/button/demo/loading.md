@@ -14,12 +14,12 @@ title:
 A loading indicator can be added to a button by setting the `loading` property on the `Button`.
 
 ```jsx
-import { Button, Icon } from "modo-mobile";
+import { Button, Icon } from 'modo-mobile';
 
 class App extends React.Component {
   state = {
     loading: false,
-    iconLoading: false
+    iconLoading: false,
   };
 
   enterLoading = () => {
@@ -39,12 +39,7 @@ class App extends React.Component {
         <Button type="primary" size="small" loading>
           Loading
         </Button>
-        <Button
-          type="primary"
-          loading={this.state.loading}
-          onClick={this.enterLoading}
-          inline
-        >
+        <Button type="primary" loading={this.state.loading} onClick={this.enterLoading} inline>
           Click me!
         </Button>
         <Icon type="loading" />

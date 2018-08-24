@@ -1,5 +1,5 @@
-import * as React from "react";
-import Icon, { IconProps } from "./index";
+import * as React from 'react';
+import Icon, { IconProps } from './index';
 
 const customCache = new Set<string>();
 
@@ -8,9 +8,7 @@ export interface ICustomIconOptions {
   extraCommonProps?: { [key: string]: any };
 }
 
-export default function create(
-  options: ICustomIconOptions = {}
-): React.SFC<IconProps> {
+export default function create(options: ICustomIconOptions = {}): React.SFC<IconProps> {
   const { scriptUrl, extraCommonProps = {} } = options;
 
   /**
@@ -20,16 +18,16 @@ export default function create(
    * that loads SVG symbols and insert the SVG Element into the document body.
    */
   if (
-    typeof document !== "undefined" &&
-    typeof window !== "undefined" &&
-    typeof document.createElement === "function" &&
-    typeof scriptUrl === "string" &&
+    typeof document !== 'undefined' &&
+    typeof window !== 'undefined' &&
+    typeof document.createElement === 'function' &&
+    typeof scriptUrl === 'string' &&
     scriptUrl.length &&
     !customCache.has(scriptUrl)
   ) {
-    const script = document.createElement("script");
-    script.setAttribute("src", `https:${scriptUrl}`);
-    script.setAttribute("data-namespace", scriptUrl);
+    const script = document.createElement('script');
+    script.setAttribute('src', `https:${scriptUrl}`);
+    script.setAttribute('data-namespace', scriptUrl);
     customCache.add(scriptUrl);
     document.body.appendChild(script);
   }
@@ -52,7 +50,7 @@ export default function create(
     );
   };
 
-  Iconfont.displayName = "Iconfont";
+  Iconfont.displayName = 'Iconfont';
 
   return Iconfont;
 }

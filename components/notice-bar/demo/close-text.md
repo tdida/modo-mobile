@@ -14,16 +14,12 @@ title:
 Replace the default icon with customized text.
 
 ```jsx
-import { NoticeBar, Icon } from "modo-mobile";
+import { NoticeBar } from 'modo-mobile';
 
 ReactDOM.render(
-  <div>
-    <NoticeBar mode="closable" action="Close">
-      Replace the default icon with customized text, long text, long text, long
-      text, long text.
-    </NoticeBar>
-    <br />
-  </div>,
+  <NoticeBar mode="closable" action="Close">
+    Replace the default icon with customized text, long text, long text, long text, long text.
+  </NoticeBar>,
   mountNode
 );
 ```

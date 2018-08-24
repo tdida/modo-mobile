@@ -1,38 +1,39 @@
 /* eslint jsx-a11y/no-noninteractive-element-interactions: 0 */
-import React from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import { FormattedMessage } from "react-intl";
-import CopyToClipboard from "react-copy-to-clipboard";
-import classNames from "classnames";
-import LZString from "lz-string";
-import { Icon, Tooltip } from "antd";
-import ErrorBoundary from "./ErrorBoundary";
-import { ping } from "../../../../utils";
+/* eslint react/no-danger: 0 */
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import classNames from 'classnames';
+import LZString from 'lz-string';
+import { Icon, Tooltip } from 'antd';
+import ErrorBoundary from './ErrorBoundary';
+import { ping } from '../../../../utils';
 
 function compress(string) {
   return LZString.compressToBase64(string)
-    .replace(/\+/g, "-") // Convert '+' to '-'
-    .replace(/\//g, "_") // Convert '/' to '_'
-    .replace(/=+$/, ""); // Remove ending '='
+    .replace(/\+/g, '-') // Convert '+' to '-'
+    .replace(/\//g, '_') // Convert '/' to '_'
+    .replace(/=+$/, ''); // Remove ending '='
 }
 
 export default class Demo extends React.Component {
   static contextTypes = {
-    intl: PropTypes.object
+    intl: PropTypes.object,
   };
 
   state = {
     codeExpand: false,
-    sourceCode: "",
+    sourceCode: '',
     copied: false,
     copyTooltipVisible: false,
-    showRiddleButton: false
+    showRiddleButton: false,
   };
 
   componentWillReceiveProps(nextProps) {
     const { highlightedCode } = nextProps;
-    const div = document.createElement("div");
+    const div = document.createElement('div');
     div.innerHTML = highlightedCode[1].highlighted;
     this.setState({ sourceCode: div.textContent });
   }
@@ -55,9 +56,9 @@ export default class Demo extends React.Component {
     this.componentWillReceiveProps(this.props);
 
     this.pingTimer = ping(status => {
-      if (status !== "timeout" && status !== "error") {
+      if (status !== 'timeout' && status !== 'error') {
         this.setState({
-          showRiddleButton: true
+          showRiddleButton: true,
         });
       }
     });
@@ -80,52 +81,44 @@ export default class Demo extends React.Component {
     if (visible) {
       this.setState({
         copyTooltipVisible: visible,
-        copied: false
+        copied: false,
       });
       return;
     }
     this.setState({
-      copyTooltipVisible: visible
+      copyTooltipVisible: visible,
     });
   };
 
   render() {
     const { state } = this;
     const { props } = this;
-    const {
-      meta,
-      content,
-      preview,
-      highlightedCode,
-      style,
-      highlightedStyle,
-      expand
-    } = props;
+    const { meta, content, preview, highlightedCode, style, highlightedStyle, expand } = props;
     const { showRiddleButton, copied } = state;
     if (!this.liveDemo) {
       this.liveDemo = preview(React, ReactDOM);
     }
     const codeExpand = state.codeExpand || expand;
     const codeBoxClass = classNames({
-      "code-box": true,
-      expand: codeExpand
+      'code-box': true,
+      expand: codeExpand,
     });
     const {
-      intl: { locale }
+      intl: { locale },
     } = this.context;
     const localizedTitle = meta.title[locale] || meta.title;
     const localizeIntro = content[locale] || content;
-    const introChildren = props.utils.toReactComponent(
-      ["div"].concat(localizeIntro)
-    );
+    const introChildren = props.utils.toReactComponent(['div'].concat(localizeIntro));
 
     const highlightClass = classNames({
-      "highlight-wrapper": true,
-      "highlight-wrapper-expand": codeExpand
+      'highlight-wrapper': true,
+      'highlight-wrapper-expand': codeExpand,
     });
 
-    const prefillStyle = `@import 'antd/dist/antd.css';\n\n${style ||
-      ""}`.replace(new RegExp(`#${meta.id}\\s*`, "g"), "");
+    const prefillStyle = `@import 'antd/dist/antd.css';\n\n${style || ''}`.replace(
+      new RegExp(`#${meta.id}\\s*`, 'g'),
+      ''
+    );
     const html = `<div id="container" style="padding: 24px"></div>
 <script>
   var mountNode = document.getElementById('container');
@@ -136,59 +129,59 @@ export default class Demo extends React.Component {
       html,
       js: state.sourceCode.replace(
         /import\s+\{\s+(.*)\s+\}\s+from\s+'antd';/,
-        "const { $1 } = antd;"
+        'const { $1 } = antd;'
       ),
       css: prefillStyle,
-      editors: "001",
-      css_external: "https://unpkg.com/antd/dist/antd.css",
+      editors: '001',
+      css_external: 'https://unpkg.com/antd/dist/antd.css',
       js_external: [
-        "react@15.x/dist/react.js",
-        "react-dom@15.x/dist/react-dom.js",
-        "moment/min/moment-with-locales.js",
-        "antd/dist/antd-with-locales.js"
+        'react@15.x/dist/react.js',
+        'react-dom@15.x/dist/react-dom.js',
+        'moment/min/moment-with-locales.js',
+        'antd/dist/antd-with-locales.js',
       ]
         .map(url => `https://unpkg.com/${url}`)
-        .join(";"),
-      js_pre_processor: "typescript"
+        .join(';'),
+      js_pre_processor: 'typescript',
     };
     const riddlePrefillConfig = {
       title: `${localizedTitle} - Modo Mobile Demo`,
       js: state.sourceCode,
-      css: prefillStyle
+      css: prefillStyle,
     };
-    const dependencies = state.sourceCode.split("\n").reduce(
+    const dependencies = state.sourceCode.split('\n').reduce(
       (acc, line) => {
         const matches = line.match(/import .+? from '(.+)';$/);
         if (matches && matches[1]) {
-          acc[matches[1]] = "latest";
+          acc[matches[1]] = 'latest';
         }
         return acc;
       },
-      { react: "latest", "react-dom": "latest" }
+      { react: 'latest', 'react-dom': 'latest' }
     );
     const codesanboxPrefillConfig = {
       files: {
-        "package.json": {
+        'package.json': {
           content: {
-            dependencies
-          }
+            dependencies,
+          },
         },
-        "index.css": {
-          content: (style || "").replace(new RegExp(`#${meta.id}\\s*`, "g"), "")
+        'index.css': {
+          content: (style || '').replace(new RegExp(`#${meta.id}\\s*`, 'g'), ''),
         },
-        "index.js": {
+        'index.js': {
           content: `
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import './index.css';
-${state.sourceCode.replace("mountNode", "document.getElementById('container')")}
-          `
+${state.sourceCode.replace('mountNode', "document.getElementById('container')")}
+          `,
         },
-        "index.html": {
-          content: html
-        }
-      }
+        'index.html': {
+          content: html,
+        },
+      },
     };
     return (
       <section className={codeBoxClass} id={meta.id}>
@@ -203,22 +196,18 @@ ${state.sourceCode.replace("mountNode", "document.getElementById('container')")}
             </a>
           </div>
           {introChildren}
-          <Tooltip title={codeExpand ? "Hide Code" : "Show Code"}>
+          <Tooltip title={codeExpand ? 'Hide Code' : 'Show Code'}>
             <span className="code-expand-icon">
               <img
                 alt="expand code"
                 src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg"
-                className={
-                  codeExpand ? "code-expand-icon-hide" : "code-expand-icon-show"
-                }
+                className={codeExpand ? 'code-expand-icon-hide' : 'code-expand-icon-show'}
                 onClick={this.handleCodeExpand}
               />
               <img
                 alt="expand code"
                 src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg"
-                className={
-                  codeExpand ? "code-expand-icon-show" : "code-expand-icon-hide"
-                }
+                className={codeExpand ? 'code-expand-icon-show' : 'code-expand-icon-hide'}
                 onClick={this.handleCodeExpand}
               />
             </span>
@@ -233,11 +222,7 @@ ${state.sourceCode.replace("mountNode", "document.getElementById('container')")}
                   method="POST"
                   target="_blank"
                 >
-                  <input
-                    type="hidden"
-                    name="data"
-                    value={JSON.stringify(riddlePrefillConfig)}
-                  />
+                  <input type="hidden" name="data" value={JSON.stringify(riddlePrefillConfig)} />
                   <Tooltip title={<FormattedMessage id="app.demo.riddle" />}>
                     <input
                       type="submit"
@@ -247,16 +232,8 @@ ${state.sourceCode.replace("mountNode", "document.getElementById('container')")}
                   </Tooltip>
                 </form>
               ) : null}
-              <form
-                action="https://codepen.io/pen/define"
-                method="POST"
-                target="_blank"
-              >
-                <input
-                  type="hidden"
-                  name="data"
-                  value={JSON.stringify(codepenPrefillConfig)}
-                />
+              <form action="https://codepen.io/pen/define" method="POST" target="_blank">
+                <input type="hidden" name="data" value={JSON.stringify(codepenPrefillConfig)} />
                 <Tooltip title={<FormattedMessage id="app.demo.codepen" />}>
                   <input
                     type="submit"
@@ -283,25 +260,14 @@ ${state.sourceCode.replace("mountNode", "document.getElementById('container')")}
                   />
                 </Tooltip>
               </form>
-              <CopyToClipboard
-                text={state.sourceCode}
-                onCopy={this.handleCodeCopied}
-              >
+              <CopyToClipboard text={state.sourceCode} onCopy={this.handleCodeCopied}>
                 <Tooltip
                   visible={state.copyTooltipVisible}
                   onVisibleChange={this.onCopyTooltipVisibleChange}
-                  title={
-                    <FormattedMessage
-                      id={`app.demo.${copied ? "copied" : "copy"}`}
-                    />
-                  }
+                  title={<FormattedMessage id={`app.demo.${copied ? 'copied' : 'copy'}`} />}
                 >
                   <Icon
-                    type={
-                      state.copied && state.copyTooltipVisible
-                        ? "check"
-                        : "copy"
-                    }
+                    type={state.copied && state.copyTooltipVisible ? 'check' : 'copy'}
                     className="code-box-code-copy"
                   />
                 </Tooltip>
@@ -312,10 +278,7 @@ ${state.sourceCode.replace("mountNode", "document.getElementById('container')")}
           {highlightedStyle ? (
             <div key="style" className="highlight">
               <pre>
-                <code
-                  className="css"
-                  dangerouslySetInnerHTML={{ __html: highlightedStyle }}
-                />
+                <code className="css" dangerouslySetInnerHTML={{ __html: highlightedStyle }} />
               </pre>
             </div>
           ) : null}

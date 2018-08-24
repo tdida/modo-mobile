@@ -1,54 +1,45 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "bisheng/router";
-import { FormattedMessage } from "react-intl";
-import classNames from "classnames";
-import {
-  Select,
-  Menu,
-  Row,
-  Col,
-  Icon,
-  Button,
-  AutoComplete,
-  Input,
-  Popover
-} from "antd";
-import { version as modoVersion } from "../../../../../package.json";
-import * as utils from "../../../../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'bisheng/router';
+import { FormattedMessage } from 'react-intl';
+import classNames from 'classnames';
+import { Menu, Row, Col, Icon, Button, AutoComplete, Input, Popover } from 'antd';
+import { version as modoVersion } from '../../../../../package.json';
+import * as utils from '../../../../utils';
+
+const {
+  object: { isRequired },
+} = PropTypes;
 
 const { Option } = AutoComplete;
-const searchEngine = "Google";
-const searchLink = "https://www.google.com/#q=site:mobile.ant.design+";
+const searchEngine = 'Google';
+const searchLink = 'https://www.google.com/#q=site:mobile.ant.design+';
 
 export default class Header extends React.Component {
   static contextTypes = {
-    router: PropTypes.object.isRequired,
-    intl: PropTypes.object.isRequired
+    router: isRequired,
+    intl: isRequired,
   };
 
   state = {
-    inputValue: "",
+    inputValue: '',
     menuVisible: false,
-    menuMode: "horizontal"
+    menuMode: 'horizontal',
   };
 
   componentDidMount() {
     // this.context.router.listen(this.handleHideMenu);
     const { searchInput } = this;
     /* eslint-disable global-require */
-    require("enquire.js").register(
-      "only screen and (min-width: 0) and (max-width: 992px)",
-      {
-        match: () => {
-          this.setState({ menuMode: "inline" });
-        },
-        unmatch: () => {
-          this.setState({ menuMode: "horizontal" });
-        }
-      }
-    );
-    document.addEventListener("keyup", event => {
+    require('enquire.js').register('only screen and (min-width: 0) and (max-width: 992px)', {
+      match: () => {
+        this.setState({ menuMode: 'inline' });
+      },
+      unmatch: () => {
+        this.setState({ menuMode: 'horizontal' });
+      },
+    });
+    document.addEventListener('keyup', event => {
       if (event.keyCode === 83 && event.target === document.body) {
         searchInput.focus();
       }
@@ -60,27 +51,25 @@ export default class Header extends React.Component {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
     this.setState({
-      menuVisible: true
+      menuVisible: true,
     });
   };
 
   handleSearch = value => {
     if (value === searchEngine) {
-      window.location.href = `${searchLink}${this.state.inputValue}`;
+      const { inputValue } = this.state;
+      window.location.href = `${searchLink}${inputValue}`;
       return;
     }
 
     const { intl, router } = this.context;
     this.setState(
       {
-        inputValue: ""
+        inputValue: '',
       },
       () => {
         router.push({
-          pathname: utils.getLocalizedPathname(
-            `${value}/`,
-            intl.locale === "zh-CN"
-          )
+          pathname: utils.getLocalizedPathname(`${value}/`, intl.locale === 'zh-CN'),
         });
         this.searchInput.blur();
       }
@@ -89,27 +78,24 @@ export default class Header extends React.Component {
 
   handleInputChange = value => {
     this.setState({
-      inputValue: value
+      inputValue: value,
     });
   };
+
   handleSelectFilter = (value, option) => {
-    const optionValue = option.props["data-label"];
-    return (
-      optionValue === searchEngine ||
-      optionValue.indexOf(value.toLowerCase()) > -1
-    );
+    const optionValue = option.props['data-label'];
+    return optionValue === searchEngine || optionValue.indexOf(value.toLowerCase()) > -1;
   };
 
   handleLangChange = () => {
-    const { pathname } = this.props.location;
+    const {
+      location: { pathname },
+    } = this.props;
     const currentProtocol = `${window.location.protocol}//`;
     const currentHref = window.location.href.substr(currentProtocol.length);
 
     if (utils.isLocalStorageNameSupported()) {
-      localStorage.setItem(
-        "locale",
-        utils.isZhCN(pathname) ? "en-US" : "zh-CN"
-      );
+      localStorage.setItem('locale', utils.isZhCN(pathname) ? 'en-US' : 'zh-CN');
     }
 
     window.location.href =
@@ -119,6 +105,7 @@ export default class Header extends React.Component {
         utils.getLocalizedPathname(pathname, !utils.isZhCN(pathname))
       );
   };
+
   handleVersionChange = url => {
     const currentUrl = window.location.href;
     const currentPathname = window.location.pathname;
@@ -126,51 +113,43 @@ export default class Header extends React.Component {
       .replace(window.location.origin, url)
       .replace(currentPathname, utils.getLocalizedPathname(currentPathname));
   };
+
   render() {
     const { inputValue, menuMode, menuVisible } = this.state;
     const { location, picked, isFirstScreen, themeConfig } = this.props;
-    const docVersions = {
-      ...themeConfig.docVersions,
-      [modoVersion]: modoVersion
-    };
-    const versionOptions = Object.keys(docVersions).map(version => (
-      <Option value={docVersions[version]} key={version}>
-        {version}
-      </Option>
-    ));
+
     const { components } = picked;
     const module = location.pathname
-      .replace(/(^\/|\/$)/g, "")
-      .split("/")
+      .replace(/(^\/|\/$)/g, '')
+      .split('/')
       .slice(0, -1)
-      .join("/");
-    let activeMenuItem = module || "home";
-    if (activeMenuItem === "components" || location.pathname === "changelog") {
-      activeMenuItem = "docs";
+      .join('/');
+    let activeMenuItem = module || 'home';
+    if (activeMenuItem === 'components' || location.pathname === 'changelog') {
+      activeMenuItem = 'docs';
     }
 
-    const { locale } = this.context.intl;
-    const isZhCN = locale === "zh-CN";
-    const excludedSuffix = isZhCN ? "en-US.md" : "zh-CN.md";
+    const {
+      intl: { locale },
+    } = this.context;
+    const isZhCN = locale === 'zh-CN';
+    const excludedSuffix = isZhCN ? 'en-US.md' : 'zh-CN.md';
     const options = components
       .filter(({ meta }) => !meta.filename.endsWith(excludedSuffix))
       .map(({ meta }) => {
-        const pathSnippet = meta.filename.split("/")[1];
+        const pathSnippet = meta.filename.split('/')[1];
         const url = `/components/${pathSnippet}`;
         const { subtitle } = meta;
         return (
           <Option
             value={url}
             key={url}
-            data-label={`${(
-              meta.title || meta.english
-            ).toLowerCase()} ${meta.subtitle || meta.chinese}`}
+            data-label={`${(meta.title || meta.english).toLowerCase()} ${meta.subtitle ||
+              meta.chinese}`}
           >
             <strong>{meta.title || meta.english}</strong>
             {subtitle && (
-              <span className="ant-component-decs">
-                {meta.subtitle || meta.chinese}
-              </span>
+              <span className="ant-component-decs">{meta.subtitle || meta.chinese}</span>
             )}
           </Option>
         );
@@ -183,8 +162,8 @@ export default class Header extends React.Component {
 
     const headerClassName = classNames({
       clearfix: true,
-      "home-nav-white": !isFirstScreen,
-      "home-page-header": activeMenuItem === "home"
+      'home-nav-white': !isFirstScreen,
+      'home-page-header': activeMenuItem === 'home',
     });
 
     const menu = [
@@ -205,23 +184,22 @@ export default class Header extends React.Component {
         key="nav"
       >
         <Menu.Item key="home">
-          <Link to={utils.getLocalizedPathname("/", isZhCN)}>
+          <Link to={utils.getLocalizedPathname('/', isZhCN)}>
             <FormattedMessage id="app.header.menu.home" />
           </Link>
         </Menu.Item>
         <Menu.Item key="docs">
-          <Link to={utils.getLocalizedPathname("/docs/introduce", isZhCN)}>
+          <Link to={utils.getLocalizedPathname('/docs/introduce', isZhCN)}>
             <FormattedMessage id="app.header.menu.components" />
           </Link>
         </Menu.Item>
-      </Menu>
+      </Menu>,
     ];
 
-    const searchPlaceholder =
-      locale === "zh-CN" ? "搜索组件..." : "Search Components...";
+    const searchPlaceholder = locale === 'zh-CN' ? '搜索组件...' : 'Search Components...';
     return (
       <header id="header" className={headerClassName}>
-        {menuMode === "inline" ? (
+        {menuMode === 'inline' ? (
           <Popover
             overlayClassName="popover-menu"
             placement="bottomRight"
@@ -231,22 +209,18 @@ export default class Header extends React.Component {
             arrowPointAtCenter
             onVisibleChange={this.onMenuVisibleChange}
           >
-            <Icon
-              className="nav-phone-icon"
-              type="menu"
-              onClick={this.handleShowMenu}
-            />
+            <Icon className="nav-phone-icon" type="menu" onClick={this.handleShowMenu} />
           </Popover>
         ) : null}
         <Row>
           <Col xxl={4} xl={5} lg={5} md={8} sm={24} xs={24}>
-            <Link to={utils.getLocalizedPathname("/", isZhCN)} id="logo">
+            <Link to={utils.getLocalizedPathname('/', isZhCN)} id="logo">
               <img
                 alt="logo"
                 src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
               />
               <span>{themeConfig.siteTitle}</span>
-              <sup>v{modoVersion}</sup>
+              <sup>{`v${modoVersion}`}</sup>
             </Link>
           </Col>
           <Col xxl={20} xl={19} lg={19} md={16} sm={0} xs={0}>
@@ -266,7 +240,7 @@ export default class Header extends React.Component {
                 <Input ref={ref => (this.searchInput = ref)} />
               </AutoComplete>
             </div>
-            {menuMode === "horizontal" ? menu : null}
+            {menuMode === 'horizontal' ? menu : null}
           </Col>
         </Row>
       </header>

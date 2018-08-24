@@ -3,14 +3,14 @@
  * remove PC
  * support React Element for text prop
 */
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 export default class Marquee extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
             animatedWidth: 0,
-            overflowWidth: 0
+            overflowWidth: 0,
         };
         // tslint:disable-next-line:variable-name
         this._marqueeTimer = 0;
@@ -30,9 +30,12 @@ export default class Marquee extends React.Component {
     }
     render() {
         const { prefixCls, className, text } = this.props;
-        const style = Object.assign({ position: "relative", right: this.state.animatedWidth, whiteSpace: "nowrap", display: "inline-block" }, this.props.style);
-        return (React.createElement("div", { className: `${prefixCls}-marquee-wrap ${className}`, style: { overflow: "hidden" }, role: "marquee" },
-            React.createElement("div", { ref: el => (this.textRef = el), className: `${prefixCls}-marquee`, style: style }, text)));
+        const style = Object.assign({ position: 'relative', right: this.state.animatedWidth, whiteSpace: 'nowrap', display: 'inline-block' }, this.props.style);
+        return (<div className={`${prefixCls}-marquee-wrap ${className}`} style={{ overflow: 'hidden' }} role="marquee">
+        <div ref={el => (this.textRef = el)} className={`${prefixCls}-marquee`} style={style}>
+          {text}
+        </div>
+      </div>);
     }
     _startAnimation() {
         if (this._marqueeTimer) {
@@ -57,14 +60,14 @@ export default class Marquee extends React.Component {
             if (isRoundOver && this.props.trailing) {
                 this._marqueeTimer = window.setTimeout(() => {
                     this.setState({
-                        animatedWidth
+                        animatedWidth,
                     });
                     this._marqueeTimer = window.setTimeout(animate, TIMEOUT);
                 }, this.props.trailing);
             }
             else {
                 this.setState({
-                    animatedWidth
+                    animatedWidth,
                 });
                 this._marqueeTimer = window.setTimeout(animate, TIMEOUT);
             }
@@ -82,17 +85,17 @@ export default class Marquee extends React.Component {
             const overflowWidth = textWidth - containerWidth;
             if (overflowWidth !== this.state.overflowWidth) {
                 this.setState({
-                    overflowWidth
+                    overflowWidth,
                 });
             }
         }
     }
 }
 Marquee.defaultProps = {
-    text: "",
-    loop: true,
-    leading: 500,
-    trailing: 800,
+    className: '',
     fps: 30,
-    className: ""
+    leading: 500,
+    loop: true,
+    text: '',
+    trailing: 800,
 };

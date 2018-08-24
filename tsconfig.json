@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
-    "sourceMap": false,
-    "noImplicitAny": true,
-    "esModuleInterop": true,
+    "strictNullChecks": true,
     "moduleResolution": "node",
-    "module": "es6",
+    "jsx": "preserve",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports":true,
     "target": "es6",
-    "jsx": "react",
-    "alwaysStrict": true,
-    "declaration": true,
-    "strict": true
+    "noImplicitAny": true
   },
-  "include": ["./components/**/*"]
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es"
+  ],
+  "compileOnSave": false
 }

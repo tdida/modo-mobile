@@ -7,13 +7,13 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
-import classnames from "classnames";
-import * as React from "react";
-import Icon from "../icon";
+import classnames from 'classnames';
+import * as React from 'react';
+import Icon from '../icon';
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
 function isString(str) {
-    return typeof str === "string";
+    return typeof str === 'string';
 }
 // Insert one space between two chinese characters automatically.
 function insertSpace(child, needInserted) {
@@ -21,19 +21,19 @@ function insertSpace(child, needInserted) {
     if (child == null) {
         return;
     }
-    const SPACE = needInserted ? " " : "";
+    const SPACE = needInserted ? ' ' : '';
     // strictNullChecks oops.
-    if (typeof child !== "string" &&
-        typeof child !== "number" &&
+    if (typeof child !== 'string' &&
+        typeof child !== 'number' &&
         isString(child.type) &&
         isTwoCNChar(child.props.children)) {
-        return React.cloneElement(child, {}, child.props.children.split("").join(SPACE));
+        return React.cloneElement(child, {}, child.props.children.split('').join(SPACE));
     }
-    if (typeof child === "string") {
+    if (typeof child === 'string') {
         if (isTwoCNChar(child)) {
-            child = child.split("").join(SPACE);
+            child = child.split('').join(SPACE);
         }
-        return React.createElement("span", null, child);
+        return <span>{child}</span>;
     }
     return child;
 }
@@ -53,39 +53,41 @@ class Button extends React.PureComponent {
     }
     render() {
         const _a = this.props, { children, className, prefixCls, type, size, shape, inline, icon, loading, onClick } = _a, restProps = __rest(_a, ["children", "className", "prefixCls", "type", "size", "shape", "inline", "icon", "loading", "onClick"]);
-        let sizeCls = "";
+        let sizeCls = '';
         switch (size) {
-            case "large":
-                sizeCls = "lg";
+            case 'large':
+                sizeCls = 'lg';
                 break;
-            case "small":
-                sizeCls = "sm";
+            case 'small':
+                sizeCls = 'sm';
             default:
                 break;
         }
-        const iconType = loading ? "loading" : icon;
+        const iconType = loading ? 'loading' : icon;
         const wrapCls = classnames(prefixCls, className, {
             [`${prefixCls}-${type}`]: type,
             [`${prefixCls}-${sizeCls}`]: sizeCls,
             [`${prefixCls}-${shape}`]: shape,
             [`${prefixCls}-inline`]: inline || shape,
             [`${prefixCls}-loading`]: loading,
-            [`${prefixCls}-icon`]: !!iconType
+            [`${prefixCls}-icon`]: !!iconType,
         });
-        const iconNode = iconType ? React.createElement(Icon, { type: iconType }) : null;
+        const iconNode = iconType ? <Icon type={iconType}/> : null;
         const kids = children || children === 0
             ? React.Children.map(children, child => insertSpace(child, this.isNeedInserted()))
             : null;
-        if ("href" in restProps) {
-            return (React.createElement("a", Object.assign({}, restProps, { className: wrapCls, onClick: this.handleClick }),
-                iconNode,
-                kids));
+        if ('href' in restProps) {
+            return (<a {...restProps} className={wrapCls} onClick={this.handleClick}>
+          {iconNode}
+          {kids}
+        </a>);
         }
         else {
             const { htmlType } = restProps, otherProps = __rest(restProps, ["htmlType"]);
-            return (React.createElement("button", Object.assign({}, otherProps, { type: htmlType || "button", className: wrapCls, onClick: this.handleClick }),
-                iconNode,
-                kids));
+            return (<button {...otherProps} type={htmlType || 'button'} className={wrapCls} onClick={this.handleClick}>
+          {iconNode}
+          {kids}
+        </button>);
         }
     }
 }
@@ -93,6 +95,6 @@ Button.defaultProps = {
     disabled: false,
     inline: false,
     loading: false,
-    prefixCls: "m-button"
+    prefixCls: 'm-button',
 };
 export default Button;

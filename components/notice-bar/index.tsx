@@ -1,12 +1,12 @@
-import * as React from "react";
-import Marquee from "./Marquee";
-import Icon from "../icon";
+import * as React from 'react';
+import Marquee from './Marquee';
+import Icon from '../icon';
 
 function noop() {}
 
 export interface NoticeBarProps {
   icon?: React.ReactNode;
-  mode?: "closable" | "link";
+  mode?: 'closable' | 'link';
   prefixCls?: string;
   duration?: number;
   action?: React.ReactNode;
@@ -14,22 +14,19 @@ export interface NoticeBarProps {
   onClick?: () => void;
 }
 
-export default class NoticeBar extends React.PureComponent<
-  NoticeBarProps,
-  any
-> {
+export default class NoticeBar extends React.PureComponent<NoticeBarProps, any> {
   static defaultProps = {
-    prefixCls: "m-notice-bar",
-    mode: "",
+    prefixCls: 'm-notice-bar',
+    mode: '',
     duration: 0,
     icon: <Icon type="notification" />,
-    onClick() {}
+    onClick() {},
   };
 
   constructor(props: NoticeBarProps) {
     super(props);
     this.state = {
-      closed: false
+      closed: false,
     };
   }
 
@@ -45,32 +42,30 @@ export default class NoticeBar extends React.PureComponent<
       this.handleClose();
       clearTimeout(timer);
     }, time);
-  };
+  }
 
   handleClose = () => {
     this.setState({
-      closed: true
+      closed: true,
     });
     (this.props.onClick || noop)();
-  };
+  }
 
   render() {
     const { icon, prefixCls, action, children, mode, onClick } = this.props;
 
     const extraProps: any = {};
     let closeIcon: any = null;
-    if (mode === "closable") {
+    if (mode === 'closable') {
       closeIcon = (
         <div onClick={this.handleClose} className={`${prefixCls}-close-icon`}>
           {action || <Icon type="close" />}
         </div>
       );
     } else {
-      if (mode === "link") {
+      if (mode === 'link') {
         closeIcon = (
-          <div className={`${prefixCls}-close-icon`}>
-            {action || <Icon type="right" />}
-          </div>
+          <div className={`${prefixCls}-close-icon`}>{action || <Icon type="right" />}</div>
         );
       }
       extraProps.onClick = onClick;

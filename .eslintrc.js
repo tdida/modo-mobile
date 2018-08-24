@@ -1,5 +1,5 @@
 const eslintrc = {
-  extends: ['eslint-config-airbnb'],
+  extends: ['eslint-config-airbnb', 'prettier'],
   env: {
     browser: true,
     node: true,
@@ -15,12 +15,7 @@ const eslintrc = {
       experimentalObjectRestSpread: true,
     },
   },
-  plugins: [
-    'markdown',
-    'react',
-    'babel',
-    'jsx-a11y',
-  ],
+  plugins: ['markdown', 'react', 'babel', 'jsx-a11y'],
   rules: {
     'class-methods-use-this': 0,
     'func-names': 0,
@@ -49,6 +44,7 @@ const eslintrc = {
     'jsx-a11y/anchor-is-valid': 0,
     'react/jsx-no-comment-textnodes': 0,
     'object-curly-newline': 0,
+    'react/forbid-prop-types': 0,
   },
 };
 

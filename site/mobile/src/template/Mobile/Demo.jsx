@@ -1,57 +1,58 @@
 /* eslint react/no-danger: 0 */
-import React from "react";
-import ReactDOM from "react-dom";
-import collect from "bisheng/collect";
-import { getQuery } from "../../../../utils";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import collect from 'bisheng/collect';
+import { getQuery } from '../../../../utils';
 
 @collect(async nextProps => {
   const { pathname } = nextProps.location;
-  const pageDataPath = pathname.replace("-cn", "").split("/");
+  const pageDataPath = pathname.replace('-cn', '').split('/');
   const pageData = nextProps.utils.get(nextProps.data, pageDataPath);
   if (!pageData) {
     throw 404; // eslint-disable-line no-throw-literal
   }
 
-  const locale = getQuery("lang") || window.navigator.language;
+  const locale = getQuery('lang') || window.navigator.language;
   const pageDataPromise =
-    typeof pageData === "function"
+    typeof pageData === 'function'
       ? pageData()
       : (pageData[locale] || pageData.index[locale] || pageData.index)();
   const demosFetcher = nextProps.utils.get(nextProps.data, [
-    "components",
+    'components',
     nextProps.params.component,
-    "demo"
+    'demo',
   ]);
   if (demosFetcher) {
-    const [localizedPageData, demos] = await Promise.all([
-      pageDataPromise,
-      demosFetcher()
-    ]);
+    const [localizedPageData, demos] = await Promise.all([pageDataPromise, demosFetcher()]);
     return { localizedPageData, demos, locale };
   }
 
   return { localizedPageData: await pageDataPromise, locale };
 })
 export default class Demo extends React.Component {
+  componentDidMount() {
+    window.addEventListener('hashchange', this.update, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('hashChange', this.update, false);
+  }
+
   goToPage = (name, index) => () => {
     window.location.hash = `${name}-demo-${index}`;
   };
+
   update = () => {
     this.forceUpdate();
   };
-  componentDidMount() {
-    window.addEventListener("hashchange", this.update, false);
-  }
-  componentWillUnmount() {
-    window.removeEventListener("hashChange", this.update, false);
-  }
+
   render() {
-    const { demos, location, picked, themeConfig: config, locale } = this.props;
+    const { demos, location, picked, themeConfig: config, locale, params } = this.props;
     let demoMeta;
-    const name = this.props.params.component;
+    const name = params.component;
     picked.components.forEach(i => {
       const { meta } = i;
-      if (meta.filename.split("/")[1] === name) {
+      if (meta.filename.split('/')[1] === name) {
         demoMeta = meta;
       }
     });
@@ -60,16 +61,11 @@ export default class Demo extends React.Component {
     Object.keys(demos).forEach(k => {
       demoArr.push(demos[k]);
     });
-    let demoSort = demoArr.sort(
-      (a, b) => parseInt(a.meta.order, 10) - parseInt(b.meta.order, 10)
-    );
+    let demoSort = demoArr.sort((a, b) => parseInt(a.meta.order, 10) - parseInt(b.meta.order, 10));
 
     const hashArr = location.hash.split(config.hashSpliter);
     const order = hashArr[1] && parseInt(hashArr[1], 10);
-    if (
-      location.hash &&
-      config.indexDemos.concat(config.subListDemos).indexOf(name) > -1
-    ) {
+    if (location.hash && config.indexDemos.concat(config.subListDemos).indexOf(name) > -1) {
       // 处理 config.indexDemos 里的组件 demo ，使其能只展示一个
       demoSort = demoSort.filter(i => parseInt(i.meta.order, 10) === order);
     }
@@ -79,56 +75,44 @@ export default class Demo extends React.Component {
       demoContent = demoSort.map((item, index) => (
         <div key={`sub${index}`}>
           <div>
-            <button onClick={this.goToPage(name, index)}>
-              {item.meta.title[locale === "en-US" ? "en-US" : "zh-CN"]}
+            <button type="button" onClick={this.goToPage(name, index)}>
+              {item.meta.title[locale === 'en-US' ? 'en-US' : 'zh-CN']}
             </button>
           </div>
         </div>
       ));
     } else {
-      demoContent = demoSort.map((i, index) => {
-        return (
-          <div
-            className="demo-preview-item"
-            id={`${name}-demo-${i.meta.order}`}
-            key={index}
-          >
-            <div className="demoTitle">{i.meta.title[locale]}</div>
-            <div className="demoContainer">{i.preview(React, ReactDOM)}</div>
-            {i.style ? (
-              <style dangerouslySetInnerHTML={{ __html: i.style }} />
-            ) : null}
-          </div>
-        );
-      });
+      demoContent = demoSort.map((i, index) => (
+        <div className="demo-preview-item" id={`${name}-demo-${i.meta.order}`} key={index}>
+          <div className="demoTitle">{i.meta.title[locale]}</div>
+          <div className="demoContainer">{i.preview(React, ReactDOM)}</div>
+          {i.style ? <style dangerouslySetInnerHTML={{ __html: i.style }} /> : null}
+        </div>
+      ));
     }
 
     // document.documentElement.clientHeight to
     // remove height of toolbars, address bars and navigation (android)
     const style = {};
-    let touchNoticeText = "";
+    let touchNoticeText = '';
     if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
       style.minHeight = document.documentElement.clientHeight;
-    } else if (
-      /(tabs|swipe-action|pull-to-refresh)/i.test(
-        window.location.hash.toLowerCase()
-      )
-    ) {
+    } else if (/(tabs|swipe-action|pull-to-refresh)/i.test(window.location.hash.toLowerCase())) {
       touchNoticeText =
-        locale === "en-US"
-          ? "This component only support Touch Events, USE mobile mode open this page please."
-          : "该组件只支持Touch事件，请使用移动模式/设备打开此页。";
+        locale === 'en-US'
+          ? 'This component only support Touch Events, USE mobile mode open this page please.'
+          : '该组件只支持Touch事件，请使用移动模式/设备打开此页。';
     }
 
     const isLocalMode = window.location.port;
-    const linkUrl = isLocalMode ? "" : "mobile/";
+    const linkUrl = isLocalMode ? '' : 'mobile/';
 
     return (
       <div id={name} style={style} className="demo">
         <div className="demoName">
           <a className="icon" href={`/${linkUrl}${window.location.search}`} />
           {demoMeta.title}
-          {!demoMeta.subtitle || locale === "en-US" ? null : (
+          {!demoMeta.subtitle || locale === 'en-US' ? null : (
             <span className="ch">{demoMeta.subtitle}</span>
           )}
         </div>

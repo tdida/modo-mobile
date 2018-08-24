@@ -1,10 +1,10 @@
 // inspired by https://github.com/nolimits4web/Framework7/blob/v2/src/less/mixins.less#L76
 // but more powerful, both support viewport scale and not scale usage.
 
-@import "../themes/default";
+@import '../themes/default';
 
 .scale-hairline-common(@color, @top, @right, @bottom, @left) {
-  content: "";
+  content: '';
   position: absolute;
   background-color: @color;
   display: block;
@@ -15,7 +15,7 @@
   left: @left;
 }
 
-.hairline(@direction, @color: @border-color-base) when (@direction = "top") {
+.hairline(@direction, @color: @border-color-base) when (@direction = 'top') {
   border-top: 1px solid @color;
 
   html:not([data-scale]) & {
@@ -37,7 +37,7 @@
   }
 }
 
-.hairline(@direction, @color: @border-color-base) when (@direction = "right") {
+.hairline(@direction, @color: @border-color-base) when (@direction = 'right') {
   border-right: 1px solid @color;
 
   html:not([data-scale]) & {
@@ -60,7 +60,7 @@
   }
 }
 
-.hairline(@direction, @color: @border-color-base) when (@direction = "bottom") {
+.hairline(@direction, @color: @border-color-base) when (@direction = 'bottom') {
   border-bottom: 1px solid @color;
 
   html:not([data-scale]) & {
@@ -82,7 +82,7 @@
   }
 }
 
-.hairline(@direction, @color: @border-color-base) when (@direction = "left") {
+.hairline(@direction, @color: @border-color-base) when (@direction = 'left') {
   border-left: 1px solid @color;
 
   html:not([data-scale]) & {
@@ -104,9 +104,7 @@
   }
 }
 
-.hairline(@direction, @color: @border-color-base, @radius: 0)
-  when
-  (@direction = "all") {
+.hairline(@direction, @color: @border-color-base, @radius: 0) when (@direction = 'all') {
   border: 1px solid @color;
   border-radius: @radius;
 
@@ -116,7 +114,7 @@
       border: none;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         top: 0;
@@ -140,35 +138,35 @@
   }
 }
 
-.hairline-remove(@position) when (@position = "left") {
+.hairline-remove(@position) when (@position = 'left') {
   border-left: 0;
   &:before {
     display: none !important;
   }
 }
 
-.hairline-remove(@position) when (@position = "right") {
+.hairline-remove(@position) when (@position = 'right') {
   border-right: 0;
   &:after {
     display: none !important;
   }
 }
 
-.hairline-remove(@position) when (@position = "top") {
+.hairline-remove(@position) when (@position = 'top') {
   border-top: 0;
   &:before {
     display: none !important;
   }
 }
 
-.hairline-remove(@position) when (@position = "bottom") {
+.hairline-remove(@position) when (@position = 'bottom') {
   border-bottom: 0;
   &:after {
     display: none !important;
   }
 }
 
-.hairline-remove(@position) when (@position = "all") {
+.hairline-remove(@position) when (@position = 'all') {
   border: 0;
   &:before {
     display: none !important;

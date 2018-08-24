@@ -1,6 +1,6 @@
-import * as React from "react";
-import Marquee from "./Marquee";
-import Icon from "../icon";
+import * as React from 'react';
+import Marquee from './Marquee';
+import Icon from '../icon';
 function noop() { }
 export default class NoticeBar extends React.PureComponent {
     constructor(props) {
@@ -13,12 +13,12 @@ export default class NoticeBar extends React.PureComponent {
         };
         this.handleClose = () => {
             this.setState({
-                closed: true
+                closed: true,
             });
             (this.props.onClick || noop)();
         };
         this.state = {
-            closed: false
+            closed: false,
         };
     }
     componentDidMount() {
@@ -31,26 +31,30 @@ export default class NoticeBar extends React.PureComponent {
         const { icon, prefixCls, action, children, mode, onClick } = this.props;
         const extraProps = {};
         let closeIcon = null;
-        if (mode === "closable") {
-            closeIcon = (React.createElement("div", { onClick: this.handleClose, className: `${prefixCls}-close-icon` }, action || React.createElement(Icon, { type: "close" })));
+        if (mode === 'closable') {
+            closeIcon = (<div onClick={this.handleClose} className={`${prefixCls}-close-icon`}>
+          {action || <Icon type="close"/>}
+        </div>);
         }
         else {
-            if (mode === "link") {
-                closeIcon = (React.createElement("div", { className: `${prefixCls}-close-icon` }, action || React.createElement(Icon, { type: "right" })));
+            if (mode === 'link') {
+                closeIcon = (<div className={`${prefixCls}-close-icon`}>{action || <Icon type="right"/>}</div>);
             }
             extraProps.onClick = onClick;
         }
-        return this.state.closed ? null : (React.createElement("div", Object.assign({ className: prefixCls }, extraProps),
-            React.createElement("div", { className: `${prefixCls}-icon` }, icon),
-            React.createElement("div", { className: `${prefixCls}-content` },
-                React.createElement(Marquee, { prefixCls: prefixCls, text: children })),
-            closeIcon));
+        return this.state.closed ? null : (<div className={prefixCls} {...extraProps}>
+        <div className={`${prefixCls}-icon`}>{icon}</div>
+        <div className={`${prefixCls}-content`}>
+          <Marquee prefixCls={prefixCls} text={children}/>
+        </div>
+        {closeIcon}
+      </div>);
     }
 }
 NoticeBar.defaultProps = {
-    prefixCls: "m-notice-bar",
-    mode: "",
+    prefixCls: 'm-notice-bar',
+    mode: '',
     duration: 0,
-    icon: React.createElement(Icon, { type: "notification" }),
-    onClick() { }
+    icon: <Icon type="notification"/>,
+    onClick() { },
 };

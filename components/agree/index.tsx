@@ -1,6 +1,6 @@
-import * as React from "react";
-import classnames from "classnames";
-import Icon from "../icon";
+import classnames from 'classnames';
+import * as React from 'react';
+import Icon from '../icon';
 
 export interface AgreeProps {
   prefixCls?: string;
@@ -13,27 +13,27 @@ export interface AgreeProps {
 }
 
 export default class Agree extends React.PureComponent<AgreeProps, any> {
-  static defaultProps = {
-    prefixCls: "m-agree",
-    disabled: false
+  public static defaultProps = {
+    disabled: false,
+    prefixCls: 'm-agree',
   };
 
-  constructor(props: AgreeProps) {
-    super(props);
-    this.state = {
-      value: props.value || props.defaultValue
-    };
-  }
-
-  static getDerivedStateFromProps(nextProps: AgreeProps) {
-    if ("value" in nextProps) {
+  public static getDerivedStateFromProps(nextProps: AgreeProps) {
+    if ('value' in nextProps) {
       return {
-        value: nextProps.value
+        value: nextProps.value,
       };
     }
   }
 
-  handleClick = () => {
+  constructor(props: AgreeProps) {
+    super(props);
+    this.state = {
+      value: props.value || props.defaultValue,
+    };
+  }
+
+  public handleClick = () => {
     const { onChange, disabled } = this.props;
     if (!disabled) {
       this.setState({ value: !this.state.value });
@@ -41,15 +41,15 @@ export default class Agree extends React.PureComponent<AgreeProps, any> {
         onChange(!this.state.value);
       }
     }
-  };
+  }
 
-  render() {
+  public render() {
     const { value } = this.state;
     const { prefixCls, children, disabled, className } = this.props;
 
     const wrapCls = classnames(prefixCls, className, {
       [`${prefixCls}-disabled`]: disabled,
-      [`${prefixCls}-checked`]: value
+      [`${prefixCls}-checked`]: value,
     });
 
     return (

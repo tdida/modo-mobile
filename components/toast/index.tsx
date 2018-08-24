@@ -1,32 +1,24 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { IToastPropsType } from "./PropsType";
-import ToastOptions from "./toast";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { IToastPropsType } from './PropsType';
+import ToastOptions from './toast';
 
 let toastComponent: any;
 let div: any;
 
-function Toast({
-  content = "",
-  icon = "",
-  duration = 0,
-  position = "center",
-  hasMask = false,
-  parentNode = document.body
-}) {
+function Toast({ content = '', icon = '', duration = 0, position = 'center', hasMask = false }) {
   const props = {
     content,
     duration,
     hasMask,
     icon,
     position,
-    parentNode
   };
 
   if (toastComponent) {
     toastComponent.props = props;
   } else {
-    div = document.createElement("div");
+    div = document.createElement('div');
     document.body.appendChild(div);
   }
 
@@ -45,8 +37,8 @@ function next(props: IToastPropsType) {
         document.body.removeChild(div);
         div = null;
         toastComponent = null;
-      }
-    })
+      },
+    }),
   );
 
   ReactDOM.render(component, div);
@@ -57,7 +49,7 @@ export default {
     return Toast({
       content,
       duration,
-      hasMask
+      hasMask,
     });
   },
   success(content: string, duration = 2000, hasMask?: boolean) {
@@ -65,7 +57,7 @@ export default {
       content,
       duration,
       hasMask,
-      icon: "check-circle"
+      icon: 'check-circle',
     });
   },
   fail(content: string, duration = 2000, hasMask?: boolean) {
@@ -73,7 +65,7 @@ export default {
       content,
       duration,
       hasMask,
-      icon: "close-circle"
+      icon: 'close-circle',
     });
   },
   loading(content: string, duration = 0, hasMask = true) {
@@ -81,7 +73,7 @@ export default {
       content,
       duration,
       hasMask,
-      icon: "loading"
+      icon: 'loading',
     });
   },
   hide() {
@@ -91,5 +83,5 @@ export default {
       div = null;
       toastComponent = null;
     }
-  }
+  },
 };

@@ -14,7 +14,7 @@ title:
 The simplest usage for short messages.
 
 ```jsx
-import { NoticeBar, Icon } from "modo-mobile";
+import { NoticeBar } from 'modo-mobile';
 
 ReactDOM.render(
   <div>

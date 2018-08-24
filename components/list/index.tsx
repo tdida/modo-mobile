@@ -1,6 +1,6 @@
-import * as React from "react";
-import classnames from "classnames";
-import Item from "./ListItem";
+import classnames from 'classnames';
+import * as React from 'react';
+import Item from './ListItem';
 
 export interface ListProps {
   prefixCls?: string;
@@ -11,36 +11,29 @@ export interface ListProps {
 }
 
 export default class List extends React.PureComponent<ListProps, any> {
-  static Item = Item;
+  public static Item = Item;
 
-  static defaultProps = {
-    prefixCls: "m-list"
+  public static defaultProps = {
+    prefixCls: 'm-list',
   };
 
-  render() {
-    const {
-      prefixCls,
-      children,
-      className,
-      style,
-      title,
-      extra,
-      ...restProps
-    } = this.props;
+  public render() {
+    const { prefixCls, children, className, style, title, extra, ...restProps } = this.props;
 
     const wrapCls = classnames(prefixCls, className);
 
+    const headerNode =
+      title || extra ? (
+        <div className={`${prefixCls}-header`}>
+          <div className={`${prefixCls}-title`}>{title}</div>
+          <div className={`${prefixCls}-extra`}>{extra}</div>
+        </div>
+      ) : null;
+
     return (
       <div className={wrapCls} style={style} {...restProps}>
-        {title || extra ? (
-          <div className={`${prefixCls}-header`}>
-            <div className={`${prefixCls}-title`}>{title}</div>
-            <div className={`${prefixCls}-extra`}>{extra}</div>
-          </div>
-        ) : null}
-        {children ? (
-          <div className={`${prefixCls}-body`}>{children}</div>
-        ) : null}
+        {headerNode}
+        {children ? <div className={`${prefixCls}-body`}>{children}</div> : null}
       </div>
     );
   }
