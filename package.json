@@ -132,9 +132,6 @@
       "npm run lint-staged:es"
     ],
     "{site,components}/**/*.less": "stylelint --syntax less",
-    "components/*/demo/*.md": [
-      "npm run lint-staged:demo"
-    ]
   },
   "pre-commit": [
     "lint-staged"
