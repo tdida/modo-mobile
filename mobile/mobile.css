@@ -151,9 +151,9 @@ a {
   border-color: transparent;
 }
 .m-agree-checked .m-agree-icon .m-icon {
-  -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
   opacity: 1;
 }
 .m-agree-content {
