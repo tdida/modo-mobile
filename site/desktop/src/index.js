@@ -10,6 +10,7 @@ function pickerGenerator(module) {
   /* eslint-disable consistent-return */
   return markdownData => {
     const { filename } = markdownData.meta;
+    console.log(tester.test(filename));
     if (tester.test(filename)) {
       return {
         meta: markdownData.meta
@@ -51,7 +52,7 @@ module.exports = {
       }
     },
     /* eslint-enable consistent-return */
-    "docs/react": pickerGenerator("react")
+    docs: pickerGenerator("")
   },
   plugins: [
     "bisheng-plugin-description",
@@ -69,15 +70,7 @@ module.exports = {
         component: homeTmpl
       },
       {
-        path: "/docs/practice/:children",
-        component: contentTmpl
-      },
-      {
-        path: "/docs/pattern/:children",
-        component: contentTmpl
-      },
-      {
-        path: "/docs/react/:children",
+        path: "/docs/:children",
         component: contentTmpl
       },
       {

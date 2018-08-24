@@ -83,8 +83,8 @@ class Home extends React.Component {
                   <GitHubButton
                     key="github-button"
                     type="stargazers"
-                    namespace="ant-design"
-                    repo="ant-design-mobile"
+                    namespace="tdida"
+                    repo="modo-mobile"
                   />
                 </div>
               </div>
