@@ -1,0 +1,78 @@
+@hd: 1px; // 基本单位
+
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.m-demo {
+  &-header {
+    font-size: 22px;
+    font-weight: 400;
+    color: #333;
+    margin: 12px 16px;
+    margin-bottom: 22px;
+  }
+
+  &-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #333;
+    margin: 10px 0;
+  }
+
+  &-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+
+  &-content {
+    margin: 12px;
+  }
+
+  &-category {
+    background-color: #fff;
+    border-top: 1px solid #f5f5f5;
+
+    &-title {
+      padding: 14px;
+      color: #333;
+      font-size: 16px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-arrow {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    &-item {
+      border-top: 1px solid #f5f5f5;
+      padding: 12px 16px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    &-open {
+      .m-demo-category-list {
+        display: black !important;
+      }
+
+      .m-demo-category-arrow {
+        transform: rotate(180deg);
+      }
+    }
+
+    &-closed {
+      .m-demo-category-list {
+        display: none !important;
+      }
+    }
+  }
+}

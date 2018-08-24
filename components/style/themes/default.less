@@ -1,0 +1,142 @@
+@import "../color/colors";
+
+@m-prefix: m;
+
+// -------- Colors -----------
+@primary-color : @blue-6;
+@info-color : @blue-6;
+@success-color : @green-6;
+@processing-color : @blue-6;
+@error-color : @red-6;
+@highlight-color : @red-6;
+@warning-color : @gold-6;
+@normal-color : #d9d9d9;
+
+// alert info backgrounds.
+@primary-1: color(
+  ~`colorPalette("@{primary-color}", 1) `
+); // replace tint(@primary-color, 90%)
+@primary-2: color(
+  ~`colorPalette("@{primary-color}", 2) `
+); // replace tint(@primary-color, 80%)
+@primary-3: color(~`colorPalette("@{primary-color}", 3) `); // unused
+@primary-4: color(~`colorPalette("@{primary-color}", 4) `); // unused
+@primary-5: color(
+  ~`colorPalette("@{primary-color}", 5) `
+); // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
+@primary-6: @primary-color; // color used to control the text color of active buttons, don't use, use @primary-color
+@primary-7: color(
+  ~`colorPalette("@{primary-color}", 7) `
+); // replace shade(@primary-color, 5%)
+@primary-8: color(~`colorPalette("@{primary-color}", 8) `); // unused
+@primary-9: color(~`colorPalette("@{primary-color}", 9) `); // unused
+@primary-10: color(~`colorPalette("@{primary-color}", 10) `); // unused
+
+// ICONFONT
+@iconfont-css-prefix : m-icon;
+
+// Background color for `<body>`
+@body-background : #fff;
+// Base background color for most components
+@component-background : #fff;
+@font-family : "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif,
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+@heading-color : fade(#000, 85%);
+@text-color : fade(#000, 65%);
+@text-color-secondary : fade(#000, 45%);
+@text-color-help : fade(#000, 30%);
+@heading-color-dark : fade(#fff, 100%);
+@text-color-dark : fade(#fff, 85%);
+@text-color-secondary-dark: fade(#fff, 65%);
+@font-size-base : 14px;
+@font-size-lg : @font-size-base + 2px;
+@font-size-sm : 12px;
+@line-height-base : 1.5;
+@border-radius-base : 4px;
+@border-radius-sm : 2px;
+
+// vertical paddings
+@padding-lg : 24px; // containers
+@padding-md : 16px; // small containers and buttons
+@padding-sm : 12px; // Form controls and items
+@padding-xs : 8px; // small items
+
+// Border color
+@border-color-base : #ebebeb; // base border outline a component
+@border-color-split : hsv(0, 0, 91%); // split border inside a component
+@border-width-base : 1px; // width of the border for a component
+@border-style-base : solid; // style of a components border
+
+// Outline
+@outline-blur-size : 0;
+@outline-width : 2px;
+@outline-color : @primary-color;
+
+@background-color-light : hsv(0, 0, 98%); // background of header and selected item
+@background-color-base : hsv(0, 0, 96%); // Default grey background color
+
+// Disabled states
+@disabled-color : fade(#000, 25%);
+@disabled-bg : @background-color-base;
+@disabled-color-dark : fade(#fff, 35%);
+
+// Shadow
+@shadow-color : rgba(0, 0, 0, .15);
+
+// z-index list
+@zindex-toast: 1010;
+
+// Animation
+@ease-base-out : cubic-bezier(0.7, 0.3, 0.1, 1);
+@ease-base-in : cubic-bezier(0.9, 0, 0.3, 0.7);
+@ease-out : cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-in : cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@ease-in-out : cubic-bezier(0.645, 0.045, 0.355, 1);
+@ease-out-back : cubic-bezier(0.12, 0.4, 0.29, 1.46);
+@ease-in-back : cubic-bezier(0.71, -0.46, 0.88, 0.6);
+@ease-in-out-back : cubic-bezier(0.71, -0.46, 0.29, 1.46);
+@ease-out-circ : cubic-bezier(0.08, 0.82, 0.17, 1);
+@ease-in-circ : cubic-bezier(0.6, 0.04, 0.98, 0.34);
+@ease-in-out-circ : cubic-bezier(0.78, 0.14, 0.15, 0.86);
+@ease-out-quint : cubic-bezier(0.23, 1, 0.32, 1);
+@ease-in-quint : cubic-bezier(0.755, 0.05, 0.855, 0.06);
+@ease-in-out-quint : cubic-bezier(0.86, 0, 0.07, 1);
+
+// Buttons
+@btn-font-weight : 500;
+@btn-border-radius-base : @border-radius-base;
+@btn-border-radius-sm : @border-radius-base;
+
+@btn-primary-color : #fff;
+@btn-primary-bg : @primary-color;
+
+@btn-default-color : @text-color;
+@btn-default-bg : #fff;
+@btn-default-border : #fff;
+
+@btn-danger-color : #fff;
+@btn-danger-bg :@error-color;
+@btn-danger-border : @error-color;
+
+@btn-disable-color : @disabled-color;
+@btn-disable-bg : @disabled-bg;
+@btn-disable-border : @border-color-base;
+
+@btn-padding-base : 0 @padding-md - 1px;
+@btn-font-size-lg : @font-size-lg;
+@btn-font-size-sm : @font-size-base;
+@btn-padding-lg : @btn-padding-base;
+@btn-padding-sm : 0 @padding-xs - 1px;
+
+@btn-height-base : 46px;
+@btn-height-lg : 60px;
+@btn-height-sm : 30px;
+
+@btn-circle-size : @btn-height-base;
+@btn-circle-size-lg : @btn-height-lg;
+@btn-circle-size-sm : @btn-height-sm;
+
+//NoticeBars
+@noticebar-color : #fff;
+@noticebar-bg: #4a4c5b;
+@noticebar-height: 36px;

@@ -1,0 +1,133 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/hairline.less";
+
+@list-prefix-cls: ~"@{m-prefix}-list";
+
+.@{list-prefix-cls} {
+  background-color: @component-background;
+
+  &-header {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    padding: @padding-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    .hairline("bottom", @border-color-base);
+  }
+
+  &-item {
+    padding-left: @padding-md;
+    padding-right: @padding-md;
+    box-sizing: border-box;
+    position: relative;
+
+    &:active:after {
+      display: block;
+    }
+
+    &:after {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: none;
+      content: "";
+      position: absolute;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    &&-right {
+      .@{list-prefix-cls}-item-content {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &&-center {
+      .@{list-prefix-cls}-item-content {
+        justify-content: center;
+      }
+    }
+
+    &&-disabled {
+      &:active:after {
+        display: none;
+      }
+
+      .@{list-prefix-cls}-item-label {
+        opacity: 0.5;
+      }
+
+      .@{list-prefix-cls}-item-content {
+        opacity: 0.5;
+      }
+    }
+
+    &:last-child {
+      .@{list-prefix-cls}-item-inner {
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &-inner {
+      display: flex;
+      padding: @padding-sm+2 0;
+      align-items: center;
+      position: relative;
+
+      .hairline("bottom", @border-color-base);
+    }
+    &-arrow {
+      color: @text-color-help;
+      font-size: @font-size-sm;
+      margin-left: 6px;
+
+      &-up {
+        .@{iconfont-css-prefix} > svg {
+          transform: rotate(-90deg);
+        }
+      }
+
+      &-down {
+        .@{iconfont-css-prefix} > svg {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &-label {
+      font-size: @font-size-base;
+      width: 6em;
+    }
+
+    &-title {
+      color: @heading-color;
+    }
+
+    &-brief {
+      color: @text-color-secondary;
+      font-size: @font-size-sm;
+      padding-top: 4px;
+    }
+
+    &-extra {
+      margin-right: @padding-xs;
+    }
+
+    &-content {
+      width: auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: flex;
+      flex: 1;
+      margin-left: 6px;
+    }
+  }
+}

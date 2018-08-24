@@ -1,0 +1,43 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@agree-prefix-cls: ~"@{m-prefix}-agree";
+
+.@{agree-prefix-cls} {
+  display: flex;
+
+  &-disabled {
+    opacity: 0.5;
+  }
+
+  &-checked {
+    .@{agree-prefix-cls}-icon {
+      border-color: transparent;
+      .m-icon {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+  }
+
+  &-content {
+    flex: 1;
+    font-size: @font-size-sm + 1;
+  }
+
+  &-icon {
+    .square(20px);
+    border-radius: 50%;
+    border: 1px solid @border-color-base;
+    margin-right: @padding-xs;
+    margin-top: 2px;
+
+    .m-icon {
+      font-size: 20px;
+      color: @primary-color;
+      transition: opacity 0.3s @ease-out, transform 0.3s @ease-out;
+      transform: scale(0.4);
+      opacity: 0;
+    }
+  }
+}
