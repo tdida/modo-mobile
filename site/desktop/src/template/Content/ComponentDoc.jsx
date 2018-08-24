@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, Icon, Affix, Popover } from 'antd';
+import classNames from 'classnames';
+import { Row, Col, Icon, Affix, Tooltip, Popover } from 'antd';
 import QRCode from 'qrcode.react';
 import { getChildren } from 'jsonml.js/lib/utils';
 import Demo from './Demo';
+import EditButton from './EditButton';
 
 export default class ComponentDoc extends React.Component {
   static contextTypes = {
@@ -41,7 +43,7 @@ export default class ComponentDoc extends React.Component {
     const path = doc.meta.filename.split('/')[1];
     const isLocalMode = window.location.port;
     const host = isLocalMode ? 'localhost:8002' : window.location.host;
-    const demoUrl = `${protocol}//${host}/mobile/components/${path}`;
+    const demoUrl = `${protocol}//${host}/modo-mobile/mobile/components/${path}`;
 
     const PopoverContent = (
       <div>
@@ -74,6 +76,10 @@ export default class ComponentDoc extends React.Component {
         rightChildren.push(demoElem);
       }
     });
+    const expandTriggerClass = classNames({
+      'code-box-expand-trigger': true,
+      'code-box-expand-trigger-active': expandAll,
+    });
 
     const jumper = showedDemo.map(demo => {
       const { title } = demo.meta;
@@ -85,10 +91,13 @@ export default class ComponentDoc extends React.Component {
       );
     });
 
-    const { title, subtitle, chinese, english } = meta;
+    const titleNode = (
+      <FormattedMessage id={`app.component.examples.${expandAll ? 'collpse' : 'expand'}`} />
+    );
 
+    const { title, subtitle, filename } = meta;
     return (
-      <DocumentTitle title={`${subtitle || chinese || ''} ${title || english} - Modo Mobile`}>
+      <DocumentTitle title={`${subtitle || ''} ${title[locale] || title} - Ant Design`}>
         <article>
           <Affix className="toc-affix" offsetTop={16}>
             <ul id="demo-toc" className="toc">
@@ -96,23 +105,31 @@ export default class ComponentDoc extends React.Component {
             </ul>
           </Affix>
           <section className="markdown">
-            <h1 className="section-title">
-              {`${meta.title || meta.english} ${meta.subtitle || meta.chinese}`}
+            <h1>
+              {title[locale] || title}
+              {!subtitle ? null : <span className="subtitle">{subtitle}</span>}
               <Popover content={PopoverContent} placement="bottom">
                 <Icon type="qrcode" />
               </Popover>
+              <EditButton
+                title={<FormattedMessage id="app.content.edit-page" />}
+                filename={filename}
+              />
             </h1>
             {props.utils.toReactComponent(
               ['section', { className: 'markdown' }].concat(getChildren(content))
             )}
-
-            <section id="demoTitle" className="demo-title-wrapper">
-              <h2 id="demoTitle" className="demo-title">
-                <FormattedMessage id="app.ComponentDoc.codeTitle" />
-              </h2>
-            </section>
+            <h2>
+              <FormattedMessage id="app.component.examples" />
+              <Tooltip title={titleNode}>
+                <Icon
+                  type={`${expandAll ? 'appstore' : 'appstore-o'}`}
+                  className={expandTriggerClass}
+                  onClick={this.handleExpandToggle}
+                />
+              </Tooltip>
+            </h2>
           </section>
-
           <Row gutter={16}>
             <Col
               span={isSingleCol ? '24' : '12'}
@@ -126,12 +143,10 @@ export default class ComponentDoc extends React.Component {
               </Col>
             )}
           </Row>
-
           {props.utils.toReactComponent(
             [
               'section',
               {
-                id: 'api',
                 className: 'markdown api-container',
               },
             ].concat(getChildren(doc.api || ['placeholder']))

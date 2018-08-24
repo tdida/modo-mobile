@@ -39,9 +39,11 @@
     "stylelint": "stylelint \"{site,components}/**/*.less\" --syntax less",
     "start": "cross-env NODE_ENV=development concurrently \"cross-env bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng start -c ./site/bisheng.mobile.config.js\"",
     "dist": "antd-tools run dist",
+    "pub": "antd-tools run pub",
     "compile": "antd-tools run compile",
     "deploy": "bisheng gh-pages --push-only",
     "prepublish": "antd-tools run guard",
+    "pre-publish": "node ./scripts/prepub",
     "site": "cross-env NODE_ENV=production concurrently \"cross-env bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng build -c ./site/bisheng.mobile.config.js\" && npm run deploy",
     "lint-staged": "lint-staged",
     "lint-staged:ts": "npm run tsc && node node_modules/tslint/bin/tslint -c node_modules/antd-tools/lib/tslint.json components/**/*.tsx",
@@ -49,8 +51,8 @@
     "lint-staged:demo": "cross-env RUN_ENV=DEMO eslint --ext '.md'"
   },
   "dependencies": {
-    "@ant-design/icons": "^0.1.2-alpha.8",
-    "@ant-design/icons-react": "^0.1.2-alpha.3",
+    "@ant-design/icons": "^0.2.1-beta.8",
+    "@ant-design/icons-react": "^0.2.0-beta.1",
     "@types/classnames": "^2.2.6",
     "@types/react": "^16.4.11",
     "@types/react-dom": "^16.0.7",
@@ -65,7 +67,6 @@
     "warning": "^4.0.2"
   },
   "devDependencies": {
-    "@svgr/webpack": "^2.2.1",
     "antd-theme-generator": "^1.0.7",
     "antd-tools": "^5.1.6",
     "autoprefixer": "^9.1.1",

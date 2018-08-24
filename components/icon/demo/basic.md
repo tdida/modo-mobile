@@ -14,15 +14,15 @@ title:
 Use tag `<Icon />` to create an icon and set its type in the `type` prop. Specific the `spin` property to show spinning animation.
 
 ```jsx
-import { Icon } from "modo-mobile";
+import { Icon } from 'modo-mobile';
 
 ReactDOM.render(
   <div className="icons-list">
     <Icon type="home" />
     <Icon type="setting" />
-    <Icon type="smile" />
+    <Icon type="smile-o" />
+    <Icon type="sync" spin />
     <Icon type="loading" />
-    <Icon type="reload" spin />
   </div>,
   mountNode
 );
@@ -30,7 +30,7 @@ ReactDOM.render(
 
 ```css
 .icons-list {
-  padding: 16px;
+  padding: 12px;
 }
 .icons-list > .m-icon {
   margin-right: 6px;

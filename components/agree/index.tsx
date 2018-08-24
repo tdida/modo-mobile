@@ -41,7 +41,7 @@ export default class Agree extends React.PureComponent<AgreeProps, any> {
         onChange(!this.state.value);
       }
     }
-  }
+  };
 
   public render() {
     const { value } = this.state;
@@ -55,7 +55,7 @@ export default class Agree extends React.PureComponent<AgreeProps, any> {
     return (
       <div className={wrapCls}>
         <div className={`${prefixCls}-icon`} onClick={this.handleClick}>
-          <Icon type="check-circle-fill" />
+          <Icon type="check-circle" />
         </div>
         <div className={`${prefixCls}-content`}>{children}</div>
       </div>

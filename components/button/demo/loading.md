@@ -42,7 +42,6 @@ class App extends React.Component {
         <Button type="primary" loading={this.state.loading} onClick={this.enterLoading} inline>
           Click me!
         </Button>
-        <Icon type="loading" />
         <Button
           type="primary"
           icon="poweroff"
@@ -52,6 +51,9 @@ class App extends React.Component {
         >
           Click me!
         </Button>
+        <br />
+        <Button type="primary" size="small" shape="circle" loading={true} />
+        <Button shape="circle" size="small" loading={true} />
       </div>
     );
   }
