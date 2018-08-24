@@ -61,7 +61,7 @@ class Home extends React.Component {
                 <h2 key="h2">Modo Mobile</h2>
                 <p>{intl.formatMessage({ id: 'app.home.epitomize' })}</p>
                 <div key="button1" className="start-button">
-                  <Link to={`/docs/react/introduce${isZhCN ? '-cn' : ''}`}>
+                  <Link to={`/docs/introduce${isZhCN ? '-cn' : ''}`}>
                     <Button type="primary" size="large">
                       {intl.formatMessage({
                         id: 'app.home.centerStart',
