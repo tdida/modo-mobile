@@ -92,7 +92,7 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { picked, themeConfig: config } = this.props;
+    const { picked, themeConfig: config, location } = this.props;
     const { appLocale, cateOpend } = this.state;
     const lists = {};
 
@@ -122,7 +122,7 @@ export default class App extends React.Component {
       }
     });
 
-    let rootPath = '/mobile/components';
+    let rootPath = `${location.basename}components`;
     if (window.location.port === '8002') {
       rootPath = '/components';
     }

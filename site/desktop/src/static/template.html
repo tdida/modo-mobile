@@ -11,20 +11,17 @@
   not isDev %}
   <link rel="stylesheet" type="text/css" href="{{ root }}index-1.css" />
   <link rel="stylesheet" type="text/css" href="{{ root }}index-2.css" /> {% endif %}
-</head>
 
-<body>
-  <div id="react-content">
-    {{ content | safe }}
-  </div>
-  <link rel="stylesheet/less" type="text/css" href="{{ root }}color.less" />
-  <script src="https://gw.alipayobjects.com/os/lib/??es6-shim/0.35.3/es6-sham.min.js,es6-shim/0.35.3/es6-shim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-sham.min.js"></script>
   <!--[if lte IE 10]>
     <script src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,media-match/2.0.2/media.match.min.js"></script>
     <![endif]-->
   <script>
     if (!window.Intl) {
       document.writeln('<script src="https://as.alipayobjects.com/g/component/intl/1.0.1/??Intl.js,locale-data/jsonp/en.js,locale-data/jsonp/zh.js">' + '<' + '/script>');
+    }
+    if (!window.Promise) {
+      document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
     }
   </script>
   <script>
@@ -78,6 +75,19 @@
       document.documentElement.className += isZhCN(pathname) ? 'zh-cn' : 'en-us';
     })()
   </script>
+
+</head>
+
+<body>
+  <div id="react-content"></div>
+  {% if not isDev %}
+  <script src="https://as.alipayobjects.com/g/component/??react/15.6.1/react.min.js,react/15.6.1/react-dom.min.js"></script>
+  <script src="https://gw.alipayobjects.com/os/rmsportal/cazbJtoQZXZDNurlPtJd.js"></script>{% endif %}
+
+  <!-- history@3.2.1 -->
+  <script src="https://os.alipayobjects.com/rmsportal/VnttsLkEQmyLDBBluBQq.js"></script>
+  <!-- babel-polyfill@6.20.0 -->
+  <script src="https://os.alipayobjects.com/rmsportal/wzWaWInUcXErDyTwvySY.js"></script>
   <script src="{{ root }}common.js"></script>
   <script src="{{ root }}index.js"></script>
 

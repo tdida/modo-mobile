@@ -42,7 +42,7 @@
     "compile": "antd-tools run compile",
     "deploy": "bisheng gh-pages --push-only",
     "prepublish": "antd-tools run guard",
-    "site": "cross-env NODE_ENV=production concurrently \"cross-env bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng build -c ./site/bisheng.mobile.config.js\"",
+    "site": "cross-env NODE_ENV=production concurrently \"cross-env bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng build -c ./site/bisheng.mobile.config.js\" && npm run deploy",
     "lint-staged": "lint-staged",
     "lint-staged:ts": "npm run tsc && node node_modules/tslint/bin/tslint -c node_modules/antd-tools/lib/tslint.json components/**/*.tsx",
     "lint-staged:es": "eslint ./.eslintrc.js",
@@ -74,7 +74,9 @@
     "babel-plugin-import": "^1.8.0",
     "bisheng": "^0.28.0",
     "bisheng-plugin-antd": "^0.16.5",
+    "bisheng-plugin-description": "^0.1.4",
     "bisheng-plugin-react": "^0.6.3",
+    "bisheng-plugin-toc": "^0.4.4",
     "chalk": "^2.4.1",
     "clean-webpack-plugin": "^0.1.19",
     "concurrently": "^3.6.1",
@@ -131,7 +133,7 @@
     "{tests,site,scripts,components}/**/*.{js,jsx}": [
       "npm run lint-staged:es"
     ],
-    "{site,components}/**/*.less": "stylelint --syntax less",
+    "{site,components}/**/*.less": "stylelint --syntax less"
   },
   "pre-commit": [
     "lint-staged"

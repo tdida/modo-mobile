@@ -43,7 +43,7 @@ class Home extends React.Component {
     const imgNode = (
       <img
         className="home-qr"
-        src="https://zos.alipayobjects.com/rmsportal/TrdkqxQcrAUcmYelQUNK.png"
+        src="https://pic.modo-modo.com/saas-1535108254349-21154.png"
         alt="qrcode"
       />
     );

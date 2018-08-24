@@ -85,16 +85,27 @@ module.exports = {
       'modo-mobile/lib': path.join(process.cwd(), 'components'),
       'modo-mobile': path.join(process.cwd(), 'index'),
       site: path.join(process.cwd(), 'site'),
-      'react-router': 'react-router/umd/ReactRouter',
     };
 
-    config.externals = {
-      'react-router-dom': 'ReactRouterDOM',
+    conf.externals = {
+      history: 'History',
+      'babel-polyfill': 'this', // hack babel-polyfill has no exports
     };
+
+    if (isDev) {
+      conf.devtool = 'source-map';
+    } else {
+      conf.externals = Object.assign(conf.externals, {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        'react-router': 'ReactRouter',
+      });
+    }
 
     alertBabelConfig(conf.module.rules);
 
     const babelConfig = getBabelConfig(conf.module.rules);
+
     if (babelConfig) {
       conf.module.rules = conf.module.rules.filter(
         rule => rule.test.toString() !== /\.svg(\?v=\d+\.\d+\.\d+)?$/.toString()
@@ -142,15 +153,6 @@ module.exports = {
 
     conf.plugins.push(new CSSSplitWebpackPlugin({ size: 4000 }));
 
-    if (isDev) {
-      conf.devtool = 'source-map';
-    } else {
-      conf.externals = Object.assign(conf.externals, {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'react-router': 'ReactRouter',
-      });
-    }
     return conf;
   },
   htmlTemplateExtraData: {
