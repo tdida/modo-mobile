@@ -56,8 +56,8 @@ export function getLocalizedPathname(path, zhCN) {
   if (!zhCN) {
     // to enUS
     str = /\/?index-cn/.test(pathname) ? '/' : pathname.replace('-cn', '');
-  } else if (pathname === '/') {
-    str = '/index-cn';
+  } else if (pathname === '/' || pathname === '/modo-mobile/') {
+    str = pathname === '/' ? '/index-cn' : '/modo-mobile/index-cn';
   } else if (pathname.endsWith('/')) {
     str = pathname.replace(/\/$/, '-cn/');
   } else {
@@ -99,4 +99,15 @@ export function isLocalStorageNameSupported() {
   } catch (error) {
     return false;
   }
+}
+
+export function getQuery(key) {
+  const val = window.location.search
+    .replace(/^\?/, '')
+    .split('&')
+    .filter(item => item)
+    .map(item => item.split('='))
+    .find(item => item[0] && item[0] === key);
+
+  return val && val[1];
 }

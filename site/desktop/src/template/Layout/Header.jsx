@@ -76,7 +76,8 @@ export default class Header extends React.Component {
 
   handleLangChange = () => {
     const { location } = this.props;
-    const pathname = location.basename + location.pathname;
+    const pathname = location.basename + (location.pathname === '/' ? '' : location.pathname);
+
     const currentProtocol = `${window.location.protocol}//`;
     const currentHref = window.location.href.substr(currentProtocol.length);
 

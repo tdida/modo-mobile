@@ -96,6 +96,8 @@ export default class App extends React.Component {
     const { appLocale, cateOpend } = this.state;
     const lists = {};
 
+    console.log(config);
+
     picked.components.filter(item => item.meta.filename.includes(appLocale.locale)).forEach(i => {
       const { meta } = i;
       if (!lists[meta.type]) {
@@ -127,6 +129,8 @@ export default class App extends React.Component {
       rootPath = '/components';
     }
 
+    console.log(lists);
+
     return (
       <IntlProvider locale={appLocale.locale} messages={appLocale.messages}>
         <div className="m-demo-page">
@@ -140,7 +144,7 @@ export default class App extends React.Component {
           </div>
           <div className="m-demo-content">
             {Object.keys(lists)
-              .sort((a, b) => config.categoryOrder.indexOf(a) - config.categoryOrder.indexOf(b))
+              .sort((a, b) => config.typeOrder[a] - config.typeOrder[b])
               .map(
                 (cate, index) =>
                   lists[cate].length ? (
@@ -157,7 +161,7 @@ export default class App extends React.Component {
                         <div className="m-demo-category-name">
                           {appLocale.locale === 'en-US'
                             ? cate
-                            : `${config.cateChinese[cate]} ${cate}`}
+                            : `${config.typeChinese[cate]} ${cate}`}
                         </div>
                         <div className="m-demo-category-arrow">
                           <Icon type="down" />
