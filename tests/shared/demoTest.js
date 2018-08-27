@@ -1,6 +1,5 @@
 import glob from 'glob';
 import { render } from 'enzyme';
-import { renderToJson } from 'enzyme-to-json';
 import MockDate from 'mockdate';
 
 export default function webDemoTest(component, options = {}) {
@@ -15,7 +14,7 @@ export default function webDemoTest(component, options = {}) {
       MockDate.set('11/22/2016', -60); // Set an arbitrary time zone
       const demo = require(`../.${file}`).default; // eslint-disable-line global-require, import/no-dynamic-require
       const wrapper = render(demo);
-      expect(renderToJson(wrapper)).toMatchSnapshot();
+      expect(wrapper).toMatchSnapshot();
       MockDate.reset();
     });
   });
