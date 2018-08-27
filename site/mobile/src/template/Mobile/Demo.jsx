@@ -105,12 +105,12 @@ export default class Demo extends React.Component {
     }
 
     const isLocalMode = window.location.port;
-    const linkUrl = isLocalMode ? '' : 'mobile/';
+    const linkUrl = isLocalMode ? '/' : '/modo-mobile/mobile/';
 
     return (
       <div id={name} style={style} className="demo">
         <div className="demoName">
-          <a className="icon" href={`/${linkUrl}${window.location.search}`} />
+          <a className="icon" href={`${linkUrl}${window.location.search}`} />
           {demoMeta.title}
           {!demoMeta.subtitle || locale === 'en-US' ? null : (
             <span className="ch">{demoMeta.subtitle}</span>
