@@ -1,16 +1,22 @@
 sudo: false
+
 language: node_js
+
 node_js:
-  - '8'
+  - 8
 
-cache:
-  directories:
-    - node_modules
+notifications:
+  email:
+    - tdida@qq.com
 
-branches:
-  only:
-    - master
+matrix:
+  fast_finish: true
+  include:
+    - env: TEST_TYPE=lint
+    - env: TEST_TYPE=test:dist
+    - env: TEST_TYPE=test:lib
+    - env: TEST_TYPE=test:es
+    - env: TEST_TYPE=test:dom
 
 script:
-  - npm test
-  - npm run codecov
+  - scripts/travis-script.sh
