@@ -26,7 +26,7 @@ Lucida Sans Unicode, Lucida Sans, Verdana, Tahoma, sans-serif !important;
   img {
     margin-right: 10px;
     width: auto;
-    height: 28px;
+    height: 24px;
     vertical-align: middle;
   }
   span {
@@ -46,7 +46,7 @@ Lucida Sans Unicode, Lucida Sans, Verdana, Tahoma, sans-serif !important;
 }
 
 #search-box {
-  border-left: 1px solid #ebedee;
+  border-left: 1px solid @site-border-color-split;
   float: left;
   height: 22px;
   line-height: 22px;
@@ -60,20 +60,17 @@ Lucida Sans Unicode, Lucida Sans, Verdana, Tahoma, sans-serif !important;
   top: 0.5px;
 }
 
-#search-box .ant-select {
+#search-box input {
   font-size: 14px;
   margin-top: -5px;
   width: 200px;
-}
-
-#search-box .ant-select-selection {
   border: 0;
   box-shadow: none;
-}
+  background: transparent;
 
-#search-box .ant-input {
-  border: 0;
-  box-shadow: none;
+  &::placeholder {
+    color: #a3b1bf;
+  }
 }
 
 .header-lang-button,

@@ -26,21 +26,24 @@ module.exports = {
     indexDemos: ['drawer'], // for kitchen 这些组件每个 demo 都需要全屏展示，首页直接放其各个 demo 链接
     subListDemos: ['list-view', 'pull-to-refresh', 'tab-bar'], // for kitchen 这些组件每个 demo 都需要全屏展示，首页直接放其各个 demo 链接
     hashSpliter: '-demo-', // for kitchen URL 中记录到 hash 里的特殊标记
-    categoryOrder: [
-      'Layout',
-      'Navigation',
-      'General',
-      'Data Entry',
-      'Data Display',
-      'Feedback',
-      'Gesture',
-      'Combination',
-      'Other',
-    ],
-    cateChinese: {
+    categoryOrder: {
+      Components: 100,
+    },
+    typeOrder: {
+      General: 0,
+      Layout: 1,
+      Navigation: 2,
+      'Data Entry': 3,
+      'Data Display': 4,
+      Feedback: 5,
+      Gesture: 6,
+      Combination: 7,
+      Other: 8,
+    },
+    typeChinese: {
+      General: '通用',
       Layout: '布局',
       Navigation: '导航',
-      General: '通用',
       'Data Entry': '数据录入',
       'Data Display': '数据展示',
       Feedback: '操作反馈',

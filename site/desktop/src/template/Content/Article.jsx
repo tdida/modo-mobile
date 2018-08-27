@@ -1,120 +1,113 @@
 import React, { Children, cloneElement } from 'react';
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 import { getChildren } from 'jsonml.js/lib/utils';
-import Timeline from 'antd/lib/timeline';
-import Tabs from 'antd/lib/tabs';
-
-import * as utils from '../../../../utils';
-
-const { TabPane } = Tabs;
+import { Timeline, Alert, Affix } from 'antd';
+import delegate from 'delegate';
+import EditButton from './EditButton';
+import { ping } from '../../../../utils';
 
 export default class Article extends React.Component {
+  static contextTypes = {
+    intl: PropTypes.object.isRequired,
+  };
+
   componentDidMount() {
+    // Add ga event click
+    this.delegation = delegate(
+      this.node,
+      '.resource-card',
+      'click',
+      e => {
+        if (window.ga) {
+          window.ga('send', 'event', 'Download', 'resource', e.delegateTarget.href);
+        }
+      },
+      false
+    );
     this.componentDidUpdate();
-    const { location } = this.props;
-    setTimeout(() => {
-      const linkTo = location.hash.replace('#', '');
-      if (linkTo) {
-        document.getElementById(linkTo).scrollIntoView();
-      }
-    }, 500);
   }
 
   componentDidUpdate() {
-    const links = document.querySelectorAll('.outside-link.internal');
+    const links = [...document.querySelectorAll('.outside-link.internal')];
     if (links.length === 0) {
       return;
     }
-    const checkImgUrl =
-      'http://alipay-rmsdeploy-dev-image.oss-cn-hangzhou-zmf.aliyuncs.com/rmsportal/JdVaTbZzPxEldUi.png';
-    utils.ping(checkImgUrl, status => {
-      if (status === 'responded') {
+    this.pingTimer = ping(status => {
+      if (status !== 'timeout' && status !== 'error') {
         links.forEach(link => (link.style.display = 'block'));
+      } else {
+        links.forEach(link => link.parentNode.removeChild(link));
       }
     });
   }
 
-  tryToRenderIntroducePageTab = article => {
-    if (window.location.href.indexOf('introduce') === -1) {
-      return article;
+  componentWillUnmount() {
+    clearTimeout(this.pingTimer);
+    if (this.delegation) {
+      this.delegation.destroy();
     }
-    const allChildren = [].slice.call(article.props.children);
+  }
 
-    const webIndex = allChildren.findIndex(
-      item => item.type === 'h4' && item.props.id.includes('Web')
-    );
-    const RnIndex = allChildren.findIndex(
-      item => item.type === 'h4' && item.props.id.includes('React-Native')
-    );
-    if (webIndex === -1 || RnIndex === -1) {
-      return article;
-    }
-    const endIndex = allChildren.findIndex((item, index) => item.type === 'h2' && index > RnIndex);
-
-    const newChildren = allChildren.slice(0, webIndex);
-    const webContent = allChildren.slice(webIndex, RnIndex);
-    webContent.splice(0, 1);
-    const rnContent = allChildren.slice(RnIndex, endIndex);
-    rnContent.splice(0, 1);
-    const otherContent = allChildren.slice(endIndex, allChildren.length);
-    const IntroTabs = (
-      <Tabs defaultActiveKey="1" key="tabs">
-        <TabPane
-          tab={allChildren[webIndex].props.id.replace(/-/g, ' ')}
-          key="1"
-          className="markdown"
-        >
-          {webContent}
-        </TabPane>
-        <TabPane
-          tab={allChildren[RnIndex].props.id.replace(/-/g, ' ')}
-          key="2"
-          className="markdown"
-        >
-          {rnContent}
-        </TabPane>
-      </Tabs>
-    );
-    newChildren.push(IntroTabs);
-    newChildren.push(otherContent);
-    article = React.cloneElement(article, {}, newChildren);
-    return article;
-  };
-
-  getArticle = article => {
-    // Todo: right now just hack it, wait move to bisheng-plugin-antd
-    article = this.tryToRenderIntroducePageTab(article);
+  getArticle(article) {
     const { content } = this.props;
     const { meta } = content;
-    if (!meta.timeline) {
+    if (!meta.article) {
       return article;
     }
     const timelineItems = [];
     let temp = [];
-    Children.forEach(article.props.children, (child, i) => {
+    let i = 1;
+    Children.forEach(article.props.children, child => {
       if (child.type === 'h2' && temp.length > 0) {
         timelineItems.push(<Timeline.Item key={i}>{temp}</Timeline.Item>);
         temp = [];
+        i += 1;
       }
       temp.push(child);
     });
+    if (temp.length > 0) {
+      timelineItems.push(<Timeline.Item key={i}>{temp}</Timeline.Item>);
+    }
     return cloneElement(article, {
       children: <Timeline>{timelineItems}</Timeline>,
     });
-  };
+  }
 
   render() {
     const { props } = this;
     const { content } = props;
-
     const { meta, description } = content;
-    const { title, subtitle, chinese, english } = meta;
+    const { title, subtitle, filename } = meta;
+    const {
+      intl: { locale },
+    } = this.context;
+    const isNotTranslated = locale === 'en-US' && typeof title === 'object';
+
+    const notTranNode = (
+      <span>
+        This article has not been translated yet. Wanna help us out?&nbsp;
+        <a href="https://github.com/tdida/modo-mobile/issues/1471">See this issue on GitHub.</a>
+      </span>
+    );
+
     return (
-      <DocumentTitle title={`${title || chinese || english} - Modo Mobile`}>
-        <article className="markdown">
+      <DocumentTitle title={`${title[locale] || title} - Modo Mobile`}>
+        <article
+          className="markdown"
+          ref={node => {
+            this.node = node;
+          }}
+        >
+          {isNotTranslated && <Alert type="warning" message={notTranNode} />}
           <h1>
-            {title || english}
-            {!subtitle && !chinese ? null : <span className="subtitle">{subtitle || chinese}</span>}
+            {title[locale] || title}
+            {!subtitle || locale === 'en-US' ? null : <span className="subtitle">{subtitle}</span>}
+            <EditButton
+              title={<FormattedMessage id="app.content.edit-page" />}
+              filename={filename}
+            />
           </h1>
           {!description
             ? null
@@ -122,12 +115,24 @@ export default class Article extends React.Component {
                 ['section', { className: 'markdown' }].concat(getChildren(description))
               )}
           {!content.toc || content.toc.length <= 1 || meta.toc === false ? null : (
-            <section className="toc">{props.utils.toReactComponent(content.toc)}</section>
+            <Affix className="toc-affix" offsetTop={16}>
+              {props.utils.toReactComponent(
+                ['ul', { className: 'toc' }].concat(getChildren(content.toc))
+              )}
+            </Affix>
           )}
           {this.getArticle(
             props.utils.toReactComponent(
               ['section', { className: 'markdown' }].concat(getChildren(content.content))
             )
+          )}
+          {props.utils.toReactComponent(
+            [
+              'section',
+              {
+                className: 'markdown api-container',
+              },
+            ].concat(getChildren(content.api || ['placeholder']))
           )}
         </article>
       </DocumentTitle>

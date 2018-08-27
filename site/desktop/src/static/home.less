@@ -16,46 +16,107 @@
 }
 
 .home-s1 {
+  .banner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .banner-text-wrapper {
-    position: absolute;
-    top: 140px;
-    color: @heading-color;
+    .home-button {
+      display: flex;
+      margin-top: 50px;
+      align-items: center;
+    }
+
+    .home-button-start,
+    .home-button-demo {
+      position: relative;
+      width: 140px;
+      height: 45px;
+      margin-right: 20px;
+      line-height: 45px;
+      text-align: center;
+      border-radius: 28px;
+      text-decoration: none;
+      font-size: 18px;
+      box-shadow: 0 0 10px #eee;
+      transition: opacity 0.3s;
+      background-image: linear-gradient(-90deg, #57d2ff, #0586ff);
+      color: #fff;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .home-button-demo {
+      background-image: none;
+      background-color: #ecf6ff;
+      color: #1e9eff;
+      box-shadow: none;
+    }
+
+    .github-btn {
+      height: auto;
+
+      .gh-btn {
+        background-color: #ecf6ff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 28px;
+        color: #1e9eff;
+      }
+
+      .gh-count {
+        background: #243241;
+        color: #fff;
+        border-radius: 16px;
+        padding: 8px 12px;
+        position: relative;
+        border: none;
+        margin-left: 12px;
+
+        &::before {
+          width: 0;
+          height: 0;
+          border-style: solid;
+          position: absolute;
+          margin: 5px;
+          z-index: 1;
+          border-width: 5px 5px 5px 0;
+          border-left-color: transparent !important;
+          border-top-color: transparent !important;
+          border-bottom-color: transparent !important;
+          border-right-color: #243241 !important;
+          left: 0;
+          top: 5px;
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+    }
   }
   .banner-text-wrapper h2 {
-    font-family: Avenir-Heavy;
-    font-size: 68px;
-    color: #0d1a26;
+    font-family: DINAlternate-Bold;
+    font-size: 48px;
+    color: #333;
     letter-spacing: 0;
-    line-height: 76px;
+    line-height: 1;
     font-weight: 500;
     margin: 0;
   }
   .banner-text-wrapper > p {
     font-family: PingFangSC-Regular;
     font-size: 18px;
-    color: #314659;
+    color: #666;
+    line-height: 32px;
     letter-spacing: 0;
-    line-height: 38px;
     margin: 16px auto 20px;
-  }
-
-  .banner-text-wrapper .start-button {
-    margin-bottom: 24px;
-    .ant-btn {
-      height: 40px;
-      margin-right: 16px;
-      font-size: 16px;
-      min-width: 114px;
-      text-align: center;
-      a {
-        text-decoration: none;
-      }
-    }
-  }
-
-  .banner-text-wrapper .github-btn {
-    display: inline-block;
-    vertical-align: middle;
   }
 }
 
@@ -116,8 +177,8 @@
 }
 
 .home-s3 {
-  background: url("https://gw.alipayobjects.com/zos/rmsportal/RJpGlapTtCNoDXvgrMsN.png")
-    no-repeat center / contain;
+  background: url('https://gw.alipayobjects.com/zos/rmsportal/RJpGlapTtCNoDXvgrMsN.png') no-repeat
+    center / contain;
   background-color: #0971e0;
   text-align: center;
   color: #fff;

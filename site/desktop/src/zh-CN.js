@@ -27,5 +27,10 @@ module.exports = {
     'app.demo.copied': '复制成功',
     'app.demo.codepen': '在 CodePen 中打开',
     'app.demo.riddle': '在 Riddle 中打开',
+    'app.footer.resources': '相关资源',
+    'app.footer.help': '帮助',
+    'app.footer.change-log': '更新记录',
+    'app.footer.faq': '常见问题',
+    'app.footer.issues': '讨论列表',
   },
 };

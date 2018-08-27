@@ -6,7 +6,7 @@ import DocumentTitle from 'react-document-title';
 import { Link } from 'bisheng/router';
 import GitHubButton from 'react-github-button';
 import { injectIntl } from 'react-intl';
-import { Popover, Button } from 'antd';
+import { Popover } from 'antd';
 import * as utils from '../../../../utils';
 
 function getStyle() {
@@ -60,26 +60,30 @@ class Home extends React.Component {
               <div className="banner-text-wrapper">
                 <h2 key="h2">Modo Mobile</h2>
                 <p>{intl.formatMessage({ id: 'app.home.epitomize' })}</p>
-                <div key="button1" className="start-button">
-                  <Link to={`/docs/introduce${isZhCN ? '-cn' : ''}`}>
-                    <Button type="primary" size="large">
-                      {intl.formatMessage({
-                        id: 'app.home.centerStart',
-                      })}
-                    </Button>
+                <div key="button1" className="home-button">
+                  <Link to={`/docs/introduce${isZhCN ? '-cn' : ''}`} className="home-button-start">
+                    {intl.formatMessage({
+                      id: 'app.home.centerStart',
+                    })}
                   </Link>
                   <Popover placement="bottom" trigger="click" content={imgNode}>
-                    <Button type="primary" ghost>
+                    <a className="home-button-demo">
                       {intl.formatMessage({ id: 'app.home.qrtip' })}
-                    </Button>
+                    </a>
                   </Popover>
                   <GitHubButton
-                    key="github-button"
+                    key="home-button-github"
                     type="stargazers"
                     namespace="tdida"
                     repo="modo-mobile"
                   />
                 </div>
+              </div>
+              <div className="banner-image">
+                <img
+                  src="https://pic.modo-modo.com/saas-1535341906110-28486.png"
+                  alt="modo-mobile"
+                />
               </div>
             </div>
           </section>

@@ -29,19 +29,18 @@ title: Modo Mobile
 - The UI is fully Configurable and Scalable, easily adapt to all kinds of product style.
 - Provide "Components are loaded on demand" / "SVG Icon" optimization features, integrated development.
 - Use TypeScript to develop, provide type definition files, support type and attribute smart tips for easy business development.
-- Fully compatible with react.
+
+## Version
+
+- development[![npm package](https://img.shields.io/npm/v/modo-mobile.svg?style=flat-square)](https://www.npmjs.org/package/modo-mobile)
+
+You can subscribe to this feed for new version notifications: ：https://github.com/tdida/modo-mobile/releases.atom
 
 ## Applicable Scenes
 
 - Medium-sized and large-scale applications.
 - Multi-terminal applications based on react.
 - Custom UI-style applications.
-
-## Getting Started
-
-> Before delving into Ant Design React, a good knowledge of [React](http://facebook.github.io/react/) and [ES2015](http://babeljs.io/docs/learn-es2015/) is needed.
->
-> Make sure that you had installed [Node.js](https://nodejs.org/en/)(> v4.x) correctly.
 
 ## Environment Support
 

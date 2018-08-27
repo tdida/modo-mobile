@@ -3,93 +3,79 @@ import PropTypes from 'prop-types';
 import { Link } from 'bisheng/router';
 import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
-import { Menu, Row, Col, Icon, Button, AutoComplete, Input, Popover } from 'antd';
+import { Menu, Row, Col, Icon, Popover, Input, Button } from 'antd';
 import { version as modoVersion } from '../../../../../package.json';
 import * as utils from '../../../../utils';
 
-const {
-  object: { isRequired },
-} = PropTypes;
+// let docsearch;
+// if (typeof window !== 'undefined') {
+//   docsearch = require('docsearch.js'); // eslint-disable-line
+// }
 
-const { Option } = AutoComplete;
-const searchEngine = 'Google';
-const searchLink = 'https://www.google.com/#q=site:mobile.ant.design+';
+// function initDocSearch(locale) {
+//   if (!docsearch) {
+//     return;
+//   }
+//   const lang = locale === 'zh-CN' ? 'cn' : 'en';
+//   docsearch({
+//     apiKey: '60ac2c1a7d26ab713757e4a081e133d0',
+//     indexName: 'ant_design',
+//     inputSelector: '#search-box input',
+//     algoliaOptions: { facetFilters: [`tags:${lang}`] },
+//     transformData(hits) {
+//       hits.forEach(hit => {
+//         hit.url = hit.url.replace('ant.design', location.host);
+//         hit.url = hit.url.replace('https:', location.protocol);
+//       });
+//       return hits;
+//     },
+//     debug: false, // Set debug to true if you want to inspect the dropdown
+//   });
+// }
 
 export default class Header extends React.Component {
   static contextTypes = {
-    router: isRequired,
-    intl: isRequired,
+    router: PropTypes.object.isRequired,
+    intl: PropTypes.object.isRequired,
+    isMobile: PropTypes.bool.isRequired,
   };
 
   state = {
-    inputValue: '',
     menuVisible: false,
-    menuMode: 'horizontal',
   };
 
   componentDidMount() {
-    // this.context.router.listen(this.handleHideMenu);
+    const { router } = this.context;
+    router.listen(this.handleHideMenu);
     const { searchInput } = this;
-    /* eslint-disable global-require */
-    require('enquire.js').register('only screen and (min-width: 0) and (max-width: 992px)', {
-      match: () => {
-        this.setState({ menuMode: 'inline' });
-      },
-      unmatch: () => {
-        this.setState({ menuMode: 'horizontal' });
-      },
-    });
     document.addEventListener('keyup', event => {
       if (event.keyCode === 83 && event.target === document.body) {
         searchInput.focus();
       }
     });
-    /* eslint-enable global-require */
+    // initDocSearch(intl.locale);
   }
 
-  handleMenuIconClick = e => {
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
+  handleShowMenu = () => {
     this.setState({
       menuVisible: true,
     });
   };
 
-  handleSearch = value => {
-    if (value === searchEngine) {
-      const { inputValue } = this.state;
-      window.location.href = `${searchLink}${inputValue}`;
-      return;
-    }
-
-    const { intl, router } = this.context;
-    this.setState(
-      {
-        inputValue: '',
-      },
-      () => {
-        router.push({
-          pathname: utils.getLocalizedPathname(`${value}/`, intl.locale === 'zh-CN'),
-        });
-        this.searchInput.blur();
-      }
-    );
-  };
-
-  handleInputChange = value => {
+  handleHideMenu = () => {
     this.setState({
-      inputValue: value,
+      menuVisible: false,
     });
   };
 
-  handleSelectFilter = (value, option) => {
-    const optionValue = option.props['data-label'];
-    return optionValue === searchEngine || optionValue.indexOf(value.toLowerCase()) > -1;
+  onMenuVisibleChange = visible => {
+    this.setState({
+      menuVisible: visible,
+    });
   };
 
   handleLangChange = () => {
     const { location } = this.props;
-
     const pathname = location.basename + location.pathname;
     const currentProtocol = `${window.location.protocol}//`;
     const currentHref = window.location.href.substr(currentProtocol.length);
@@ -97,6 +83,7 @@ export default class Header extends React.Component {
     if (utils.isLocalStorageNameSupported()) {
       localStorage.setItem('locale', utils.isZhCN(pathname) ? 'en-US' : 'zh-CN');
     }
+
     window.location.href =
       currentProtocol +
       currentHref.replace(
@@ -105,19 +92,12 @@ export default class Header extends React.Component {
       );
   };
 
-  handleVersionChange = url => {
-    const currentUrl = window.location.href;
-    const currentPathname = window.location.pathname;
-    window.location.href = currentUrl
-      .replace(window.location.origin, url)
-      .replace(currentPathname, utils.getLocalizedPathname(currentPathname));
-  };
-
   render() {
-    const { inputValue, menuMode, menuVisible } = this.state;
-    const { location, picked, isFirstScreen, themeConfig } = this.props;
+    const { menuVisible } = this.state;
+    const { isMobile } = this.context;
+    const menuMode = isMobile ? 'inline' : 'horizontal';
+    const { location, themeConfig } = this.props;
 
-    const { components } = picked;
     const module = location.pathname
       .replace(/(^\/|\/$)/g, '')
       .split('/')
@@ -127,42 +107,13 @@ export default class Header extends React.Component {
     if (activeMenuItem === 'components' || location.pathname === 'changelog') {
       activeMenuItem = 'docs';
     }
-
     const {
       intl: { locale },
     } = this.context;
     const isZhCN = locale === 'zh-CN';
-    const excludedSuffix = isZhCN ? 'en-US.md' : 'zh-CN.md';
-    const options = components
-      .filter(({ meta }) => !meta.filename.endsWith(excludedSuffix))
-      .map(({ meta }) => {
-        const pathSnippet = meta.filename.split('/')[1];
-        const url = `/components/${pathSnippet}`;
-        const { subtitle } = meta;
-        return (
-          <Option
-            value={url}
-            key={url}
-            data-label={`${(meta.title || meta.english).toLowerCase()} ${meta.subtitle ||
-              meta.chinese}`}
-          >
-            <strong>{meta.title || meta.english}</strong>
-            {subtitle && (
-              <span className="ant-component-decs">{meta.subtitle || meta.chinese}</span>
-            )}
-          </Option>
-        );
-      });
-    options.push(
-      <Option key="searchEngine" value={searchEngine} data-label={searchEngine}>
-        <FormattedMessage id="app.header.search" />
-      </Option>
-    );
 
     const headerClassName = classNames({
       clearfix: true,
-      'home-nav-white': !isFirstScreen,
-      'home-page-header': activeMenuItem === 'home',
     });
 
     const menu = [
@@ -195,10 +146,9 @@ export default class Header extends React.Component {
       </Menu>,
     ];
 
-    const searchPlaceholder = locale === 'zh-CN' ? '搜索组件...' : 'Search Components...';
     return (
       <header id="header" className={headerClassName}>
-        {menuMode === 'inline' ? (
+        {isMobile && (
           <Popover
             overlayClassName="popover-menu"
             placement="bottomRight"
@@ -210,36 +160,21 @@ export default class Header extends React.Component {
           >
             <Icon className="nav-phone-icon" type="menu" onClick={this.handleShowMenu} />
           </Popover>
-        ) : null}
+        )}
         <Row>
-          <Col xxl={4} xl={5} lg={5} md={8} sm={24} xs={24}>
+          <Col xxl={4} xl={5} lg={5} md={6} sm={24} xs={24}>
             <Link to={utils.getLocalizedPathname('/', isZhCN)} id="logo">
-              <img
-                alt="logo"
-                src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-              />
+              <img alt="logo" src="https://pic.modo-modo.com/saas-1535350845166-32697.png" />
               <span>{themeConfig.siteTitle}</span>
               <sup>{`v${modoVersion}`}</sup>
             </Link>
           </Col>
-          <Col xxl={20} xl={19} lg={19} md={16} sm={0} xs={0}>
+          <Col xxl={20} xl={19} lg={19} md={18} sm={0} xs={0}>
             <div id="search-box">
               <Icon type="search" />
-              <AutoComplete
-                dataSource={options}
-                value={inputValue}
-                dropdownClassName="component-select"
-                placeholder={searchPlaceholder}
-                optionLabelProp="data-label"
-                filterOption={this.handleSelectFilter}
-                onSelect={this.handleSearch}
-                onSearch={this.handleInputChange}
-                getPopupContainer={trigger => trigger.parentNode}
-              >
-                <Input ref={ref => (this.searchInput = ref)} />
-              </AutoComplete>
+              <Input ref={ref => (this.searchInput = ref)} />
             </div>
-            {menuMode === 'horizontal' ? menu : null}
+            {!isMobile && menu}
           </Col>
         </Row>
       </header>

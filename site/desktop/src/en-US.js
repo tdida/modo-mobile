@@ -27,5 +27,10 @@ module.exports = {
     'app.demo.copied': 'Copied!',
     'app.demo.codepen': 'Open in CodePen',
     'app.demo.riddle': 'Open in Riddle',
+    'app.footer.resources': 'Resources',
+    'app.footer.help': 'Help',
+    'app.footer.change-log': 'Change Log',
+    'app.footer.faq': 'FAQ',
+    'app.footer.issues': 'Issues',
   },
 };

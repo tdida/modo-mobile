@@ -1,21 +1,49 @@
 /* eslint no-useless-escape: 0 */
-export function getMenuItems(moduleData, locale) {
+export function getMenuItems(moduleData, locale, categoryOrder, typeOrder) {
   const menuMeta = moduleData.map(item => item.meta);
-  const menuItems = {};
-  menuMeta.sort((a, b) => (a.order || 0) - (b.order || 0)).forEach(meta => {
-    const category = (meta.category && meta.category[locale]) || meta.category || 'topLevel';
-    if (!menuItems[category]) {
-      menuItems[category] = {};
+  const menuItems = [];
+  const sortFn = (a, b) => (a.order || 0) - (b.order || 0);
+  menuMeta.sort(sortFn).forEach(meta => {
+    if (!meta.category) {
+      menuItems.push(meta);
+    } else {
+      const category = meta.category[locale] || meta.category;
+      let group = menuItems.filter(i => i.title === category)[0];
+      if (!group) {
+        group = {
+          type: 'category',
+          title: category,
+          children: [],
+          order: categoryOrder[category],
+        };
+        menuItems.push(group);
+      }
+      if (meta.type) {
+        let type = group.children.filter(i => i.title === meta.type)[0];
+        if (!type) {
+          type = {
+            type: 'type',
+            title: meta.type,
+            children: [],
+            order: typeOrder[meta.type],
+          };
+          group.children.push(type);
+        }
+        type.children.push(meta);
+      } else {
+        group.children.push(meta);
+      }
     }
-
-    const type = meta.type || 'topLevel';
-    if (!menuItems[category][type]) {
-      menuItems[category][type] = [];
-    }
-
-    menuItems[category][type].push(meta);
   });
-  return menuItems;
+
+  return menuItems
+    .map(i => {
+      if (i.children) {
+        i.children = i.children.sort(sortFn);
+      }
+      return i;
+    })
+    .sort(sortFn);
 }
 
 export function isZhCN(pathname) {
@@ -71,31 +99,4 @@ export function isLocalStorageNameSupported() {
   } catch (error) {
     return false;
   }
-}
-
-export function collectDocs(docs) {
-  // locale copy from layout
-  const locale =
-    window.localStorage && localStorage.getItem('locale') !== 'en-US' ? 'zh-CN' : 'en-US';
-  const docsList = Object.keys(docs)
-    .map(key => docs[key])
-    .map(value => {
-      if (typeof value !== 'function') {
-        return value[locale] || value.index[locale] || value.index;
-      }
-      return value;
-    })
-    .map(fn => fn());
-  return docsList;
-}
-
-export function getQuery(key) {
-  const val = window.location.search
-    .replace(/^\?/, '')
-    .split('&')
-    .filter(item => item)
-    .map(item => item.split('='))
-    .find(item => item[0] && item[0] === key);
-
-  return val && val[1];
 }
