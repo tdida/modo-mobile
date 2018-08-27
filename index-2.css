@@ -9043,10 +9043,6 @@ pre[class*="language-"] {
   position: relative;
 }
 .code-box-title {
-  position: absolute;
-  top: -14px;
-  padding: 1px 8px;
-  margin-left: -8px;
   color: #777;
   border-radius: 4px 4px 0 0;
   background: #fff;
@@ -9083,7 +9079,7 @@ pre[class*="language-"] {
 }
 .code-box-meta.markdown {
   position: relative;
-  padding: 18px 32px;
+  padding: 18px 24px;
   border-radius: 0 0 4px 4px;
   -webkit-transition: background-color 0.4s;
   transition: background-color 0.4s;
@@ -9112,7 +9108,7 @@ section.code-box-meta p {
 .code-box .code-expand-icon {
   position: absolute;
   right: 16px;
-  bottom: 23px;
+  top: 23px;
   cursor: pointer;
   width: 16px;
   height: 16px;
@@ -9176,10 +9172,36 @@ section.code-box-meta p {
   right: 12px;
   text-align: right;
 }
+.code-box-actions > a,
 .code-box-actions > i,
 .code-box-actions > form {
   display: inline-block;
   margin-left: 8px;
+}
+.code-box-actions a.edit-button {
+  position: relative;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  color: #697b8c;
+  -webkit-transition: all 0.24s;
+  transition: all 0.24s;
+  background: #fff;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 20px;
+  opacity: 0;
+}
+.code-box-actions a.edit-button i {
+  font-size: 14px;
+}
+.code-box-actions a.edit-button:hover {
+  color: #697b8c;
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 .code-box-code-copy {
   font-size: 14px;
@@ -9205,32 +9227,8 @@ section.code-box-meta p {
   color: #0b8235 !important;
   font-weight: bold;
 }
-.code-box-codepen {
-  background: transparent url("https://gw.alipayobjects.com/zos/rmsportal/OtZslpOjYXijshDERXwc.svg") center / 14px no-repeat;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  opacity: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: 0;
-  text-indent: -9999px;
-  overflow: hidden;
-}
-.code-box-riddle {
-  background: transparent url("https://gw.alipayobjects.com/zos/rmsportal/DlHbxMCyeuyOrqOdbgik.svg") center / 14px no-repeat;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  opacity: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: 0;
-  text-indent: -9999px;
-  overflow: hidden;
-}
 .code-box-codesandbox {
-  background: transparent url("https://gw.alipayobjects.com/zos/rmsportal/aaYmtdDyHSCkXyLZVgGK.svg") center / 14px no-repeat;
+  background: transparent url('https://gw.alipayobjects.com/zos/rmsportal/aaYmtdDyHSCkXyLZVgGK.svg') center / 14px no-repeat;
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -9241,10 +9239,9 @@ section.code-box-meta p {
   text-indent: -9999px;
   overflow: hidden;
 }
+.code-box .highlight-wrapper:hover a.edit-button,
 .highlight-wrapper:hover .code-box-code-copy,
-.highlight-wrapper:hover .code-box-codepen,
-.highlight-wrapper:hover .code-box-codesandbox,
-.highlight-wrapper:hover .code-box-riddle {
+.highlight-wrapper:hover .code-box-codesandbox {
   opacity: 1;
 }
 .code-box pre {
