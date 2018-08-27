@@ -26,9 +26,9 @@ A mobile UI toolkit, based on React
 
 <img width="250" src="https://pic.modo-modo.com/saas-1535108254349-21154.png" />
 
-## 安装 & 使用
+## Installation & Usage
 
-### 安装
+### Installation
 
 ```bash
 npm install modo-mobile --save
@@ -36,7 +36,7 @@ npm install modo-mobile --save
 yarn add modo-mobile
 ```
 
-### 引入
+### Import
 
 - Use [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) (Recommended)
 
@@ -61,7 +61,7 @@ import 'modo-mobile/lib/icon/style/css'; // for CSS
 
 ### Usage
 
-Select the components you need to build your webapp. Find more details in [Quick Start](https://tdida.github.io/modo-mobile/docs/getting-started-cn).
+Select the components you need to build your webapp. Find more details in [Quick Start](https://tdida.github.io/modo-mobile/docs/getting-started).
 
 ## Development
 
@@ -72,7 +72,7 @@ npm install
 npm run start
 ```
 
-Open your browser and visit http://127.0.0.1:8000、http://127.0.0.1:8001. Find more details in [Development Guide](https://tdida.github.io/modo-mobile/docs/getting-started-cn).
+Open your browser and visit http://127.0.0.1:8000、http://127.0.0.1:8001. Find more details in [Development Guide](https://tdida.github.io/modo-mobile/docs/getting-started).
 
 ## Contributing
 
