@@ -198,7 +198,7 @@ a {
   padding: 0 15px;
   font-size: 14px;
   border-radius: 4px;
-  height: 46px;
+  height: 48px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -391,11 +391,11 @@ a {
 }
 .m-button-circle,
 .m-button-circle-outline {
-  width: 46px;
+  width: 48px;
   padding: 0;
   font-size: 16px;
   border-radius: 50%;
-  height: 46px;
+  height: 48px;
 }
 .m-button-circle.m-button-lg,
 .m-button-circle-outline.m-button-lg {
@@ -457,7 +457,7 @@ a {
   width: auto;
 }
 a.m-button {
-  line-height: 44px;
+  line-height: 46px;
 }
 a.m-button-lg {
   line-height: 58px;
