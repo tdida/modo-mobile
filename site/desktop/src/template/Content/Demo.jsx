@@ -10,7 +10,6 @@ import LZString from 'lz-string';
 import { Icon, Tooltip } from 'antd';
 import ErrorBoundary from './ErrorBoundary';
 import EditButton from './EditButton';
-import { ping } from '../../../../utils';
 
 function compress(string) {
   return LZString.compressToBase64(string)
@@ -29,7 +28,6 @@ export default class Demo extends React.Component {
     sourceCode: '',
     copied: false,
     copyTooltipVisible: false,
-    showRiddleButton: false,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -55,14 +53,6 @@ export default class Demo extends React.Component {
       this.anchor.click();
     }
     this.componentWillReceiveProps(this.props);
-
-    this.pingTimer = ping(status => {
-      if (status !== 'timeout' && status !== 'error') {
-        this.setState({
-          showRiddleButton: true,
-        });
-      }
-    });
   }
 
   handleCodeExpand = () => {
