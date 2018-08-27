@@ -1,8 +1,8 @@
 [English](./README.md) | 简体中文
 
 <div align="center">
-  <a href="#">
-    <img width="80" src="https://pic.modo-modo.com/saas-1535341906110-28486.png" alt="LOGO">
+  <a href="https://tdida.github.io/modo-mobile">
+    <img width="320" src="https://pic.modo-modo.com/saas-1535341906110-28486.png" alt="LOGO">
   </a>
 </div>
 
