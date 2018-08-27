@@ -7798,7 +7798,7 @@ a:focus {
 #logo img {
   margin-right: 10px;
   width: auto;
-  height: 28px;
+  height: 24px;
   vertical-align: middle;
 }
 #logo span {
@@ -7815,7 +7815,7 @@ a:focus {
   font-family: DINAlternate-Bold;
 }
 #search-box {
-  border-left: 1px solid #ebedee;
+  border-left: 1px solid #ebedf0;
   float: left;
   height: 22px;
   line-height: 22px;
@@ -7827,20 +7827,26 @@ a:focus {
   position: relative;
   top: 0.5px;
 }
-#search-box .ant-select {
+#search-box input {
   font-size: 14px;
   margin-top: -5px;
   width: 200px;
-}
-#search-box .ant-select-selection {
   border: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
+  background: transparent;
 }
-#search-box .ant-input {
-  border: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+#search-box input::-webkit-input-placeholder {
+  color: #a3b1bf;
+}
+#search-box input:-ms-input-placeholder {
+  color: #a3b1bf;
+}
+#search-box input::-ms-input-placeholder {
+  color: #a3b1bf;
+}
+#search-box input::placeholder {
+  color: #a3b1bf;
 }
 .header-lang-button,
 .version {
@@ -7996,44 +8002,117 @@ footer .bottom-bar .translate-button {
   width: 100%;
   height: 456px;
 }
-.home-s1 .banner-text-wrapper {
+.home-s1 .banner-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.home-s1 .banner-text-wrapper .home-button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home-s1 .banner-text-wrapper .home-button-start,
+.home-s1 .banner-text-wrapper .home-button-demo {
+  position: relative;
+  width: 140px;
+  height: 45px;
+  margin-right: 20px;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 18px;
+  -webkit-box-shadow: 0 0 10px #eee;
+          box-shadow: 0 0 10px #eee;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  background-image: -webkit-gradient(linear, right top, left top, from(#57d2ff), to(#0586ff));
+  background-image: -webkit-linear-gradient(right, #57d2ff, #0586ff);
+  background-image: linear-gradient(-90deg, #57d2ff, #0586ff);
+  color: #fff;
+}
+.home-s1 .banner-text-wrapper .home-button-start:hover,
+.home-s1 .banner-text-wrapper .home-button-demo:hover {
+  opacity: 0.8;
+}
+.home-s1 .banner-text-wrapper .home-button-demo {
+  background-image: none;
+  background-color: #ecf6ff;
+  color: #1e9eff;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.home-s1 .banner-text-wrapper .github-btn {
+  height: auto;
+}
+.home-s1 .banner-text-wrapper .github-btn .gh-btn {
+  background-color: #ecf6ff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 28px;
+  color: #1e9eff;
+}
+.home-s1 .banner-text-wrapper .github-btn .gh-count {
+  background: #243241;
+  color: #fff;
+  border-radius: 16px;
+  padding: 8px 12px;
+  position: relative;
+  border: none;
+  margin-left: 12px;
+}
+.home-s1 .banner-text-wrapper .github-btn .gh-count::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
   position: absolute;
-  top: 140px;
-  color: rgba(0, 0, 0, 0.85);
+  margin: 5px;
+  z-index: 1;
+  border-width: 5px 5px 5px 0;
+  border-left-color: transparent !important;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-right-color: #243241 !important;
+  left: 0;
+  top: 5px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.home-s1 .banner-text-wrapper .github-btn .gh-count:after {
+  display: none;
 }
 .home-s1 .banner-text-wrapper h2 {
-  font-family: Avenir-Heavy;
-  font-size: 68px;
-  color: #0d1a26;
+  font-family: DINAlternate-Bold;
+  font-size: 48px;
+  color: #333;
   letter-spacing: 0;
-  line-height: 76px;
+  line-height: 1;
   font-weight: 500;
   margin: 0;
 }
 .home-s1 .banner-text-wrapper > p {
   font-family: PingFangSC-Regular;
   font-size: 18px;
-  color: #314659;
+  color: #666;
+  line-height: 32px;
   letter-spacing: 0;
-  line-height: 38px;
   margin: 16px auto 20px;
-}
-.home-s1 .banner-text-wrapper .start-button {
-  margin-bottom: 24px;
-}
-.home-s1 .banner-text-wrapper .start-button .ant-btn {
-  height: 40px;
-  margin-right: 16px;
-  font-size: 16px;
-  min-width: 114px;
-  text-align: center;
-}
-.home-s1 .banner-text-wrapper .start-button .ant-btn a {
-  text-decoration: none;
-}
-.home-s1 .banner-text-wrapper .github-btn {
-  display: inline-block;
-  vertical-align: middle;
 }
 .home-s1,
 .home-s2,
@@ -8102,7 +8181,7 @@ footer .bottom-bar .translate-button {
   color: rgba(0, 0, 0, 0.43);
 }
 .home-s3 {
-  background: url("https://gw.alipayobjects.com/zos/rmsportal/RJpGlapTtCNoDXvgrMsN.png") no-repeat center / contain;
+  background: url('https://gw.alipayobjects.com/zos/rmsportal/RJpGlapTtCNoDXvgrMsN.png') no-repeat center / contain;
   background-color: #0971e0;
   text-align: center;
   color: #fff;

@@ -173,7 +173,7 @@ a {
 }
 .m-agree-icon .m-icon {
   font-size: 20px;
-  color: #1890ff;
+  color: #1e9eff;
   -webkit-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -248,15 +248,15 @@ a {
 }
 .m-button:hover,
 .m-button:focus {
-  color: #46a6ff;
+  color: #4bb1ff;
   background-color: #fff;
-  border-color: #46a6ff;
+  border-color: #4bb1ff;
 }
 .m-button:active,
 .m-button.active {
-  color: #1789f2;
+  color: #1d96f2;
   background-color: #fff;
-  border-color: #1789f2;
+  border-color: #1d96f2;
 }
 .m-button.disabled,
 .m-button[disabled] {
@@ -286,20 +286,20 @@ a {
 }
 .m-button-primary {
   color: #fff;
-  background-color: #1890ff;
-  border-color: #1890ff;
+  background-color: #1e9eff;
+  border-color: #1e9eff;
 }
 .m-button-primary:hover,
 .m-button-primary:focus {
   color: #fff;
-  background-color: #46a6ff;
-  border-color: #46a6ff;
+  background-color: #4bb1ff;
+  border-color: #4bb1ff;
 }
 .m-button-primary:active,
 .m-button-primary.active {
   color: #fff;
-  background-color: #1789f2;
-  border-color: #1789f2;
+  background-color: #1d96f2;
+  border-color: #1d96f2;
 }
 .m-button-primary.disabled,
 .m-button-primary[disabled] {
@@ -317,15 +317,15 @@ a {
 }
 .m-button-ghost:hover,
 .m-button-ghost:focus {
-  color: #46a6ff;
+  color: #4bb1ff;
   background-color: transparent;
-  border-color: #46a6ff;
+  border-color: #4bb1ff;
 }
 .m-button-ghost:active,
 .m-button-ghost.active {
-  color: #1789f2;
+  color: #1d96f2;
   background-color: transparent;
-  border-color: #1789f2;
+  border-color: #1d96f2;
 }
 .m-button-ghost.disabled,
 .m-button-ghost[disabled] {
@@ -344,15 +344,15 @@ a {
 }
 .m-button-dashed:hover,
 .m-button-dashed:focus {
-  color: #46a6ff;
+  color: #4bb1ff;
   background-color: #fff;
-  border-color: #46a6ff;
+  border-color: #4bb1ff;
 }
 .m-button-dashed:active,
 .m-button-dashed.active {
-  color: #1789f2;
+  color: #1d96f2;
   background-color: #fff;
-  border-color: #1789f2;
+  border-color: #1d96f2;
 }
 .m-button-dashed.disabled,
 .m-button-dashed[disabled] {
