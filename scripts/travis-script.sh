@@ -25,3 +25,4 @@ elif [ "$TEST_TYPE" = test:dom ]; then
   run_test --coverage
   bash <(curl -s https://codecov.io/bash)
 fi
+   
