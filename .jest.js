@@ -10,7 +10,7 @@ module.exports = {
   setupFiles: ['./tests/setup.js'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'md'],
   modulePathIgnorePatterns: ['/_site/'],
-  testPathIgnorePatterns: ['/node_modules/', 'dekko'],
+  testPathIgnorePatterns: ['/node_modules/'],
   transform: {
     '\\.tsx?$': './node_modules/antd-tools/lib/jest/codePreprocessor',
     '\\.js$': './node_modules/antd-tools/lib/jest/codePreprocessor',
