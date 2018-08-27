@@ -1,11 +1,11 @@
 #!/bin/sh
 
+set -x
+
 npm run lint && \
 npm run dist && \
-node ./tests/dekko/dist.test.js && \
-LIB_DIR=dist npm test && \
+LIB_DIR=dist npm run test -- --no-cache && \
 npm run compile && \
-node ./tests/dekko/lib.test.js && \
-LIB_DIR=es npm test && \
-LIB_DIR=lib npm test && \
-npm test && \
+LIB_DIR=lib npm run test -- --no-cache && \
+LIB_DIR=es npm run test -- --no-cache && \
+npm run test
