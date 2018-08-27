@@ -14,7 +14,7 @@ title:
 A loading indicator can be added to a button by setting the `loading` property on the `Button`.
 
 ```jsx
-import { Button, Icon } from 'modo-mobile';
+import { Button } from 'modo-mobile';
 
 class App extends React.Component {
   state = {
@@ -31,6 +31,7 @@ class App extends React.Component {
   };
 
   render() {
+    const { loading, iconLoading } = this.state;
     return (
       <div className="button-list">
         <Button type="primary" loading>
@@ -39,21 +40,21 @@ class App extends React.Component {
         <Button type="primary" size="small" loading>
           Loading
         </Button>
-        <Button type="primary" loading={this.state.loading} onClick={this.enterLoading} inline>
+        <Button type="primary" loading={loading} onClick={this.enterLoading} inline>
           Click me!
         </Button>
         <Button
           type="primary"
           icon="poweroff"
-          loading={this.state.iconLoading}
+          loading={iconLoading}
           onClick={this.enterIconLoading}
           inline
         >
           Click me!
         </Button>
         <br />
-        <Button type="primary" size="small" shape="circle" loading={true} />
-        <Button shape="circle" size="small" loading={true} />
+        <Button type="primary" size="small" shape="circle" loading />
+        <Button shape="circle" size="small" loading />
       </div>
     );
   }

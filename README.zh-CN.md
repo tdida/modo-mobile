@@ -8,7 +8,7 @@
 
 # Modo Mobile
 
-[![Build Status](https://travis-ci.com/TDiDa/modo-mobile.svg?branch=master)](https://travis-ci.com/tdida/modo-mobile)
+[![Build Status](https://travis-ci.com/TDiDa/modo-mobile.svg?branch=master)](https://travis-ci.com/TDiDa/modo-mobile)
 [![codecov](https://codecov.io/gh/tdida/modo-mobile/branch/master/graph/badge.svg)](https://codecov.io/gh/tdida/modo-mobile)
 [![npm package](https://img.shields.io/npm/v/modo-mobile.svg?style=flat-square)](https://www.npmjs.org/package/modo-mobile)
 [![npm downloads](http://img.shields.io/npm/dm/modo-mobile.svg?style=flat-square)](http://npmtrends.com/modo-mobile)
