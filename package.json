@@ -80,6 +80,7 @@
     "bisheng-plugin-toc": "^0.4.4",
     "chalk": "^2.4.1",
     "clean-webpack-plugin": "^0.1.19",
+    "codecov": "^3.0.4",
     "concurrently": "^3.6.1",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",

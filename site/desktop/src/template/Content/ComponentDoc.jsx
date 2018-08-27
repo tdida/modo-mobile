@@ -97,7 +97,7 @@ export default class ComponentDoc extends React.Component {
 
     const { title, subtitle, filename } = meta;
     return (
-      <DocumentTitle title={`${subtitle || ''} ${title[locale] || title} - Ant Design`}>
+      <DocumentTitle title={`${subtitle || ''} ${title[locale] || title} - Modo Mobile`}>
         <article>
           <Affix className="toc-affix" offsetTop={16}>
             <ul id="demo-toc" className="toc">

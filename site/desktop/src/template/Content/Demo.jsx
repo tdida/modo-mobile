@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import LZString from 'lz-string';
 import { Icon, Tooltip } from 'antd';
 import ErrorBoundary from './ErrorBoundary';
+import EditButton from './EditButton';
 import { ping } from '../../../../utils';
 
 function compress(string) {
@@ -94,7 +95,7 @@ export default class Demo extends React.Component {
     const { state } = this;
     const { props } = this;
     const { meta, content, preview, highlightedCode, style, highlightedStyle, expand } = props;
-    const { showRiddleButton, copied } = state;
+    const { copied } = state;
     if (!this.liveDemo) {
       this.liveDemo = preview(React, ReactDOM);
     }
@@ -115,40 +116,11 @@ export default class Demo extends React.Component {
       'highlight-wrapper-expand': codeExpand,
     });
 
-    const prefillStyle = `@import 'antd/dist/antd.css';\n\n${style || ''}`.replace(
-      new RegExp(`#${meta.id}\\s*`, 'g'),
-      ''
-    );
     const html = `<div id="container" style="padding: 24px"></div>
 <script>
   var mountNode = document.getElementById('container');
 </script>`;
 
-    const codepenPrefillConfig = {
-      title: `${localizedTitle} - Modo Mobile Demo`,
-      html,
-      js: state.sourceCode.replace(
-        /import\s+\{\s+(.*)\s+\}\s+from\s+'antd';/,
-        'const { $1 } = antd;'
-      ),
-      css: prefillStyle,
-      editors: '001',
-      css_external: 'https://unpkg.com/antd/dist/antd.css',
-      js_external: [
-        'react@15.x/dist/react.js',
-        'react-dom@15.x/dist/react-dom.js',
-        'moment/min/moment-with-locales.js',
-        'antd/dist/antd-with-locales.js',
-      ]
-        .map(url => `https://unpkg.com/${url}`)
-        .join(';'),
-      js_pre_processor: 'typescript',
-    };
-    const riddlePrefillConfig = {
-      title: `${localizedTitle} - Modo Mobile Demo`,
-      js: state.sourceCode,
-      css: prefillStyle,
-    };
     const dependencies = state.sourceCode.split('\n').reduce(
       (acc, line) => {
         const matches = line.match(/import .+? from '(.+)';$/);
@@ -157,7 +129,7 @@ export default class Demo extends React.Component {
         }
         return acc;
       },
-      { react: 'latest', 'react-dom': 'latest' }
+      { react: 'latest', 'react-dom': 'latest', 'modo-mobile': 'latest' }
     );
     const codesanboxPrefillConfig = {
       files: {
@@ -173,7 +145,7 @@ export default class Demo extends React.Component {
           content: `
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'antd/dist/antd.css';
+import 'modo-mobile/dist/modo-mobile.css';
 import './index.css';
 ${state.sourceCode.replace('mountNode', "document.getElementById('container')")}
           `,
@@ -216,32 +188,10 @@ ${state.sourceCode.replace('mountNode', "document.getElementById('container')")}
         <section className={highlightClass} key="code">
           <div className="highlight">
             <div className="code-box-actions">
-              {showRiddleButton ? (
-                <form
-                  action="//riddle.alibaba-inc.com/riddles/define"
-                  method="POST"
-                  target="_blank"
-                >
-                  <input type="hidden" name="data" value={JSON.stringify(riddlePrefillConfig)} />
-                  <Tooltip title={<FormattedMessage id="app.demo.riddle" />}>
-                    <input
-                      type="submit"
-                      value="Create New Riddle with Prefilled Data"
-                      className="code-box-riddle"
-                    />
-                  </Tooltip>
-                </form>
-              ) : null}
-              <form action="https://codepen.io/pen/define" method="POST" target="_blank">
-                <input type="hidden" name="data" value={JSON.stringify(codepenPrefillConfig)} />
-                <Tooltip title={<FormattedMessage id="app.demo.codepen" />}>
-                  <input
-                    type="submit"
-                    value="Create New Pen with Prefilled Data"
-                    className="code-box-codepen"
-                  />
-                </Tooltip>
-              </form>
+              <EditButton
+                filename={meta.filename}
+                title={<FormattedMessage id="app.demo.edit" />}
+              />
               <form
                 action="https://codesandbox.io/api/v1/sandboxes/define"
                 method="POST"

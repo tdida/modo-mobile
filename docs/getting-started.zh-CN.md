@@ -70,7 +70,7 @@ import 'modo-mobile/dist/modo-mobile.css'; // or 'modo-mobile/dist/modo-mobile.l
 - 手动引入
 
   ```jsx
-  import DatePicker from 'modo-mobile/lib/icon'; // 加载 JS
+  import Icon from 'modo-mobile/lib/icon'; // 加载 JS
   import 'modo-mobile/lib/icon/style/css'; // 加载 CSS
   // import 'modo-mobile/lib/icon/style';         // 加载 LESS
   ```

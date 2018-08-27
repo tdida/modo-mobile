@@ -1,4 +1,4 @@
-@import "./theme";
+@import './theme';
 
 @border-radius-sm: 4px;
 
@@ -36,10 +36,6 @@
   }
 
   &-title {
-    position: absolute;
-    top: -14px;
-    padding: 1px 8px;
-    margin-left: -8px;
     color: #777;
     border-radius: @border-radius-sm @border-radius-sm 0 0;
     background: #fff;
@@ -79,7 +75,7 @@
   &-meta {
     &.markdown {
       position: relative;
-      padding: 18px 32px;
+      padding: 18px 24px;
       border-radius: 0 0 @border-radius-sm @border-radius-sm;
       transition: background-color 0.4s;
       width: 100%;
@@ -113,7 +109,7 @@
   .code-expand-icon {
     position: absolute;
     right: 16px;
-    bottom: 23px;
+    top: 23px;
     cursor: pointer;
     width: 16px;
     height: 16px;
@@ -179,10 +175,36 @@
     top: 10px;
     right: 12px;
     text-align: right;
+    > a,
     > i,
     > form {
       display: inline-block;
       margin-left: 8px;
+    }
+
+    a.edit-button {
+      position: relative;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      color: @site-text-color-secondary;
+      transition: all 0.24s;
+      background: #fff;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 20px;
+      opacity: 0;
+
+      i {
+        font-size: 14px;
+      }
+
+      &:hover {
+        color: @site-text-color-secondary;
+        transform: scale(1.2);
+      }
     }
   }
 
@@ -209,38 +231,10 @@
     }
   }
 
-  &-codepen {
-    background: transparent
-      url("https://gw.alipayobjects.com/zos/rmsportal/OtZslpOjYXijshDERXwc.svg")
-      center / 14px no-repeat;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    opacity: 0;
-    transition: all 0.3s;
-    border: 0;
-    text-indent: -9999px;
-    overflow: hidden;
-  }
-
-  &-riddle {
-    background: transparent
-      url("https://gw.alipayobjects.com/zos/rmsportal/DlHbxMCyeuyOrqOdbgik.svg")
-      center / 14px no-repeat;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    opacity: 0;
-    transition: all 0.3s;
-    border: 0;
-    text-indent: -9999px;
-    overflow: hidden;
-  }
-
   &-codesandbox {
     background: transparent
-      url("https://gw.alipayobjects.com/zos/rmsportal/aaYmtdDyHSCkXyLZVgGK.svg")
-      center / 14px no-repeat;
+      url('https://gw.alipayobjects.com/zos/rmsportal/aaYmtdDyHSCkXyLZVgGK.svg') center / 14px
+      no-repeat;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -251,10 +245,9 @@
     overflow: hidden;
   }
 
+  .highlight-wrapper:hover a.edit-button,
   .highlight-wrapper:hover &-code-copy,
-  .highlight-wrapper:hover &-codepen,
-  .highlight-wrapper:hover &-codesandbox,
-  .highlight-wrapper:hover &-riddle {
+  .highlight-wrapper:hover &-codesandbox {
     opacity: 1;
   }
 
