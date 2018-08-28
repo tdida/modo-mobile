@@ -90,7 +90,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e006b81e7b3a520b498f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f17e2798a6eba78c9105"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -45659,8 +45659,7 @@ module.exports = {
         "category": "Components",
         "type": "Data Entry",
         "title": "Agree",
-        "subtitle": "勾选按钮",
-        "filename": "components/agree/index.zh-CN.md"
+        "filename": "components/agree/index.en-US.md"
       }
     },
     {
@@ -45668,15 +45667,8 @@ module.exports = {
         "category": "Components",
         "type": "Data Entry",
         "title": "Agree",
-        "filename": "components/agree/index.en-US.md"
-      }
-    },
-    {
-      "meta": {
-        "category": "Components",
-        "type": "Feedback",
-        "title": "NoticeBar",
-        "filename": "components/notice-bar/index.en-US.md"
+        "subtitle": "勾选按钮",
+        "filename": "components/agree/index.zh-CN.md"
       }
     },
     {
@@ -45686,6 +45678,14 @@ module.exports = {
         "type": "Feedback",
         "title": "NoticeBar",
         "filename": "components/notice-bar/index.zh-CN.md"
+      }
+    },
+    {
+      "meta": {
+        "category": "Components",
+        "type": "Feedback",
+        "title": "NoticeBar",
+        "filename": "components/notice-bar/index.en-US.md"
       }
     },
     {
@@ -45708,23 +45708,6 @@ module.exports = {
     {
       "meta": {
         "category": "Components",
-        "type": "General",
-        "title": "Button",
-        "subtitle": "按钮",
-        "filename": "components/button/index.zh-CN.md"
-      }
-    },
-    {
-      "meta": {
-        "category": "Components",
-        "type": "General",
-        "title": "Button",
-        "filename": "components/button/index.en-US.md"
-      }
-    },
-    {
-      "meta": {
-        "category": "Components",
         "subtitle": "图标",
         "type": "General",
         "title": "Icon",
@@ -45739,6 +45722,23 @@ module.exports = {
         "title": "Icon",
         "toc": false,
         "filename": "components/icon/index.en-US.md"
+      }
+    },
+    {
+      "meta": {
+        "category": "Components",
+        "type": "General",
+        "title": "Button",
+        "subtitle": "按钮",
+        "filename": "components/button/index.zh-CN.md"
+      }
+    },
+    {
+      "meta": {
+        "category": "Components",
+        "type": "General",
+        "title": "Button",
+        "filename": "components/button/index.en-US.md"
       }
     }
   ],
