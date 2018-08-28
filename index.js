@@ -1,7 +1,6 @@
 /**
  * This is the entry file for `npm run dist`
  */
-
 /**
  * build for `dist/modo-mobile.css`
  */
