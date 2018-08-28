@@ -1,6 +1,7 @@
 /* @remove-on-es-build-begin */
 // this file is not used if use https://github.com/ant-design/babel-plugin-import
 const ENV = process.env.NODE_ENV;
+
 if (
   ENV !== 'production' &&
   ENV !== 'test' &&
@@ -14,9 +15,9 @@ if (
   );
 }
 
-export { default as Button } from './button/index';
+export { default as Button } from './button';
 export { default as Icon } from './icon/index';
-export { default as NoticeBar } from './notice-bar/index';
-export { default as Agree } from './agree/index';
-export { default as List } from './list/index';
+export { default as NoticeBar } from './notice-bar';
+export { default as Agree } from './agree';
+export { default as List } from './list';
 export { default as version } from './version';

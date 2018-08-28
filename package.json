@@ -33,23 +33,27 @@
   "scripts": {
     "test": "jest --config .jest.js",
     "test:all": "./scripts/test-all.sh",
-    "lint": "npm run tslint && npm run srclint && npm run stylelint",
-    "srclint": "eslint site scripts --ext '.js,.jsx'",
-    "tslint": "npm run tsc && antd-tools run ts-lint",
-    "tsc": "antd-tools run tsc",
-    "demolint": "cross-env RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md' ",
-    "stylelint": "stylelint \"{site,components}/**/*.less\" --syntax less",
+    "lint": "npm run lint:ts && npm run lint:es && npm run lint:demo && npm run lint:style",
+    "lint:ts": "npm run tsc && antd-tools run ts-lint",
+    "lint:es": "eslint tests site scripts components ./.*.js ./webpack.config.js --ext '.js,.jsx'",
+    "lint:demo": "cross-env RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md'",
+    "lint:style": "stylelint \"{site,components}/**/*.less\" --syntax less",
+    "lint-fix:ts": "npm run tsc && antd-tools run ts-lint-fix",
+    "lint-fix": "npm run lint-fix:code && npm run lint-fix:demo",
+    "lint-fix:code": "eslint --fix tests site scripts components ./.*.js ./webpack.config.js --ext '.js,.jsx'",
+    "lint-fix:demo": "eslint-tinker ./components/*/demo/*.md",
     "start": "cross-env NODE_ENV=development concurrently \"cross-env bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng start -c ./site/bisheng.mobile.config.js\"",
     "dist": "antd-tools run dist",
+    "tsc": "tsc",
+    "deploy": "bisheng gh-pages --push-only",
     "pub": "antd-tools run pub",
     "compile": "antd-tools run compile",
-    "deploy": "bisheng gh-pages --push-only",
     "prepublish": "antd-tools run guard",
-    "pre-publish": "node ./scripts/prepub",
+    "pre-publish": "npm run test-all && node ./scripts/prepub",
     "site": "cross-env NODE_ENV=production concurrently \"cross-env bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng build -c ./site/bisheng.mobile.config.js\" && npm run deploy",
     "lint-staged": "lint-staged",
-    "lint-staged:ts": "npm run tsc && node node_modules/tslint/bin/tslint -c node_modules/antd-tools/lib/tslint.json components/**/*.tsx",
-    "lint-staged:es": "eslint ./.eslintrc.js",
+    "lint-staged:ts": "tsc && node node_modules/tslint/bin/tslint",
+    "lint-staged:es": "eslint ./.*.js ./webpack.config.js",
     "lint-staged:demo": "cross-env RUN_ENV=DEMO eslint --ext '.md'"
   },
   "dependencies": {
@@ -151,5 +155,10 @@
   },
   "pre-commit": [
     "lint-staged"
+  ],
+  "sideEffects": [
+    "dist/*",
+    "es/**/style/*",
+    "lib/**/style/*"
   ]
 }

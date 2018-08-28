@@ -3,3 +3,5 @@ declare module '*.json' {
   export const version: string;
   export default value;
 }
+
+declare module 'warning';
