@@ -14,14 +14,24 @@ title:
 There are `primary` button, `default` button, `dashed` button and `danger` button in antd.
 
 ```jsx
-import { Button } from "modo-mobile";
+import { Button } from 'modo-mobile';
 
 const ButtonExample = () => (
   <div className="button-list">
-    <Button type="primary">Primary</Button>
     <Button>Default</Button>
+    <Button disabled>Default Disabled</Button>
+    <Button type="primary">Primary</Button>
+    <Button type="primary" disabled>
+      Primary Disabled
+    </Button>
     <Button type="dashed">Dashed</Button>
+    <Button type="dashed" disabled>
+      Dashed Disabled
+    </Button>
     <Button type="danger">Danger</Button>
+    <Button type="danger" disabled>
+      Danger Disabled
+    </Button>
   </div>
 );
 ReactDOM.render(<ButtonExample />, mountNode);
@@ -29,7 +39,7 @@ ReactDOM.render(<ButtonExample />, mountNode);
 
 ```css
 .button-list {
-  padding: 12px;
+  padding: 10px;
   width: 100%;
   box-sizing: border-box;
 }

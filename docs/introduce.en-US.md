@@ -6,7 +6,7 @@ title: Modo Mobile
 `modo-mobile` is the React implementation.
 
 <div class="pic-plus">
-  <img width="160" src="https://t.alipayobjects.com/images/rmsweb/T16xRhXkxbXXXXXXXX.svg">
+  <img width="160" src="https://pic.modo-modo.com/saas-1535341906110-28486.png">
 </div>
 
 <style>

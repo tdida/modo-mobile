@@ -64,7 +64,7 @@
     "@types/react-dom": "^16.0.7",
     "@types/react-router": "^4.0.30",
     "@types/warning": "^3.0.0",
-    "antd": "^3.8.2",
+    "antd": "^3.8.4",
     "classnames": "^2.2.6",
     "raf": "^3.4.0",
     "react": "^16.4.2",

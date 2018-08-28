@@ -47,12 +47,8 @@ const Footer = () => (
               <FormattedMessage id="app.footer.resources" />
             </h2>
             <div>
-              <a
-                target="_blank "
-                rel="noopener noreferrer"
-                href="https://github.com/ant-design/ant-design-mobile"
-              >
-                Ant Design Mobile GitHub
+              <a target="_blank " rel="noopener noreferrer" href="https://mobile.ant.design">
+                Ant Design Mobile
               </a>
             </div>
             <div>

@@ -4,7 +4,7 @@
   sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
 body {
-  background-color: #f5f5f5;
+  background-color: #f8f8f8;
   margin: 0;
   font-family: @font;
 }
@@ -14,35 +14,42 @@ body {
     font-size: 22px;
     font-weight: 400;
     color: #333;
-    margin: 12px 16px;
-    margin-bottom: 22px;
+    margin: 24px;
+    text-align: center;
+
+    img {
+      width: 40%;
+    }
   }
 
   &-title {
     font-size: 22px;
-    font-weight: 500;
     color: #333;
-    margin: 10px 0;
+    margin: 0;
+    margin-bottom: 10px;
+    font-family: DINAlternate-Bold;
   }
 
   &-subtitle {
     font-size: 14px;
-    color: #666;
+    color: #88889c;
     margin: 0;
   }
 
   &-content {
-    margin: 12px;
+    margin: 16px;
   }
 
   &-category {
     background-color: #fff;
-    border-top: 1px solid #f5f5f5;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 16px;
 
     &-title {
-      padding: 14px;
-      color: #333;
-      font-size: 16px;
+      padding: 16px;
+      color: #6a6a77;
+      font-size: 14px;
       font-weight: 500;
       display: flex;
       justify-content: space-between;
@@ -50,13 +57,16 @@ body {
 
     &-arrow {
       font-size: 12px;
-      transition: transform 0.3s ease;
+
+      i {
+        transition: transform 0.3s ease;
+      }
     }
 
     &-item {
       border-top: 1px solid #f5f5f5;
       padding: 12px 16px;
-      color: #666;
+      color: #88889c;
       font-size: 14px;
     }
 
@@ -66,7 +76,9 @@ body {
       }
 
       .m-demo-category-arrow {
-        transform: rotate(180deg);
+        i {
+          transform: rotate(180deg);
+        }
       }
     }
 

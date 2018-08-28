@@ -56,6 +56,7 @@ export default class Demo extends React.Component {
         demoMeta = meta;
       }
     });
+
     const demoArr = [];
     let demoContent;
     Object.keys(demos).forEach(k => {
@@ -83,45 +84,27 @@ export default class Demo extends React.Component {
       ));
     } else {
       demoContent = demoSort.map((i, index) => (
-        <div className="demo-preview-item" id={`${name}-demo-${i.meta.order}`} key={index}>
-          <div className="demoTitle">{i.meta.title[locale]}</div>
-          <div className="demoContainer">{i.preview(React, ReactDOM)}</div>
+        <div className="demo-item" id={`${name}-demo-${i.meta.order}`} key={index}>
+          <div className="demo-item-title">{i.meta.title[locale]}</div>
+          <div className="demo-item-content">{i.preview(React, ReactDOM)}</div>
           {i.style ? <style dangerouslySetInnerHTML={{ __html: i.style }} /> : null}
         </div>
       ));
-    }
-
-    // document.documentElement.clientHeight to
-    // remove height of toolbars, address bars and navigation (android)
-    const style = {};
-    let touchNoticeText = '';
-    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
-      style.minHeight = document.documentElement.clientHeight;
-    } else if (/(tabs|swipe-action|pull-to-refresh)/i.test(window.location.hash.toLowerCase())) {
-      touchNoticeText =
-        locale === 'en-US'
-          ? 'This component only support Touch Events, USE mobile mode open this page please.'
-          : '该组件只支持Touch事件，请使用移动模式/设备打开此页。';
     }
 
     const isLocalMode = window.location.port;
     const linkUrl = isLocalMode ? '/' : '/modo-mobile/mobile/';
 
     return (
-      <div id={name} style={style} className="demo">
-        <div className="demoName">
+      <div id={name} className="demo-container">
+        <div className="demo-header">
           <a className="icon" href={`${linkUrl}${window.location.search}`} />
           {demoMeta.title}
           {!demoMeta.subtitle || locale === 'en-US' ? null : (
             <span className="ch">{demoMeta.subtitle}</span>
           )}
         </div>
-        {touchNoticeText && (
-          <div mode="closable" marqueeProps={{ loop: true }} icon={null}>
-            {touchNoticeText}
-          </div>
-        )}
-        {demoContent}
+        <div className="demo-list">{demoContent}</div>
       </div>
     );
   }

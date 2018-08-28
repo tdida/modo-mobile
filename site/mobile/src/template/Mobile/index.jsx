@@ -96,8 +96,6 @@ export default class App extends React.Component {
     const { appLocale, cateOpend } = this.state;
     const lists = {};
 
-    console.log(config);
-
     picked.components.filter(item => item.meta.filename.includes(appLocale.locale)).forEach(i => {
       const { meta } = i;
       if (!lists[meta.type]) {
@@ -129,12 +127,11 @@ export default class App extends React.Component {
       rootPath = '/components';
     }
 
-    console.log(lists);
-
     return (
       <IntlProvider locale={appLocale.locale} messages={appLocale.messages}>
         <div className="m-demo-page">
           <div className="m-demo-header">
+            <img src="https://pic.modo-modo.com/saas-1535341906110-28486.png" alt="logo" />
             <h1 className="m-demo-title">
               <FormattedMessage id="app.site.title" />
             </h1>

@@ -18,7 +18,7 @@ title:
 If you want specific control over the positioning and placement of the `Icon`, then that should be done by placing the `Icon` component within the `Button` rather than using the `icon` property.
 
 ```jsx
-import { Button } from "modo-mobile";
+import { Button } from 'modo-mobile';
 
 ReactDOM.render(
   <div className="button-list">
@@ -38,7 +38,7 @@ ReactDOM.render(
 
 ```css
 .button-list {
-  padding: 12px;
+  padding: 10px;
   width: 100%;
   box-sizing: border-box;
 }

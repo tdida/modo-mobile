@@ -6,19 +6,15 @@ title:
 ---
 
 ```jsx
-import { List } from "modo-mobile";
+import { List, Icon } from 'modo-mobile';
 
 const App = () => (
-  <div>
-    <List title="单个条目" style={{ marginBottom: 10 }}>
-      <List.Item title="可点击条目" />
-    </List>
-
-    <List title="多个条目">
-      <List.Item title="禁用条目" disabled />
-      <List.Item title="标题" brief="展示摘要描述" />
-    </List>
-  </div>
+  <List title="标题" extra={<Icon type="plus-circle" />}>
+    <List.Item title="普通列表" arrow="" />
+    <List.Item title="动作列表" />
+    <List.Item title="禁用列表" disabled />
+    <List.Item title="标题" brief="展示摘要描述" />
+  </List>
 );
 ReactDOM.render(<App />, mountNode);
 ```

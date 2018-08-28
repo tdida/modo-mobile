@@ -1,42 +1,76 @@
-@hd: 1px; // 基本单位
+@font: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
+  sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+@primary-color: #1e9eff;
 
-.demoName {
-  font-size: 19 * @hd;
-  color: #404040;
-  padding: 21 * @hd 0 21 * @hd 15 * @hd;
+body {
+  background-color: #f8f8f8;
+  margin: 0;
+  font-family: @font;
+}
+
+.demo-header {
+  font-size: 20px;
+  color: #333;
   text-align: left;
-  height: 20 * @hd;
+  padding: 24px 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+
   .icon {
     display: inline-block;
-    width: 19 * @hd;
-    height: 19 * @hd;
+    width: 18px;
+    height: 18px;
     background-image: url(https://zos.alipayobjects.com/rmsportal/RfxDFanyfhEhOkynbPXizskAQqkPmPkR.png);
     background-size: cover;
-    vertical-align: -1 * @hd;
-    margin-right: 30 * @hd;
     position: relative;
-    &:after {
-      content: "";
+    margin-right: 20px;
+
+    &:before {
+      content: '';
       position: absolute;
-      top: 2.5 * @hd;
-      right: -15 * @hd;
-      width: 1px;
-      height: 15 * @hd;
-      background-color: #ceced1;
+      top: 1px;
+      right: -10px;
+      width: 2px;
+      height: 16px;
+      border-radius: 1px;
+      background-color: @primary-color;
+      box-shadow: 0 2px 4px 0 rgba(97, 144, 232, 0.2);
     }
   }
-  .ch {
-    margin-left: 9 * @hd;
-    font-size: 15 * @hd;
-    color: #888;
+}
+
+.demo-list {
+  .demo-item:first-child {
+    margin: 0;
   }
 }
-.demoTitle {
-  padding: 16px;
-  color: #000;
-  font-size: 16 * @hd;
-  line-height: 16 * @hd;
-  height: 16 * @hd;
-  font-weight: bolder;
-  position: relative;
+
+.demo-item {
+  background-color: #fff;
+  overflow: auto;
+  margin-top: 10px;
+
+  &-title {
+    position: relative;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-left: 22px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 2px;
+      height: 16px;
+      background-color: @primary-color;
+      box-shadow: 0 2px 4px 0 rgba(97, 144, 232, 0.2);
+      border-radius: 1px;
+    }
+  }
 }
