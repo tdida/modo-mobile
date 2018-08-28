@@ -17,9 +17,11 @@ Replace the default icon with customized text.
 import { NoticeBar } from 'modo-mobile';
 
 ReactDOM.render(
-  <NoticeBar mode="closable" action="Close">
-    Replace the default icon with customized text, long text, long text, long text, long text.
-  </NoticeBar>,
+  <div style={{ padding: 10 }}>
+    <NoticeBar mode="closable" action="Close">
+      Replace the default icon with customized text, long text, long text, long text, long text.
+    </NoticeBar>
+  </div>,
   mountNode
 );
 ```

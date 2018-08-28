@@ -17,7 +17,7 @@ The simplest usage for short messages.
 import { NoticeBar } from 'modo-mobile';
 
 ReactDOM.render(
-  <div>
+  <div style={{ padding: 10 }}>
     <NoticeBar>为了确保您的资金安全，请设置支付密码</NoticeBar>
     <br />
     <NoticeBar mode="closable">为了确保您的资金安全，请设置支付密码</NoticeBar>

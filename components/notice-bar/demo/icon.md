@@ -14,15 +14,13 @@ title:
 custom icon.
 
 ```jsx
-import { NoticeBar, Icon } from "modo-mobile";
+import { NoticeBar, Icon } from 'modo-mobile';
 
 ReactDOM.render(
-  <div>
+  <div style={{ padding: 10 }}>
     <NoticeBar icon={<Icon type="question-circle" />}>custom icon</NoticeBar>
     <br />
-    <NoticeBar icon={<div style={{ color: "#1890ff" }}>waring</div>}>
-      custom text
-    </NoticeBar>
+    <NoticeBar icon={<div style={{ color: '#1890ff' }}>waring</div>}>custom text</NoticeBar>
   </div>,
   mountNode
 );

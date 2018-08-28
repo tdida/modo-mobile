@@ -14,7 +14,12 @@ title:
 shows time.
 
 ```jsx
-import { NoticeBar } from "modo-mobile";
+import { NoticeBar } from 'modo-mobile';
 
-ReactDOM.render(<NoticeBar duration={5000}>duration</NoticeBar>, mountNode);
+ReactDOM.render(
+  <div style={{ padding: 10 }}>
+    <NoticeBar duration={5000}>duration</NoticeBar>
+  </div>,
+  mountNode
+);
 ```
