@@ -74,7 +74,7 @@
     "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",
     "babel-plugin-import": "^1.8.0",
-    "bisheng": "^0.28.0",
+    "bisheng": "^0.29.0",
     "bisheng-plugin-antd": "^0.16.5",
     "bisheng-plugin-description": "^0.1.4",
     "bisheng-plugin-react": "^0.6.3",
