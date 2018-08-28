@@ -32,7 +32,7 @@ title: Modo Mobile
 
 ## Version
 
-- development[![npm package](https://img.shields.io/npm/v/modo-mobile.svg?style=flat-square)](https://www.npmjs.org/package/modo-mobile)
+- development: [![npm package](https://img.shields.io/npm/v/modo-mobile.svg?style=flat-square)](https://www.npmjs.org/package/modo-mobile)
 
 You can subscribe to this feed for new version notifications: ：https://github.com/tdida/modo-mobile/releases.atom
 
