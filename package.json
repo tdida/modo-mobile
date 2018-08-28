@@ -50,7 +50,7 @@
     "compile": "antd-tools run compile",
     "prepublish": "antd-tools run guard",
     "pre-publish": "npm run test-all && node ./scripts/prepub",
-    "site": "cross-env NODE_ENV=production concurrently \"cross-env bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng build -c ./site/bisheng.mobile.config.js\" && npm run deploy",
+    "site": "rm -rf ./_site && cross-env NODE_ENV=production concurrently \"cross-env bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng build -c ./site/bisheng.mobile.config.js\" && npm run deploy",
     "lint-staged": "lint-staged",
     "lint-staged:ts": "tsc && node node_modules/tslint/bin/tslint",
     "lint-staged:es": "eslint ./.*.js ./webpack.config.js",
