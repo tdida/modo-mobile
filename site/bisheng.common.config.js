@@ -1,6 +1,6 @@
 const path = require('path');
-const replaceLib = require('antd-tools/lib/replaceLib');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
+const replaceLib = require('../tools/replaceLib');
 
 const isDev = process.env.NODE_ENV === 'development';
 
