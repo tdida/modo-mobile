@@ -43,6 +43,9 @@ describe('Button', () => {
       </Button>
     );
     expect(wrapper6).toMatchSnapshot();
+
+    const wrapper7 = render(<Button />);
+    expect(wrapper7).toMatchSnapshot();
   });
 
   it('should change loading state instantly by default', () => {

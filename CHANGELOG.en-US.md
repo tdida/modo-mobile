@@ -5,6 +5,14 @@ timeline: true
 toc: false
 ---
 
+### 0.0.4
+
+`2018-08-**`
+
+- **Fix**
+
+  - `Button` icon and text interval
+
 ### 0.0.3
 
 `2018-08-29`

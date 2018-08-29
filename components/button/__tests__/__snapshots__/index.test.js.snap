@@ -195,6 +195,17 @@ exports[`Button renders Chinese characters correctly 7`] = `
 </button>
 `;
 
+exports[`Button renders Chinese characters correctly 8`] = `
+<button
+  class="m-button"
+  type="button"
+>
+  <div
+    class="m-button-inner"
+  />
+</button>
+`;
+
 exports[`Button renders correctly 1`] = `
 <button
   class="m-button"
