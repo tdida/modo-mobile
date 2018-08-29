@@ -36,6 +36,13 @@ describe('Button', () => {
     // should insert space while loading
     const wrapper5 = render(<Button loading>按钮</Button>);
     expect(wrapper5).toMatchSnapshot();
+
+    const wrapper6 = render(
+      <Button>
+        <span>按钮</span>
+      </Button>
+    );
+    expect(wrapper6).toMatchSnapshot();
   });
 
   it('should change loading state instantly by default', () => {

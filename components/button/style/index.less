@@ -13,11 +13,6 @@
   .btn;
   .btn-default;
 
-  > .@{iconfont-css-prefix} + span,
-  > span + .@{iconfont-css-prefix} {
-    margin-left: 8px;
-  }
-
   &:hover,
   &:focus,
   &:active {
@@ -36,6 +31,11 @@
     word-break: break-all;
     word-wrap: break-word;
     white-space: nowrap;
+
+    > .@{iconfont-css-prefix} + span,
+    > span + .@{iconfont-css-prefix} {
+      margin-left: 8px;
+    }
   }
 
   &-primary {

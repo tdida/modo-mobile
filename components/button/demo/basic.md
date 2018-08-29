@@ -32,6 +32,9 @@ const ButtonExample = () => (
     <Button type="danger" disabled>
       Danger Disabled
     </Button>
+    <Button target="_blank" href="https://tdida.github.io/modo-mobile/">
+      Link Button
+    </Button>
   </div>
 );
 ReactDOM.render(<ButtonExample />, mountNode);

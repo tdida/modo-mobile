@@ -11,6 +11,7 @@ export interface IButtonProps extends IButtonPropsType {
   shape?: 'circle' | 'circle-outline';
   style?: React.CSSProperties;
   htmlType?: 'submit' | 'button' | 'reset';
+  size?: 'large' | 'small';
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
@@ -27,6 +28,7 @@ function insertSpace(child: React.ReactChild, needInserted: boolean) {
     return;
   }
   const SPACE = needInserted ? ' ' : '';
+
   // strictNullChecks oops.
   if (
     typeof child !== 'string' &&
@@ -50,6 +52,7 @@ class Button extends React.PureComponent<IButtonProps, any> {
     disabled: false,
     inline: false,
     loading: false,
+    size: 'large',
     prefixCls: 'm-button',
   };
 
@@ -58,7 +61,7 @@ class Button extends React.PureComponent<IButtonProps, any> {
     if (onClick) {
       (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)(e);
     }
-  }
+  };
 
   isNeedInserted() {
     const { icon, children } = this.props;
@@ -80,22 +83,11 @@ class Button extends React.PureComponent<IButtonProps, any> {
       ...restProps
     } = this.props;
 
-    let sizeCls = '';
-    switch (size) {
-      case 'large':
-        sizeCls = 'lg';
-        break;
-      case 'small':
-        sizeCls = 'sm';
-      default:
-        break;
-    }
-
     const iconType: any = loading ? 'loading' : icon;
     const wrapCls = classnames(prefixCls, className, {
       [`${prefixCls}-${type}`]: type,
-      [`${prefixCls}-${sizeCls}`]: sizeCls,
       [`${prefixCls}-${shape}`]: shape,
+      [`${prefixCls}-sm`]: size === 'small',
       [`${prefixCls}-inline`]: inline || shape,
       [`${prefixCls}-loading`]: loading,
       [`${prefixCls}-icon`]: !!iconType,
