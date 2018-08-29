@@ -2,8 +2,6 @@ import * as React from 'react';
 import Marquee from './Marquee';
 import Icon from '../icon';
 
-function noop() {}
-
 export interface NoticeBarProps {
   icon?: React.ReactNode;
   mode?: 'closable' | 'link';
@@ -42,14 +40,15 @@ export default class NoticeBar extends React.PureComponent<NoticeBarProps, any> 
       this.handleClose();
       clearTimeout(timer);
     }, time);
-  }
+  };
 
   handleClose = () => {
     this.setState({
       closed: true,
     });
-    (this.props.onClick || noop)();
-  }
+    const { onClick } = this.props;
+    if (onClick) onClick();
+  };
 
   render() {
     const { icon, prefixCls, action, children, mode, onClick } = this.props;

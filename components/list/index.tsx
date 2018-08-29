@@ -11,13 +11,13 @@ export interface ListProps {
 }
 
 export default class List extends React.PureComponent<ListProps, any> {
-  public static Item = Item;
+  static Item = Item;
 
-  public static defaultProps = {
+  static defaultProps = {
     prefixCls: 'm-list',
   };
 
-  public render() {
+  render() {
     const { prefixCls, children, className, style, title, extra, ...restProps } = this.props;
 
     const wrapCls = classnames(prefixCls, className);

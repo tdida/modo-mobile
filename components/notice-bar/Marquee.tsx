@@ -19,7 +19,7 @@ export interface MarqueeProps {
 }
 
 export default class Marquee extends React.Component<MarqueeProps, any> {
-  public static defaultProps = {
+  static defaultProps = {
     className: '',
     fps: 30,
     leading: 500,
@@ -28,32 +28,32 @@ export default class Marquee extends React.Component<MarqueeProps, any> {
     trailing: 800,
   };
 
-  public state = {
+  state = {
     animatedWidth: 0,
     overflowWidth: 0,
   };
 
-  public textRef: any;
+  textRef: any;
   // tslint:disable-next-line:variable-name
   private _marqueeTimer: number = 0;
 
-  public componentDidMount() {
+  componentDidMount() {
     this._measureText();
     this._startAnimation();
   }
 
-  public componentDidUpdate() {
+  componentDidUpdate() {
     this._measureText();
     if (!this._marqueeTimer) {
       this._startAnimation();
     }
   }
 
-  public componentWillUnmount() {
+  componentWillUnmount() {
     clearTimeout(this._marqueeTimer);
   }
 
-  public render() {
+  render() {
     const { prefixCls, className, text } = this.props;
     const style: React.CSSProperties = {
       position: 'relative',
@@ -75,7 +75,7 @@ export default class Marquee extends React.Component<MarqueeProps, any> {
     );
   }
 
-  public _startAnimation() {
+  _startAnimation() {
     if (this._marqueeTimer) {
       window.clearTimeout(this._marqueeTimer);
     }
@@ -119,7 +119,7 @@ export default class Marquee extends React.Component<MarqueeProps, any> {
     }
   }
 
-  public _measureText() {
+  _measureText() {
     const container = ReactDOM.findDOMNode(this);
     const node: any = this.textRef;
     if (container && node) {

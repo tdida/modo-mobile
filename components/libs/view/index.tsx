@@ -6,7 +6,7 @@ interface IViewProps {
 }
 
 export default class View extends React.PureComponent<IViewProps, any> {
-  public render() {
+  render() {
     const style = this.props.hasOwnProperty('show') &&
       !this.props.show && {
         display: 'none',
