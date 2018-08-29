@@ -125,8 +125,10 @@ class Button extends React.PureComponent<IButtonProps, any> {
           className={wrapCls}
           onClick={this.handleClick}
         >
-          {iconNode}
-          {kids}
+          <div className={`${prefixCls}-inner`}>
+            {iconNode}
+            {kids}
+          </div>
         </button>
       );
     }

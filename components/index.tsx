@@ -20,4 +20,5 @@ export { default as Icon } from './icon/index';
 export { default as NoticeBar } from './notice-bar';
 export { default as Agree } from './agree';
 export { default as List } from './list';
+export { default as ActivityIndicator } from './activity-indicator';
 export { default as version } from './version';
