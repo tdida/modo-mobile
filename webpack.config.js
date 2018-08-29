@@ -1,6 +1,6 @@
 const webpack = require('webpack');
-const getWebpackConfig = require('antd-tools/lib/getWebpackConfig');
 const WebpackBar = require('webpackbar');
+const getWebpackConfig = require('./tools/getWebpackConfig');
 
 function usePrettyWebpackBar(config) {
   // remove old progress plugin.

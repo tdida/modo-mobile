@@ -10,11 +10,11 @@ module.exports = {
   setupFiles: ['./tests/setup.js'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'md'],
   modulePathIgnorePatterns: ['/_site/'],
-  testPathIgnorePatterns: ['/node_modules/', 'dekko', 'node'],
+  testPathIgnorePatterns: ['/node_modules/', 'dekko', 'node', 'tools'],
   transform: {
-    '\\.tsx?$': './node_modules/antd-tools/lib/jest/codePreprocessor',
-    '\\.js$': './node_modules/antd-tools/lib/jest/codePreprocessor',
-    '\\.md$': './node_modules/antd-tools/lib/jest/demoPreprocessor',
+    '\\.tsx?$': './tools/jest/codePreprocessor.js',
+    '\\.js$': './tools/jest/codePreprocessor.js',
+    '\\.md$': './tools/jest/demoPreprocessor.js',
   },
   testRegex: libDir === 'dist' ? 'demo\\.test\\.js$' : '.*\\.test\\.js$',
   collectCoverageFrom: [

@@ -6,6 +6,7 @@ module.exports = Object.assign({}, commonConfig, {
   source: {
     components: './components',
     docs: './docs',
+    changelog: ['CHANGELOG.zh-CN.md', 'CHANGELOG.en-US.md'],
   },
   root: '/modo-mobile/',
   theme: './site/desktop/src',

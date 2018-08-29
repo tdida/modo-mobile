@@ -17,7 +17,7 @@ const App = () => (
       内容居中展示
     </List.Item>
     <List.Item title="一个换行的标题">内容靠右展示</List.Item>
-    <List.Item title="ICON标题" extra={<Icon type="setting" />}>
+    <List.Item title="图标标题" extra={<Icon type="setting" />}>
       内容展示
     </List.Item>
   </List>

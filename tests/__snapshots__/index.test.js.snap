@@ -7,6 +7,7 @@ Array [
   "NoticeBar",
   "Agree",
   "List",
+  "ActivityIndicator",
   "version",
 ]
 `;

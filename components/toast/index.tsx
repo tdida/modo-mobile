@@ -45,14 +45,14 @@ function next(props: IToastPropsType) {
 }
 
 export default {
-  info(content: string, duration = 2000, hasMask?: boolean) {
+  info(content: string, duration = 2000, hasMask = false) {
     return Toast({
       content,
       duration,
       hasMask,
     });
   },
-  success(content: string, duration = 2000, hasMask?: boolean) {
+  success(content: string, duration = 2000, hasMask = false) {
     return Toast({
       content,
       duration,
@@ -60,7 +60,7 @@ export default {
       icon: 'check-circle',
     });
   },
-  fail(content: string, duration = 2000, hasMask?: boolean) {
+  fail(content: string, duration = 2000, hasMask = false) {
     return Toast({
       content,
       duration,

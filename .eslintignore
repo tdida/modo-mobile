@@ -1,3 +1,4 @@
+tools
 components/**/*.js
 components/**/*.jsx
 components/*/__tests__/type.tsx
