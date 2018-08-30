@@ -13,13 +13,15 @@ export interface ListItemProps {
   arrow?: 'down' | 'up' | 'empty' | 'left' | 'right' | '';
   extra?: React.ReactNode | string;
   wrap?: boolean;
+  solid?: boolean;
 }
 
 export default class ListItem extends React.PureComponent<ListItemProps, any> {
   static defaultProps = {
     prefixCls: 'm-list-item',
     align: 'right',
-    arrow: 'right',
+    arrow: '',
+    solid: false,
   };
 
   render() {
@@ -35,10 +37,12 @@ export default class ListItem extends React.PureComponent<ListItemProps, any> {
       wrap,
       arrow,
       extra,
+      solid,
       ...restProps
     } = this.props;
 
     const wrapCls = classnames(`${prefixCls}`, className, {
+      [`${prefixCls}-has-arrow`]: arrow !== '',
       [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-${align}`]: align,
     });
@@ -49,6 +53,10 @@ export default class ListItem extends React.PureComponent<ListItemProps, any> {
 
     const arrowCls = classnames(`${prefixCls}-arrow`, {
       [`${prefixCls}-arrow-${arrow}`]: arrow,
+    });
+
+    const labelCls = classnames(`${prefixCls}-label`, {
+      [`${prefixCls}-label-solid`]: solid,
     });
 
     const extraDom = extra ? (
@@ -67,7 +75,7 @@ export default class ListItem extends React.PureComponent<ListItemProps, any> {
       <div className={wrapCls} style={style} {...restProps}>
         <div className={`${prefixCls}-inner`}>
           {extraDom}
-          <div className={`${prefixCls}-label`}>
+          <div className={labelCls}>
             <div className={`${prefixCls}-title`}>{title}</div>
             {brief ? <div className={`${prefixCls}-brief`}>{brief}</div> : null}
           </div>

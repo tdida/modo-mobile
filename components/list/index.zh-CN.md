@@ -31,3 +31,4 @@ subtitle: 列表
 | arrow   | 箭头方向`left`,`right`,`up`,`down`,`empty`, `""`      | String        | `right` |
 | align   | 自定义内容时，内容位置，可选`left`, `right`, `center` | String        | `right` |
 | onClick | 点击事件的回调函数                                    | (): void      | 无      |
+| solid   | 是否固定标题宽度，超出会自动换行                      | Boolean       | `false` |

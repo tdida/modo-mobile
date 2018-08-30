@@ -1,0 +1,82 @@
+@import '../../style/themes/default';
+
+@stepper-prefix-cls: ~'@{m-prefix}-stepper';
+
+.@{stepper-prefix-cls} {
+  height: @stepper-height * 2;
+  display: flex;
+
+  &.@{stepper-prefix-cls}-disabled {
+    .@{stepper-prefix-cls}-button {
+      opacity: @stepper-disabled-opacity;
+    }
+
+    input {
+      opacity: @stepper-disabled-opacity;
+    }
+  }
+
+  &-button {
+    position: relative;
+    width: @stepper-height * 2;
+    height: @stepper-height * 2;
+    border-radius: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: @stepper-height;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      background: @stepper-color;
+      transform: translate(-50%, -50%);
+      border-radius: 2px;
+    }
+
+    &.@{stepper-prefix-cls}-button-add {
+      &::before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: @stepper-height;
+        top: 50%;
+        left: 50%;
+        background: @stepper-color;
+        transform: translate(-50%, -50%);
+        border-radius: 2px;
+      }
+    }
+
+    &-disabled {
+      opacity: @stepper-disabled-opacity;
+    }
+  }
+
+  &-number {
+    width: @stepper-input-width;
+    height: @stepper-height * 2;
+    font-size: 0;
+    position: relative;
+    background-color: @stepper-input-bg;
+    border-radius: @border-radius-sm;
+    margin: 0 3px;
+    padding: 0 3px;
+
+    input {
+      width: 100%;
+      height: @stepper-height * 2;
+      border: none;
+      outline: none;
+      font-size: @stepper-font-size;
+      line-height: @stepper-height;
+      background-color: transparent;
+      box-sizing: border-box;
+      text-align: center;
+      color: @stepper-color;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+    }
+  }
+}

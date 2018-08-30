@@ -59,7 +59,7 @@ exports[`renders ./components/list/demo/basic.md correctly 1`] = `
       </div>
     </div>
     <div
-      class="m-list-item m-list-item-right"
+      class="m-list-item m-list-item-has-arrow m-list-item-right"
     >
       <div
         class="m-list-item-inner"
@@ -102,7 +102,7 @@ exports[`renders ./components/list/demo/basic.md correctly 1`] = `
       </div>
     </div>
     <div
-      class="m-list-item m-list-item-disabled m-list-item-right"
+      class="m-list-item m-list-item-has-arrow m-list-item-disabled m-list-item-right"
     >
       <div
         class="m-list-item-inner"
@@ -145,7 +145,7 @@ exports[`renders ./components/list/demo/basic.md correctly 1`] = `
       </div>
     </div>
     <div
-      class="m-list-item m-list-item-right"
+      class="m-list-item m-list-item-has-arrow m-list-item-right"
     >
       <div
         class="m-list-item-inner"
@@ -204,13 +204,13 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
     class="m-list-body"
   >
     <div
-      class="m-list-item m-list-item-left"
+      class="m-list-item m-list-item-has-arrow m-list-item-left"
     >
       <div
         class="m-list-item-inner"
       >
         <div
-          class="m-list-item-label"
+          class="m-list-item-label m-list-item-label-solid"
         >
           <div
             class="m-list-item-title"
@@ -249,7 +249,7 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
       </div>
     </div>
     <div
-      class="m-list-item m-list-item-center"
+      class="m-list-item m-list-item-has-arrow m-list-item-center"
     >
       <div
         class="m-list-item-inner"
@@ -260,7 +260,7 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
           <div
             class="m-list-item-title"
           >
-            短标题
+            标题宽度不固定
           </div>
         </div>
         <div
@@ -294,18 +294,18 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
       </div>
     </div>
     <div
-      class="m-list-item m-list-item-right"
+      class="m-list-item m-list-item-has-arrow m-list-item-right"
     >
       <div
         class="m-list-item-inner"
       >
         <div
-          class="m-list-item-label"
+          class="m-list-item-label m-list-item-label-solid"
         >
           <div
             class="m-list-item-title"
           >
-            一个换行的标题
+            标题宽度固定
           </div>
         </div>
         <div
@@ -339,7 +339,7 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
       </div>
     </div>
     <div
-      class="m-list-item m-list-item-right"
+      class="m-list-item m-list-item-has-arrow m-list-item-right"
     >
       <div
         class="m-list-item-inner"

@@ -28,3 +28,4 @@ A single and continuous block content is vertically arranged to display current 
 | arrow    | arrow direction, options: `left`,`right`,`up`,`down`,`empty`, `""`       | String        | `right` |
 | align    | vertical alignment of child elements, options: `left`, `right`, `center` | String        | `right` |
 | onClick  | callback is called when list is clicked                                  | (): void      | -       |
+| solid    | the width of title is fixed or not                                       | Boolean       | false   |

@@ -9,9 +9,16 @@ toc: false
 
 `2018-08-**`
 
+- **Feature**
+
+  - 🌟 Add `Stepper` component.
+  - add `List` soid, the width of title is fixed or not.
+
 - **Fix**
 
-  - `Button` icon and text interval
+  - `Button` icon and text interval.
+  - href `Button` text not center, width overflow.
+  - `List` not arrow click animate。
 
 ### 0.0.3
 
@@ -19,7 +26,7 @@ toc: false
 
 - **Feature**
 
-  - 🌟 Add `ActivityIndicator` Components
+  - 🌟 Add `ActivityIndicator` component.
 
 ### 0.0.1
 
@@ -27,8 +34,8 @@ toc: false
 
 - **Feature**
 
-  - 🌟 Add `Button` Components
-  - 🌟 Add `Icon` Components
-  - 🌟 Add `NoticeBar` Components
-  - 🌟 Add `List` Components
-  - 🌟 Add `Agree` Components
+  - 🌟 Add `Button` component.
+  - 🌟 Add `Icon` component.
+  - 🌟 Add `NoticeBar` component.
+  - 🌟 Add `List` component.
+  - 🌟 Add `Agree` component.
