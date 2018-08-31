@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-interface IViewProps {
+interface ViewProps {
   show: boolean;
   children: React.ReactElement<any>;
 }
 
-export default class View extends React.PureComponent<IViewProps, any> {
+export default class View extends React.Component<ViewProps, any> {
   render() {
     const style = this.props.hasOwnProperty('show') &&
       !this.props.show && {
@@ -13,7 +13,7 @@ export default class View extends React.PureComponent<IViewProps, any> {
       };
 
     return React.cloneElement(React.Children.only(this.props.children), {
-      style: { ...this.props.children.props.style, style },
+      style: Object.assign({}, this.props.children.props.style, style),
     });
   }
 }

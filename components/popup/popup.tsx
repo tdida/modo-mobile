@@ -1,12 +1,38 @@
 import * as React from 'react';
-import { Transition, View } from '../libs';
-import { defaultProps, IPopupPropsType } from './PropsType';
-import './style/index.less';
+import Animate from 'rc-animate';
+import TitleBar from './title-bar';
+import View from '../view';
 
-class Popup extends React.Component<IPopupPropsType, any> {
-  public static defaultProps = defaultProps;
+export interface PopupProps {
+  visible: boolean;
+  prefixCls?: string;
+  hasMask?: boolean;
+  maskClosable?: boolean;
+  position?: 'bottom' | 'top' | 'right' | 'left' | 'center';
+  preventScroll?: boolean;
+  preventScrollExclude?: string | object;
+  onClose?: (e: any) => void;
+  onAnimateEnd?: (exists: Boolean, key?: string) => void;
+}
 
-  public componentDidUpdate(prevProps: IPopupPropsType) {
+class Popup extends React.Component<PopupProps, any> {
+  static TitleBar = TitleBar;
+
+  static defaultProps = {
+    closable: true,
+    hasMask: true, // 是否有蒙层
+    maskClosable: true, // 点击蒙层是否可关闭弹出层
+    position: 'center', // 弹出层位置
+    prefixCls: 'm-popup',
+    preventScroll: false, // 防止滚动穿透
+    preventScrollExclude: '', // 禁止滚动的排除元素
+    visible: false, // 弹出层是否可见
+  };
+
+  maskRef: any;
+  boxRef: any;
+
+  componentDidUpdate(prevProps: PopupProps) {
     if (this.props.visible && !prevProps.visible) {
       this.handleOpen();
     }
@@ -16,39 +42,38 @@ class Popup extends React.Component<IPopupPropsType, any> {
     }
   }
 
-  public handlePreventScroll = (isBind: boolean) => {
-    const { prefixCls } = this.props;
+  handlePreventScroll = (isBind: boolean) => {
     const handler: string = isBind ? 'addEventListener' : 'removeEventListener';
-    const masker: any = document.querySelector(`.${prefixCls}-mask`);
-    const boxer: any = document.querySelector(`.${prefixCls}-box`);
-    if (masker) {
-      masker[handler]('touchmove', this.handlePreventDefault, false);
+    if (this.maskRef) {
+      this.maskRef[handler]('touchmove', this.handlePreventDefault, false);
     }
-    if (boxer) {
-      boxer[handler]('touchmove', this.handlePreventDefault, false);
-    }
+    // if (this.boxRef) {
+    //   this.boxRef[handler]('touchmove', this.handlePreventDefault, false);
+    // }
     this.handlePreventScrollExclude(isBind, null);
-  }
+  };
 
-  public handlePreventScrollExclude = (isBind: boolean, preventScrollExclude: any) => {
+  handlePreventScrollExclude = (isBind: boolean, preventScrollExclude: any) => {
     const handler = isBind ? 'addEventListener' : 'removeEventListener';
-    const excluder: any =
-      preventScrollExclude && typeof preventScrollExclude === 'string'
-        ? document.querySelector(preventScrollExclude)
-        : preventScrollExclude;
+    preventScrollExclude = preventScrollExclude || this.props.preventScrollExclude;
+    const excluder: any = preventScrollExclude
+      ? typeof preventScrollExclude === 'string'
+        ? this.boxRef.querySelector(preventScrollExclude)
+        : preventScrollExclude
+      : null;
 
     if (excluder) {
       excluder[handler]('touchmove', this.handleStopImmediatePropagation, false);
     }
-  }
+  };
 
-  public handleOpen = () => {
+  handleOpen = () => {
     if (this.props.preventScroll) {
       this.handlePreventScroll(true);
     }
-  }
+  };
 
-  public handleClose = (e: any) => {
+  handleClose = (e: any) => {
     const { onClose } = this.props;
     if (this.props.preventScroll) {
       this.handlePreventScroll(false);
@@ -56,63 +81,67 @@ class Popup extends React.Component<IPopupPropsType, any> {
     if (onClose) {
       onClose(e);
     }
-  }
+  };
 
-  public handleMaskClick = (e: any) => {
+  handleMaskClick = (e: any) => {
     if (this.props.maskClosable) {
       this.handleClose(e);
     }
-  }
+  };
 
-  public handleAfterLeave = () => {
-    const { willUnmount } = this.props;
-    if (willUnmount) {
-      willUnmount();
-    }
-  }
+  handleOnEnd = (key: string, exists: Boolean) => {
+    const { onAnimateEnd } = this.props;
+    if (onAnimateEnd) onAnimateEnd(exists, key);
+  };
 
-  public handlePreventDefault(e: any) {
+  handlePreventDefault(e: any) {
     e.preventDefault();
   }
 
-  public handleStopImmediatePropagation(e: any) {
+  handleStopImmediatePropagation(e: any) {
     e.stopImmediatePropagation();
   }
 
-  public render() {
+  render() {
     const { prefixCls, visible, children, hasMask, position } = this.props;
 
     const transtion = (() => {
       switch (position) {
         case 'bottom':
-          return 'slide-up';
+          return 'move-down';
         case 'top':
-          return 'slide-down';
+          return 'move-up';
         case 'left':
-          return 'slide-right';
+          return 'move-left';
         case 'right':
-          return 'slide-left';
+          return 'move-right';
         default:
           return 'fade';
       }
     })();
 
-    const maskDom = hasMask && (
-      <Transition name="fade">
+    const maskNode = hasMask && (
+      <Animate component="" transitionName="fade" showProp="show">
         <View show={visible}>
-          <div className={`${prefixCls}-mask`} onClick={this.handleMaskClick} />
+          <div
+            ref={e => (this.maskRef = e)}
+            className={`${prefixCls}-mask`}
+            onClick={this.handleMaskClick}
+          />
         </View>
-      </Transition>
+      </Animate>
     );
 
     return (
-      <div className={`${prefixCls} ${position}`}>
-        {maskDom}
-        <Transition name={transtion} onAfterLeave={this.handleAfterLeave}>
+      <div className={`${prefixCls} ${prefixCls}-${position}`}>
+        {maskNode}
+        <Animate component="" transitionName={transtion} showProp="show" onEnd={this.handleOnEnd}>
           <View show={visible}>
-            <div className={`${prefixCls}-box`}>{children}</div>
+            <div className={`${prefixCls}-box`} ref={e => (this.boxRef = e)}>
+              {children}
+            </div>
           </View>
-        </Transition>
+        </Animate>
       </div>
     );
   }

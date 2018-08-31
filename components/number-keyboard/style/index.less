@@ -1,0 +1,115 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/hairline.less';
+
+@number-keyboard-prefix-cls: ~'@{m-prefix}-number-keyboard';
+
+.@{number-keyboard-prefix-cls} {
+  display: flex;
+  width: 100%;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  .hairline('top', @number-keyboard-border-color);
+
+  &-number {
+    flex: 3;
+    background-color: #fff;
+
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-item {
+      width: 100% / 3;
+      height: @number-keyboard-font-size * 2;
+      position: relative;
+      text-align: center;
+      line-height: @number-keyboard-font-size * 2;
+      font-size: @number-keyboard-font-size;
+      font-weight: 500;
+      font-family: @number-font-family;
+      color: @number-keyboard-text-color;
+      transition: background 0.3s;
+      background: #fff;
+      .hairline('right', @number-keyboard-border-color);
+      .hairline('top', @number-keyboard-border-color);
+
+      &:before {
+        display: none !important;
+      }
+
+      &:nth-of-type(n + 4):before {
+        display: inline !important;
+      }
+
+      &:nth-of-type(3n)::after {
+        display: none !important;
+      }
+
+      &:active {
+        background-color: #f0f0f0;
+      }
+
+      &-slidedown {
+        // background: #fff url('./images/keyboard-hide.png') 50% no-repeat;
+        // background-size: @number-keyboard-font-size;
+      }
+
+      &-delete {
+        // background: #fff url('./images/keyboard-del-simple.png') 50% no-repeat;
+        // background-size: @number-keyboard-font-size;
+      }
+
+      &-no {
+        &:active {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  &-operate {
+    flex: 1;
+
+    &-list {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-item {
+      width: 100%;
+      background: #fff;
+      transition: background 0.3s;
+
+      &-delete {
+        flex: 1;
+        position: relative;
+        height: @number-keyboard-font-size * 2;
+        // background: #fff url('./images/keyboard-del.png') 50% no-repeat;
+        // background-size: @number-keyboard-font-size;
+        .hairline('left', @number-keyboard-border-color);
+
+        &:active {
+          background-color: #f0f0f0;
+        }
+      }
+
+      &-confirm {
+        overflow: hidden;
+        color: #fff;
+        font-size: @number-keyboard-font-size - 2;
+        background-color: @primary-color;
+        flex: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+
+        &:active {
+          background-color: @primary-7;
+        }
+      }
+    }
+  }
+}

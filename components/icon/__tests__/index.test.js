@@ -4,16 +4,12 @@ import Icon from '..';
 
 describe('Icon', () => {
   it('should render to a <i class="xxx"><svg>...</svg></i>', () => {
-    const wrapper = render(
-      <Icon type="message" className="my-icon-classname" />
-    );
+    const wrapper = render(<Icon type="message" className="my-icon-classname" />);
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render correctly with rotate, flip, viewBox props', () => {
-    const wrapper = render(
-      <Icon type="setting" rotate={127} flip="both" viewBox="0 0 24 24" />
-    );
+  it('should support two-tone icon', () => {
+    const wrapper = render(<Icon type="check-circle" theme="two-tone" primaryColor="#f5222d" />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -28,9 +24,7 @@ describe('Icon', () => {
   });
 
   it('should give warning and render <i>{null}</i>', () => {
-    const wrapper = render(
-      <Icon viewBox="0 0 24 24" />
-    );
+    const wrapper = render(<Icon viewBox="0 0 24 24" />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -47,15 +41,12 @@ describe('Icon', () => {
                   <stop offset="90%" stopColor="#F3F" />
                 </linearGradient>
               </defs>
-              {
-                React.Children.map(
-                  svgProps.children,
-                  child => React.cloneElement(
-                    child,
-                    child.type === 'path' ? { fill: 'scriptUrl(#gradient)' } : {}
-                  )
+              {React.Children.map(svgProps.children, child =>
+                React.cloneElement(
+                  child,
+                  child.type === 'path' ? { fill: 'scriptUrl(#gradient)' } : {}
                 )
-              }
+              )}
             </svg>
           )}
         >
@@ -76,10 +67,7 @@ describe('Icon', () => {
     );
 
     const wrapper = render(
-      <Icon
-        className="my-home-icon"
-        component={SvgComponent}
-      >
+      <Icon className="my-home-icon" component={SvgComponent}>
         <title>Cool Home</title>
         <path d="'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'" />
       </Icon>

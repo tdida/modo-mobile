@@ -33,7 +33,7 @@ class Toast extends React.PureComponent<IToastPropsType, any> {
       clearTimeout(this.closeTimer);
       this.closeTimer = null;
     }
-  }
+  };
 
   public startCloseTimer = (duration: number) => {
     clearTimeout(this.closeTimer);
@@ -43,14 +43,21 @@ class Toast extends React.PureComponent<IToastPropsType, any> {
         this.onClose();
       }, duration);
     }
-  }
+  };
 
   public onClose = () => {
     this.setState({ visible: false });
-  }
+  };
+
+  handleAnimateEnd = (exists: boolean) => {
+    const { willUnmount } = this.props;
+    if (!exists && willUnmount) {
+      willUnmount();
+    }
+  };
 
   public render() {
-    const { prefixCls, icon, content, hasMask, position, willUnmount } = this.props;
+    const { prefixCls, icon, content, hasMask, position } = this.props;
 
     const wrapCls = classNames({
       [`${prefixCls}`]: true,
@@ -60,7 +67,7 @@ class Toast extends React.PureComponent<IToastPropsType, any> {
 
     return (
       <div className={wrapCls}>
-        <Popup visible={this.state.visible} hasMask={hasMask} willUnmount={willUnmount}>
+        <Popup visible={this.state.visible} hasMask={hasMask} onAnimateEnd={this.handleAnimateEnd}>
           <div className={`${prefixCls}-wrapper`}>
             <div className={`${prefixCls}-content`}>{content ? <span>{content}</span> : ''}</div>
           </div>

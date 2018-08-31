@@ -4,4 +4,6 @@ declare module '*.json' {
   export default value;
 }
 
+declare module 'rc-animate';
+
 declare module 'warning';

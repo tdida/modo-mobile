@@ -8,6 +8,8 @@ Array [
   "Agree",
   "List",
   "Stepper",
+  "Popup",
+  "NumberKeyboard",
   "ActivityIndicator",
   "version",
 ]
