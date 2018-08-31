@@ -5,6 +5,14 @@ timeline: true
 toc: false
 ---
 
+### 0.0.6
+
+`2018-08-30`
+
+- **Fix**
+
+  - 修复 `NumberKeyboard` icon。
+
 ### 0.0.5
 
 `2018-08-31`

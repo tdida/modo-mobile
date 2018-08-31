@@ -1,6 +1,6 @@
 {
   "name": "modo-mobile",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "A React Mobile UI Toolkit",
   "homepage": "https://tdida.github.io/modo-mobile",
   "repository": {
@@ -52,7 +52,7 @@
     "pub-with-ci": "node tools/cli/run.js pub-with-ci",
     "compile": "node tools/cli/run.js compile",
     "prepublish": "node tools/cli/run.js guard",
-    "pre-publish": "node run test:all && node ./scripts/prepub",
+    "pre-publish": "npm run test:all && node ./scripts/prepub",
     "site": "cross-env NODE_ENV=production concurrently \"cross-env bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env bisheng build -c ./site/bisheng.mobile.config.js\"",
     "lint-staged": "lint-staged",
     "lint-staged:ts": "tsc && node node_modules/tslint/bin/tslint",

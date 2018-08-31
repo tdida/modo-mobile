@@ -72,17 +72,9 @@ function dist(done) {
 function tag() {
   console.log('tagging');
   const { version } = packageJson;
-  execSync(`git config --global user.email ${process.env.GITHUB_USER_EMAIL}`);
-  execSync(`git config --global user.name ${process.env.GITHUB_USER_NAME}`);
   execSync(`git tag ${version}`);
-  execSync(
-    `git push https://${
-      process.env.GITHUB_TOKEN
-    }@github.com/tdida/modo-mobile.git ${version}:${version}`
-  );
-  execSync(
-    `git push https://${process.env.GITHUB_TOKEN}@github.com/tdida/modo-mobile.git master:master`
-  );
+  execSync(`git push https://github.com/tdida/modo-mobile.git ${version}:${version}`);
+  execSync(`git push https://github.com/tdida/modo-mobile.git master:master`);
   console.log('tagged');
 }
 
@@ -102,7 +94,7 @@ function githubRelease(done) {
   }
   const github = new GitHub();
   github.authenticate({
-    type: 'oauth',
+    type: 'token',
     token: process.env.GITHUB_TOKEN,
   });
   const date = new Date();
