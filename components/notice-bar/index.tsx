@@ -17,7 +17,7 @@ export default class NoticeBar extends React.PureComponent<NoticeBarProps, any> 
     prefixCls: 'm-notice-bar',
     mode: '',
     duration: 0,
-    icon: <Icon type="notification" />,
+    icon: <Icon type="info-circle" />,
     onClick() {},
   };
 

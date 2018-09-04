@@ -5,6 +5,14 @@ timeline: true
 toc: false
 ---
 
+### 0.0.8
+
+`2018-09-04`
+
+- **Fix**
+  - 修复 `List` css 单独引入 bug
+  - 修复 `NoticeBar` icon 失效
+
 ### 0.0.7
 
 `2018-09-04`

@@ -355,7 +355,7 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
           class="m-list-item-extra"
         >
           <i
-            class="m-icon m-icon-setting"
+            class="m-icon m-icon-info-circle"
           >
             <i
               class="m-icon"
@@ -368,7 +368,7 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
                 width="1em"
               >
                 <use
-                  href="#icon-setting"
+                  href="#icon-info-circle"
                 />
               </svg>
             </i>

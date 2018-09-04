@@ -11,7 +11,7 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
       class="m-notice-bar-icon"
     >
       <i
-        class="m-icon m-icon-notification"
+        class="m-icon m-icon-info-circle"
       >
         <i
           class="m-icon"
@@ -24,7 +24,7 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
             width="1em"
           >
             <use
-              href="#icon-notification"
+              href="#icon-info-circle"
             />
           </svg>
         </i>
@@ -55,7 +55,7 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
       class="m-notice-bar-icon"
     >
       <i
-        class="m-icon m-icon-notification"
+        class="m-icon m-icon-info-circle"
       >
         <i
           class="m-icon"
@@ -68,7 +68,7 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
             width="1em"
           >
             <use
-              href="#icon-notification"
+              href="#icon-info-circle"
             />
           </svg>
         </i>
@@ -122,7 +122,7 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
       class="m-notice-bar-icon"
     >
       <i
-        class="m-icon m-icon-notification"
+        class="m-icon m-icon-info-circle"
       >
         <i
           class="m-icon"
@@ -135,7 +135,7 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
             width="1em"
           >
             <use
-              href="#icon-notification"
+              href="#icon-info-circle"
             />
           </svg>
         </i>
@@ -195,7 +195,7 @@ exports[`renders ./components/notice-bar/demo/close-text.md correctly 1`] = `
       class="m-notice-bar-icon"
     >
       <i
-        class="m-icon m-icon-notification"
+        class="m-icon m-icon-info-circle"
       >
         <i
           class="m-icon"
@@ -208,7 +208,7 @@ exports[`renders ./components/notice-bar/demo/close-text.md correctly 1`] = `
             width="1em"
           >
             <use
-              href="#icon-notification"
+              href="#icon-info-circle"
             />
           </svg>
         </i>
@@ -250,7 +250,7 @@ exports[`renders ./components/notice-bar/demo/duration.md correctly 1`] = `
       class="m-notice-bar-icon"
     >
       <i
-        class="m-icon m-icon-notification"
+        class="m-icon m-icon-info-circle"
       >
         <i
           class="m-icon"
@@ -263,7 +263,7 @@ exports[`renders ./components/notice-bar/demo/duration.md correctly 1`] = `
             width="1em"
           >
             <use
-              href="#icon-notification"
+              href="#icon-info-circle"
             />
           </svg>
         </i>

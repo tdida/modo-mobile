@@ -19,7 +19,7 @@ const App = () => (
     <List.Item title="标题宽度固定" solid arrow="right">
       内容靠右展示
     </List.Item>
-    <List.Item title="图标标题" arrow="right" extra={<Icon type="setting" />}>
+    <List.Item title="图标标题" arrow="right" extra={<Icon type="info-circle" />}>
       内容展示
     </List.Item>
   </List>
