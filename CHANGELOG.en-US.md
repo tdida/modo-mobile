@@ -5,13 +5,28 @@ timeline: true
 toc: false
 ---
 
+### 0.0.7
+
+`2018-09-04`
+
+- **Feature**
+
+  - Removed `ant-icons` , Reduce packet size.
+  - Update `Icon` doc.
+  - Use `Icon` instead of `NumberKeyboard` img icon。
+
+* **Fix**
+
+  - Removed invalid dependencies.
+  - `Button` loading style.
+
 ### 0.0.6
 
 `2018-08-30`
 
 - **Fix**
 
-  - `NumberKeyboard` icon。
+  - `NumberKeyboard` icon.
 
 ### 0.0.5
 

@@ -1,6 +1,6 @@
 {
   "name": "modo-mobile",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A React Mobile UI Toolkit",
   "homepage": "https://tdida.github.io/modo-mobile",
   "repository": {
@@ -48,7 +48,7 @@
     "tsc": "tsc",
     "clean": "node tools/cli/run.js clean",
     "deploy": "npm run clean && npm run site && bisheng gh-pages --push-only",
-    "pub": "node tools/cli/run.js pub",
+    "pub": "cross-env BABEL_ENV=dist node tools/cli/run.js pub --skip-tag",
     "pub-with-ci": "node tools/cli/run.js pub-with-ci",
     "compile": "node tools/cli/run.js compile",
     "prepublish": "node tools/cli/run.js guard",
@@ -60,20 +60,16 @@
     "lint-staged:demo": "cross-env RUN_ENV=DEMO eslint --ext '.md'"
   },
   "dependencies": {
-    "@ant-design/icons": "^0.3.0-beta.3",
-    "@ant-design/icons-react": "^0.3.0-beta.3",
-    "@types/classnames": "^2.2.6",
-    "@types/react": "^16.4.11",
-    "@types/react-dom": "^16.0.7",
-    "@types/warning": "^3.0.0",
     "classnames": "^2.2.6",
     "rc-animate": "~3.0.0-rc.6",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
     "warning": "^4.0.2"
   },
   "devDependencies": {
     "@octokit/rest": "^15.10.0",
+    "@types/classnames": "^2.2.6",
+    "@types/react": "^16.4.13",
+    "@types/react-dom": "^16.0.7",
+    "@types/warning": "^3.0.0",
     "antd": "^3.8.4",
     "antd-theme-generator": "^1.0.7",
     "autoprefixer": "^9.1.1",
@@ -151,8 +147,10 @@
     "qrcode.react": "^0.8.0",
     "raf": "^3.4.0",
     "rc-drawer": "^1.7.3",
+    "react": "^16.4.2",
     "react-copy-to-clipboard": "^5.0.1",
     "react-document-title": "^2.0.3",
+    "react-dom": "^16.4.2",
     "react-github-button": "^0.1.11",
     "react-intl": "^2.4.0",
     "react-sticky": "^6.0.3",

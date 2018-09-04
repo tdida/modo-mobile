@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Icon from '../icon';
 
 export interface KeyboardProps {
   prefixCls?: string;
@@ -100,7 +101,9 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
           <li
             className={`${prefixCls}-number-item ${prefixCls}-number-item-slidedown`}
             onClick={this.onSlideDoneClick}
-          />
+          >
+            <Icon type="keyboard" />
+          </li>
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -114,7 +117,9 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
           <li
             className={`${prefixCls}-number-item ${prefixCls}-number-item-delete`}
             onClick={this.onDeleteClick}
-          />
+          >
+            <Icon type="backspace-o" />
+          </li>
         </React.Fragment>
       );
 
@@ -132,7 +137,9 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
               <li
                 className={`${prefixCls}-operate-item ${prefixCls}-operate-item-delete`}
                 onClick={this.onDeleteClick}
-              />
+              >
+                <Icon type="backspace" />
+              </li>
               <li
                 className={`${prefixCls}-operate-item ${prefixCls}-operate-item-confirm`}
                 onClick={this.onConfirmClick}

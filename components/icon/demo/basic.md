@@ -18,10 +18,9 @@ import { Icon } from 'modo-mobile';
 
 ReactDOM.render(
   <div className="icons-list">
-    <Icon type="home" />
-    <Icon type="setting" />
-    <Icon type="smile-o" />
-    <Icon type="sync" spin />
+    <Icon type="info-circle-o" />
+    <Icon type="info-circle" />
+    <Icon type="loading-spinner" spin />
     <Icon type="loading" />
   </div>,
   mountNode

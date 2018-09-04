@@ -45,7 +45,7 @@ class App extends React.Component {
         </Button>
         <Button
           type="primary"
-          icon="poweroff"
+          icon="search"
           loading={iconLoading}
           onClick={this.enterIconLoading}
           inline

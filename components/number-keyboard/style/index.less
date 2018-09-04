@@ -50,16 +50,6 @@
         background-color: #f0f0f0;
       }
 
-      &-slidedown {
-        background: #fff url('./images/keyboard-hide.png') 50% no-repeat;
-        background-size: @number-keyboard-font-size;
-      }
-
-      &-delete {
-        background: #fff url('./images/keyboard-del-simple.png') 50% no-repeat;
-        background-size: @number-keyboard-font-size;
-      }
-
       &-no {
         &:active {
           background-color: #fff;
@@ -86,9 +76,13 @@
         flex: 1;
         position: relative;
         height: @number-keyboard-font-size * 2;
-        background: #fff url('./images/keyboard-del.png') 50% no-repeat;
-        background-size: @number-keyboard-font-size;
+        line-height: @number-keyboard-font-size * 2;
+        text-align: center;
         .hairline('left', @number-keyboard-border-color);
+
+        i {
+          font-size: @number-keyboard-font-size;
+        }
 
         &:active {
           background-color: #f0f0f0;

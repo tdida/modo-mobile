@@ -5,6 +5,21 @@ timeline: true
 toc: false
 ---
 
+### 0.0.7
+
+`2018-09-04`
+
+- **Feature**
+
+  - 移除 `ant-icons`，缩减包大小。
+  - 更新 `Icon` 文档。
+  - 使用 `Icon` 替代 `NumberKeyboard` 图片 icon 。
+
+- **Fix**
+
+  - 移除无效依赖。.
+  - 修复 `Button` 加载样式。
+
 ### 0.0.6
 
 `2018-08-30`

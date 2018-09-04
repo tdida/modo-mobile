@@ -1,12 +1,12 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { antDesignIcons } from '@ant-design/icons';
-import ReactIcon from '@ant-design/icons-react';
 import createFromIconfontCN from './IconFont';
 import { svgBaseProps } from './utils';
 import warning from '../_util/warning';
 
-ReactIcon.add(...antDesignIcons);
+const IconFont = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_821530_ie0kr3bhns.js',
+});
 
 export interface CustomIconComponentProps {
   width: string | number;
@@ -35,21 +35,18 @@ export interface IconProps {
 const Icon: React.SFC<IconProps> = props => {
   const {
     // affect outter <i>...</i>
-    title,
     className,
-    onClick,
-    style,
 
     // affect inner <svg>...</svg>
     type,
     component: Component,
     viewBox,
     spin,
-    svgClassName,
-    svgStyle = {},
 
     // children
     children,
+
+    ...restProps
   } = props;
 
   warning(
@@ -65,61 +62,53 @@ const Icon: React.SFC<IconProps> = props => {
     className,
   );
 
-  const svgClassString = classNames(
-    {
-      [`m-icon-spin`]: !!spin || type === 'loading',
-    },
-    svgClassName,
-  );
+  const svgClassString = classNames({
+    [`m-icon-spin`]: !!spin || type === 'loading',
+  });
+
+  let innerNode;
 
   // component > children > type
   if (Component) {
     const innerSvgProps: CustomIconComponentProps = {
       ...svgBaseProps,
       className: svgClassString,
-      style: svgStyle,
       viewBox,
     };
     if (!viewBox) {
       delete innerSvgProps.viewBox;
     }
 
-    return (
-      <i className={classString} title={title} style={style} onClick={onClick}>
-        <Component {...innerSvgProps}>{children}</Component>
-      </i>
-    );
+    innerNode = <Component {...innerSvgProps}>{children}</Component>;
   }
 
   if (children) {
     warning(
-      Boolean(viewBox),
-      'Make sure that you provide correct `viewBox`' + ' prop (default `0 0 1024 1024`) to Icon.',
+      Boolean(viewBox) ||
+        (React.Children.count(children) === 1 && React.Children.only(children).type === 'use'),
+      'Make sure that you provide correct `viewBox`' +
+        ' prop (default `0 0 1024 1024`) to the icon.',
     );
-
     const innerSvgProps: CustomIconComponentProps = {
       ...svgBaseProps,
       className: svgClassString,
-      style: svgStyle,
     };
-    return (
-      <i className={classString} title={title} style={style} onClick={onClick}>
-        <svg {...innerSvgProps} viewBox={viewBox}>
-          {children}
-        </svg>
-      </i>
+    innerNode = (
+      <svg {...innerSvgProps} viewBox={viewBox}>
+        {children}
+      </svg>
     );
   }
 
-  if (type) {
-    return (
-      <i className={classString} title={title} style={style} onClick={onClick}>
-        <ReactIcon className={svgClassString} type={type} style={svgStyle} />
-      </i>
-    );
+  if (typeof type === 'string') {
+    innerNode = <IconFont className={svgClassString} type={`icon-${type}`} />;
   }
 
-  return <i className={classString} title={title} style={style} onClick={onClick} />;
+  return (
+    <i {...restProps} className={classString}>
+      {innerNode}
+    </i>
+  );
 };
 
 export type IconType = typeof Icon & {

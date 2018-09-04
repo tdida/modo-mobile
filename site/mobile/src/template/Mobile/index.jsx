@@ -161,7 +161,7 @@ export default class App extends React.Component {
                             : `${config.typeChinese[cate]} ${cate}`}
                         </div>
                         <div className="m-demo-category-arrow">
-                          <Icon type="down" />
+                          <Icon type="right" />
                         </div>
                       </div>
                       <div className="m-demo-category-list">

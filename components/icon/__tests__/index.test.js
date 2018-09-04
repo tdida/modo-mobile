@@ -4,12 +4,7 @@ import Icon from '..';
 
 describe('Icon', () => {
   it('should render to a <i class="xxx"><svg>...</svg></i>', () => {
-    const wrapper = render(<Icon type="message" className="my-icon-classname" />);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should support two-tone icon', () => {
-    const wrapper = render(<Icon type="check-circle" theme="two-tone" primaryColor="#f5222d" />);
+    const wrapper = render(<Icon type="search" className="my-icon-classname" />);
     expect(wrapper).toMatchSnapshot();
   });
 
