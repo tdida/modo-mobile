@@ -15,7 +15,7 @@ toc: false
   - Update `Icon` doc.
   - Use `Icon` instead of `NumberKeyboard` img icon。
 
-* **Fix**
+- **Fix**
 
   - Removed invalid dependencies.
   - `Button` loading style.

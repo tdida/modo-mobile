@@ -1,7 +1,7 @@
 {
   "name": "modo-mobile",
   "version": "0.0.7",
-  "description": "A React Mobile UI Toolkit",
+  "description": "A mobile UI toolkit, based on React",
   "homepage": "https://tdida.github.io/modo-mobile",
   "repository": {
     "type": "git",
