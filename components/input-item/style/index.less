@@ -1,0 +1,123 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/hairline.less';
+
+@input-item-prefix-cls: ~'@{m-prefix}-input-item';
+
+.@{input-item-prefix-cls} {
+  padding-left: @padding-md;
+  padding-right: @padding-md;
+  box-sizing: border-box;
+  position: relative;
+
+  &&-left {
+    .@{input-item-prefix-cls}-input {
+      text-align: left;
+    }
+  }
+
+  &&-center {
+    .@{input-item-prefix-cls}-input {
+      text-align: center;
+    }
+  }
+
+  &&-right {
+    .@{input-item-prefix-cls}-input {
+      text-align: right;
+    }
+  }
+
+  &&-disabled {
+    .@{input-item-prefix-cls}-extra {
+      opacity: 0.5;
+    }
+
+    .@{input-item-prefix-cls}-title {
+      opacity: 0.5;
+    }
+
+    .@{input-item-prefix-cls}-control {
+      opacity: 0.5;
+    }
+  }
+
+  &&-focus {
+    .@{input-item-prefix-cls}-container {
+      .hairline('bottom', @input-item-color, 2px);
+    }
+  }
+
+  &-container {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+
+    .hairline('bottom', @border-color-base);
+  }
+
+  &-title {
+    font-size: @font-size-base;
+    color: @heading-color;
+    width: 5em;
+    line-height: @input-item-height;
+    margin-right: @padding-xs;
+  }
+
+  &-control {
+    display: flex;
+    flex: 1;
+  }
+
+  &-input {
+    width: 100%;
+    height: @input-item-height;
+    color: @input-item-color;
+    font-size: @font-size-base;
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    appearance: none;
+  }
+
+  &-clear {
+    position: absolute;
+    color: @text-color-help;
+    top: 0;
+    right: 0;
+    height: @input-item-height;
+    min-width: @input-item-height / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-has-clear {
+    .@{input-item-prefix-cls}-container {
+      padding-right: @input-item-height / 2;
+    }
+  }
+
+  &&-has-error {
+    .@{input-item-prefix-cls}-container {
+      .hairline('bottom', @error-color, 2px);
+    }
+
+    .@{input-item-prefix-cls}-tip {
+      color: @error-color;
+    }
+  }
+
+  &-tip {
+    box-sizing: border-box;
+    font-size: @font-size-sm;
+    color: @text-color-secondary;
+    padding: 6px 0;
+  }
+
+  input::placeholder {
+    color: @text-color-help;
+  }
+}

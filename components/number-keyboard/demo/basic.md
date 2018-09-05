@@ -11,6 +11,7 @@ import { NumberKeyboard, Button } from 'modo-mobile';
 class App extends React.Component {
   state = {
     visible: false,
+    dotVisible: false,
     value: '',
   };
 
@@ -30,18 +31,45 @@ class App extends React.Component {
     this.setState({ value: value.substr(0, value.length - 1) });
   };
 
+  handleDotClick = () => {
+    const { dotVisible } = this.state;
+    this.setState({ dotVisible: !dotVisible });
+  };
+
+  handleDotEnter = num => {
+    const { value } = this.state;
+    this.setState({ value: value + num });
+  };
+
+  handleDotDelete = () => {
+    const { value } = this.state;
+    if (value === '') return;
+    this.setState({ value: value.substr(0, value.length - 1) });
+  };
+
   render() {
-    const { visible, value } = this.state;
+    const { visible, dotVisible, value } = this.state;
     return (
       <div className="domo-keyboard">
-        <Button type="primary" onClick={this.handleClick}>
-          {visible ? '收起键盘' : '唤起键盘'}
+        <Button type="primary" onClick={this.handleClick} style={{ marginBottom: 10 }}>
+          {visible ? '收起键盘, 有小数点' : '唤起键盘, 有小数点'}
         </Button>
         <NumberKeyboard
           visible={visible}
           onHide={this.handleClick}
           onEnter={this.handleEnter}
           onDelete={this.handleDelete}
+        />
+
+        <Button type="primary" onClick={this.handleDotClick}>
+          {dotVisible ? '收起键盘, 无小数点' : '唤起键盘, 无小数点'}
+        </Button>
+        <NumberKeyboard
+          visible={dotVisible}
+          hideDot
+          onHide={this.handleDotClick}
+          onEnter={this.handleDotEnter}
+          onDelete={this.handleDotDelete}
         />
         <div className="demo-value">{value}</div>
       </div>

@@ -6,13 +6,14 @@ exports[`renders ./components/number-keyboard/demo/basic.md correctly 1`] = `
 >
   <button
     class="m-button m-button-primary"
+    style="margin-bottom:10px"
     type="button"
   >
     <div
       class="m-button-inner"
     >
       <span>
-        唤起键盘
+        唤起键盘, 有小数点
       </span>
     </div>
   </button>
@@ -49,21 +50,17 @@ exports[`renders ./components/number-keyboard/demo/basic.md correctly 1`] = `
                 <i
                   class="m-icon m-icon-keyboard"
                 >
-                  <i
-                    class="m-icon"
+                  <svg
+                    aria-hidden="true"
+                    class=""
+                    fill="currentColor"
+                    height="1em"
+                    width="1em"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class=""
-                      fill="currentColor"
-                      height="1em"
-                      width="1em"
-                    >
-                      <use
-                        href="#icon-keyboard"
-                      />
-                    </svg>
-                  </i>
+                    <use
+                      href="#icon-keyboard"
+                    />
+                  </svg>
                 </i>
               </li>
             </ul>
@@ -80,21 +77,111 @@ exports[`renders ./components/number-keyboard/demo/basic.md correctly 1`] = `
                 <i
                   class="m-icon m-icon-backspace"
                 >
-                  <i
-                    class="m-icon"
+                  <svg
+                    aria-hidden="true"
+                    class=""
+                    fill="currentColor"
+                    height="1em"
+                    width="1em"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class=""
-                      fill="currentColor"
-                      height="1em"
-                      width="1em"
-                    >
-                      <use
-                        href="#icon-backspace"
-                      />
-                    </svg>
-                  </i>
+                    <use
+                      href="#icon-backspace"
+                    />
+                  </svg>
+                </i>
+              </li>
+              <li
+                class="m-number-keyboard-operate-item m-number-keyboard-operate-item-confirm"
+              >
+                确定
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    class="m-button m-button-primary"
+    type="button"
+  >
+    <div
+      class="m-button-inner"
+    >
+      <span>
+        唤起键盘, 无小数点
+      </span>
+    </div>
+  </button>
+  <div
+    class="m-number-keyboard-wrapper"
+  >
+    <div
+      class="m-popup m-popup-bottom"
+    >
+      <div
+        class="m-popup-box"
+        style="display:none"
+      >
+        <div
+          class="m-number-keyboard"
+        >
+          <div
+            class="m-number-keyboard-number"
+          >
+            <ul
+              class="m-number-keyboard-number-list"
+            >
+              <li
+                class="m-number-keyboard-number-item m-number-keyboard-number-item-no"
+              />
+              <li
+                class="m-number-keyboard-number-item"
+              />
+              <li
+                class="m-number-keyboard-number-item m-number-keyboard-number-item-slidedown"
+              >
+                <i
+                  class="m-icon m-icon-keyboard"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class=""
+                    fill="currentColor"
+                    height="1em"
+                    width="1em"
+                  >
+                    <use
+                      href="#icon-keyboard"
+                    />
+                  </svg>
+                </i>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="m-number-keyboard-operate"
+          >
+            <ul
+              class="m-number-keyboard-operate-list"
+            >
+              <li
+                class="m-number-keyboard-operate-item m-number-keyboard-operate-item-delete"
+              >
+                <i
+                  class="m-icon m-icon-backspace"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class=""
+                    fill="currentColor"
+                    height="1em"
+                    width="1em"
+                  >
+                    <use
+                      href="#icon-backspace"
+                    />
+                  </svg>
                 </i>
               </li>
               <li
@@ -163,21 +250,17 @@ exports[`renders ./components/number-keyboard/demo/disorder.md correctly 1`] = `
                 <i
                   class="m-icon m-icon-keyboard"
                 >
-                  <i
-                    class="m-icon"
+                  <svg
+                    aria-hidden="true"
+                    class=""
+                    fill="currentColor"
+                    height="1em"
+                    width="1em"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class=""
-                      fill="currentColor"
-                      height="1em"
-                      width="1em"
-                    >
-                      <use
-                        href="#icon-keyboard"
-                      />
-                    </svg>
-                  </i>
+                    <use
+                      href="#icon-keyboard"
+                    />
+                  </svg>
                 </i>
               </li>
             </ul>
@@ -194,21 +277,17 @@ exports[`renders ./components/number-keyboard/demo/disorder.md correctly 1`] = `
                 <i
                   class="m-icon m-icon-backspace"
                 >
-                  <i
-                    class="m-icon"
+                  <svg
+                    aria-hidden="true"
+                    class=""
+                    fill="currentColor"
+                    height="1em"
+                    width="1em"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class=""
-                      fill="currentColor"
-                      height="1em"
-                      width="1em"
-                    >
-                      <use
-                        href="#icon-backspace"
-                      />
-                    </svg>
-                  </i>
+                    <use
+                      href="#icon-backspace"
+                    />
+                  </svg>
                 </i>
               </li>
               <li
@@ -273,23 +352,19 @@ exports[`renders ./components/number-keyboard/demo/simple.md correctly 1`] = `
                 class="m-number-keyboard-number-item m-number-keyboard-number-item-delete"
               >
                 <i
-                  class="m-icon m-icon-backspace-o"
+                  class="m-icon m-icon-backspace"
                 >
-                  <i
-                    class="m-icon"
+                  <svg
+                    aria-hidden="true"
+                    class=""
+                    fill="currentColor"
+                    height="1em"
+                    width="1em"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class=""
-                      fill="currentColor"
-                      height="1em"
-                      width="1em"
-                    >
-                      <use
-                        href="#icon-backspace-o"
-                      />
-                    </svg>
-                  </i>
+                    <use
+                      href="#icon-backspace"
+                    />
+                  </svg>
                 </i>
               </li>
             </ul>

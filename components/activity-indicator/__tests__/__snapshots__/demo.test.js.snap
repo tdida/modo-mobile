@@ -11,24 +11,19 @@ exports[`renders ./components/activity-indicator/demo/basic.md correctly 1`] = `
       class="m-activity-indicator-loading"
     >
       <i
-        class="m-icon m-icon-loading"
-        style="color:#1e9eff;font-size:16px"
+        class="m-icon m-icon-loading m-icon-spin"
       >
-        <i
-          class="m-icon m-icon-spin"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-loading"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-loading"
+          />
+        </svg>
       </i>
     </div>
     <div
@@ -44,24 +39,19 @@ exports[`renders ./components/activity-indicator/demo/basic.md correctly 1`] = `
       class="m-activity-indicator-loading"
     >
       <i
-        class="m-icon m-icon-loading"
-        style="color:#f5222d;font-size:26px"
+        class="m-icon m-icon-loading m-icon-spin"
       >
-        <i
-          class="m-icon m-icon-spin"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-loading"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-loading"
+          />
+        </svg>
       </i>
     </div>
     <div

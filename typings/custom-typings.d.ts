@@ -9,3 +9,5 @@ declare module 'classnames';
 declare module 'rc-animate';
 
 declare module 'warning';
+
+declare module 'numeral';

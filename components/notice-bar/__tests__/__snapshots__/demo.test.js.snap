@@ -13,21 +13,17 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
       <i
         class="m-icon m-icon-info-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-info-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-info-circle"
+          />
+        </svg>
       </i>
     </div>
     <div
@@ -57,21 +53,17 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
       <i
         class="m-icon m-icon-info-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-info-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-info-circle"
+          />
+        </svg>
       </i>
     </div>
     <div
@@ -96,21 +88,17 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
       <i
         class="m-icon m-icon-close"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-close"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-close"
+          />
+        </svg>
       </i>
     </div>
   </div>
@@ -124,21 +112,17 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
       <i
         class="m-icon m-icon-info-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-info-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-info-circle"
+          />
+        </svg>
       </i>
     </div>
     <div
@@ -163,21 +147,17 @@ exports[`renders ./components/notice-bar/demo/basic.md correctly 1`] = `
       <i
         class="m-icon m-icon-right"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-right"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-right"
+          />
+        </svg>
       </i>
     </div>
   </div>
@@ -197,21 +177,17 @@ exports[`renders ./components/notice-bar/demo/close-text.md correctly 1`] = `
       <i
         class="m-icon m-icon-info-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-info-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-info-circle"
+          />
+        </svg>
       </i>
     </div>
     <div
@@ -252,21 +228,17 @@ exports[`renders ./components/notice-bar/demo/duration.md correctly 1`] = `
       <i
         class="m-icon m-icon-info-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-info-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-info-circle"
+          />
+        </svg>
       </i>
     </div>
     <div
@@ -302,21 +274,17 @@ exports[`renders ./components/notice-bar/demo/icon.md correctly 1`] = `
       <i
         class="m-icon m-icon-question-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-question-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-question-circle"
+          />
+        </svg>
       </i>
     </div>
     <div

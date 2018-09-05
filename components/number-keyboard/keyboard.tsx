@@ -6,6 +6,7 @@ export interface KeyboardProps {
   type?: 'professional' | 'simple';
   okText?: string;
   disorder?: boolean;
+  hideDot?: boolean;
   onEnter?: (num: number | string) => void;
   onDelete?: () => void;
   onConfirm?: () => void;
@@ -18,6 +19,7 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
     type: 'professional',
     okText: '确定',
     disorder: false,
+    hideDot: false,
   };
 
   state = {
@@ -67,7 +69,7 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
   };
 
   render() {
-    const { prefixCls, type, okText } = this.props;
+    const { prefixCls, type, okText, hideDot } = this.props;
     const { baseStack } = this.state;
 
     const numberNode = baseStack.map(
@@ -86,12 +88,16 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
     const numOperateNode =
       type === 'professional' ? (
         <React.Fragment>
-          <li
-            className={`${prefixCls}-number-item`}
-            onClick={(e: any) => this.onNumberClick(e, '.')}
-          >
-            .
-          </li>
+          {hideDot ? (
+            <li className={`${prefixCls}-number-item ${prefixCls}-number-item-no`} />
+          ) : (
+            <li
+              className={`${prefixCls}-number-item`}
+              onClick={(e: any) => this.onNumberClick(e, '.')}
+            >
+              .
+            </li>
+          )}
           <li
             className={`${prefixCls}-number-item`}
             onClick={(e: any) => this.onNumberClick(e, baseStack[9])}
@@ -118,7 +124,7 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
             className={`${prefixCls}-number-item ${prefixCls}-number-item-delete`}
             onClick={this.onDeleteClick}
           >
-            <Icon type="backspace-o" />
+            <Icon type="backspace" />
           </li>
         </React.Fragment>
       );

@@ -8,6 +8,7 @@ export interface NumberKeyboardProps {
   okText?: string;
   disorder?: boolean;
   visible: boolean;
+  hideDot?: boolean;
   onEnter?: (num: number | string) => void;
   onDelete?: () => void;
   onConfirm?: () => void;
@@ -20,6 +21,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
     type: 'professional',
     okText: '确定',
     disorder: false,
+    hideDot: false,
   };
 
   render() {
@@ -29,6 +31,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
       okText,
       visible,
       disorder,
+      hideDot,
       onConfirm,
       onDelete,
       onEnter,
@@ -40,6 +43,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
         <Popup visible={visible} position="bottom" hasMask={false}>
           <Keyboard
             disorder={disorder}
+            hideDot={hideDot}
             prefixCls={prefixCls}
             type={type}
             okText={okText}

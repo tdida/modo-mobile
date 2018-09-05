@@ -254,21 +254,17 @@ exports[`renders ./components/popup/demo/other.md correctly 1`] = `
           <i
             class="m-icon m-icon-close-circle-o"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-close-circle-o"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-close-circle-o"
+              />
+            </svg>
           </i>
         </div>
         <div

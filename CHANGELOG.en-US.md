@@ -5,6 +5,15 @@ timeline: true
 toc: false
 ---
 
+### 0.0.9
+
+`2018-09-05`
+
+- **Feature**
+
+  - 🌟 Add `InputItem` component.
+  - Add `NumberKeyboard` hideDot, show dot or not.
+
 ### 0.0.8
 
 `2018-09-04`

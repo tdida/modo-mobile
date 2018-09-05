@@ -10,21 +10,17 @@ exports[`renders ./components/agree/demo/basic.md correctly 1`] = `
     <i
       class="m-icon m-icon-check-circle"
     >
-      <i
-        class="m-icon"
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        width="1em"
       >
-        <svg
-          aria-hidden="true"
-          class=""
-          fill="currentColor"
-          height="1em"
-          width="1em"
-        >
-          <use
-            href="#icon-check-circle"
-          />
-        </svg>
-      </i>
+        <use
+          href="#icon-check-circle"
+        />
+      </svg>
     </i>
   </div>
   <div
@@ -46,21 +42,17 @@ exports[`renders ./components/agree/demo/disabled.md correctly 1`] = `
       <i
         class="m-icon m-icon-check-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-check-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-check-circle"
+          />
+        </svg>
       </i>
     </div>
     <div
@@ -78,21 +70,17 @@ exports[`renders ./components/agree/demo/disabled.md correctly 1`] = `
       <i
         class="m-icon m-icon-check-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-check-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-check-circle"
+          />
+        </svg>
       </i>
     </div>
     <div

@@ -5,6 +5,15 @@ timeline: true
 toc: false
 ---
 
+### 0.0.9
+
+`2018-09-05`
+
+- **Feature**
+
+  - 🌟 新增 `InputItem` 组件。
+  - 新增 `NumberKeyboard` hideDot 属性，是否显示小数点。
+
 ### 0.0.8
 
 `2018-09-04`

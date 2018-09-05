@@ -5,7 +5,7 @@ import { svgBaseProps } from './utils';
 import warning from '../_util/warning';
 
 const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_821530_ie0kr3bhns.js',
+  scriptUrl: '//at.alicdn.com/t/font_821530_icjpvt6k219.js',
 });
 
 export interface CustomIconComponentProps {
@@ -101,7 +101,11 @@ const Icon: React.SFC<IconProps> = props => {
   }
 
   if (typeof type === 'string') {
-    innerNode = <IconFont className={svgClassString} type={`icon-${type}`} />;
+    const iconFontCls = classNames({
+      [`m-icon-${type}`]: type,
+      [`m-icon-spin`]: !!spin || type === 'loading',
+    });
+    return <IconFont className={iconFontCls} type={`icon-${type}`} />;
   }
 
   return (

@@ -18,21 +18,17 @@ exports[`renders ./components/list/demo/basic.md correctly 1`] = `
       <i
         class="m-icon m-icon-plus-circle"
       >
-        <i
-          class="m-icon"
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          width="1em"
         >
-          <svg
-            aria-hidden="true"
-            class=""
-            fill="currentColor"
-            height="1em"
-            width="1em"
-          >
-            <use
-              href="#icon-plus-circle"
-            />
-          </svg>
-        </i>
+          <use
+            href="#icon-plus-circle"
+          />
+        </svg>
       </i>
     </div>
   </div>
@@ -84,21 +80,17 @@ exports[`renders ./components/list/demo/basic.md correctly 1`] = `
           <i
             class="m-icon m-icon-right"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-right"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-right"
+              />
+            </svg>
           </i>
         </div>
       </div>
@@ -128,21 +120,17 @@ exports[`renders ./components/list/demo/basic.md correctly 1`] = `
           <i
             class="m-icon m-icon-right"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-right"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-right"
+              />
+            </svg>
           </i>
         </div>
       </div>
@@ -177,21 +165,17 @@ exports[`renders ./components/list/demo/basic.md correctly 1`] = `
           <i
             class="m-icon m-icon-right"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-right"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-right"
+              />
+            </svg>
           </i>
         </div>
       </div>
@@ -234,21 +218,17 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
           <i
             class="m-icon m-icon-right"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-right"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-right"
+              />
+            </svg>
           </i>
         </div>
       </div>
@@ -280,21 +260,17 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
           <i
             class="m-icon m-icon-right"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-right"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-right"
+              />
+            </svg>
           </i>
         </div>
       </div>
@@ -326,21 +302,17 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
           <i
             class="m-icon m-icon-right"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-right"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-right"
+              />
+            </svg>
           </i>
         </div>
       </div>
@@ -357,21 +329,17 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
           <i
             class="m-icon m-icon-info-circle"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-info-circle"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-info-circle"
+              />
+            </svg>
           </i>
         </div>
         <div
@@ -395,22 +363,88 @@ exports[`renders ./components/list/demo/content.md correctly 1`] = `
           <i
             class="m-icon m-icon-right"
           >
-            <i
-              class="m-icon"
+            <svg
+              aria-hidden="true"
+              class=""
+              fill="currentColor"
+              height="1em"
+              width="1em"
             >
-              <svg
-                aria-hidden="true"
-                class=""
-                fill="currentColor"
-                height="1em"
-                width="1em"
-              >
-                <use
-                  href="#icon-right"
-                />
-              </svg>
-            </i>
+              <use
+                href="#icon-right"
+              />
+            </svg>
           </i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders ./components/list/demo/control.md correctly 1`] = `
+<div
+  class="m-list"
+>
+  <div
+    class="m-list-header"
+  >
+    <div
+      class="m-list-title"
+    >
+      配合控件
+    </div>
+    <div
+      class="m-list-extra"
+    />
+  </div>
+  <div
+    class="m-list-body"
+  >
+    <div
+      class="m-list-item m-list-item-right"
+    >
+      <div
+        class="m-list-item-inner"
+      >
+        <div
+          class="m-list-item-label"
+        >
+          <div
+            class="m-list-item-title"
+          >
+            普通列表
+          </div>
+        </div>
+        <div
+          class="m-list-item-content"
+        />
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          输入框
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="请输入..."
+            type="text"
+            value=""
+          />
         </div>
       </div>
     </div>

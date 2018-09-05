@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ./components/input-item/demo/basic.md correctly 1`] = `
+<div
+  class="m-list"
+>
+  <div
+    class="m-list-body"
+  >
+    <div
+      class="m-input-item m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          普通文本
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="普通文本"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-disabled m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          禁用文本
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            disabled=""
+            placeholder=""
+            type="text"
+            value="禁用文本"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          只读文本
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="只读文本"
+            readonly=""
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-center"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          文本居中
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            maxlength="2"
+            placeholder="文本居中"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-right"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          文本局右
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="文本局右"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="m-input-item-tip"
+      >
+        辅助说明
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders ./components/input-item/demo/form.md correctly 1`] = `
+<div
+  class="m-list"
+>
+  <div
+    class="m-list-body"
+  >
+    <div
+      class="m-input-item m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          必填表单
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder=""
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      style="padding:16px"
+    >
+      <button
+        class="m-button m-button-primary"
+        type="button"
+      >
+        <div
+          class="m-button-inner"
+        >
+          <span>
+            提 交
+          </span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders ./components/input-item/demo/scene.md correctly 1`] = `
+<div
+  class="m-list"
+>
+  <div
+    class="m-list-body"
+  >
+    <div
+      class="m-input-item m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          银行卡
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="bankCard xxxx xxxx xxxx xxxx"
+            type="tel"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          手机号
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="phone xxx xxxx xxxx"
+            type="tel"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          数字
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="digit 0123456789"
+            type="tel"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-left m-input-item-has-clear"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          密码
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="password *********"
+            type="password"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-input-item m-input-item-left"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          邮箱
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <input
+            autocomplete="off"
+            class="m-input-item-input"
+            placeholder="其他标准 html input 类型"
+            type="email"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

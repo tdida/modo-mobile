@@ -29,23 +29,19 @@ exports[`Icon should give warning and render <i>{null}</i> 1`] = `
 
 exports[`Icon should render to a <i class="xxx"><svg>...</svg></i> 1`] = `
 <i
-  class="m-icon m-icon-search my-icon-classname"
+  class="m-icon m-icon-search"
 >
-  <i
-    class="m-icon"
+  <svg
+    aria-hidden="true"
+    class=""
+    fill="currentColor"
+    height="1em"
+    width="1em"
   >
-    <svg
-      aria-hidden="true"
-      class=""
-      fill="currentColor"
-      height="1em"
-      width="1em"
-    >
-      <use
-        href="#icon-search"
-      />
-    </svg>
-  </i>
+    <use
+      href="#icon-search"
+    />
+  </svg>
 </i>
 `;
 
