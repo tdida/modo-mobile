@@ -270,6 +270,119 @@ exports[`renders ./components/input-item/demo/scene.md correctly 1`] = `
       </div>
     </div>
     <div
+      class="m-input-item m-input-item-left m-input-item-has-clear"
+    >
+      <div
+        class="m-input-item-container"
+      >
+        <div
+          class="m-input-item-extra"
+        />
+        <div
+          class="m-input-item-title"
+        >
+          金额键盘
+        </div>
+        <div
+          class="m-input-item-control"
+        >
+          <div
+            class="m-input-item-virtual-input"
+          >
+            <span
+              class="m-input-item-virtual-value"
+            >
+              1.11
+            </span>
+          </div>
+          <div
+            class="m-number-keyboard-wrapper"
+          >
+            <div
+              class="m-popup m-popup-bottom"
+            >
+              <div
+                class="m-popup-box"
+                style="display:none"
+              >
+                <div
+                  class="m-number-keyboard"
+                >
+                  <div
+                    class="m-number-keyboard-number"
+                  >
+                    <ul
+                      class="m-number-keyboard-number-list"
+                    >
+                      <li
+                        class="m-number-keyboard-number-item"
+                      >
+                        .
+                      </li>
+                      <li
+                        class="m-number-keyboard-number-item"
+                      />
+                      <li
+                        class="m-number-keyboard-number-item m-number-keyboard-number-item-slidedown"
+                      >
+                        <i
+                          class="m-icon m-icon-keyboard"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class=""
+                            fill="currentColor"
+                            height="1em"
+                            width="1em"
+                          >
+                            <use
+                              href="#icon-keyboard"
+                            />
+                          </svg>
+                        </i>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    class="m-number-keyboard-operate"
+                  >
+                    <ul
+                      class="m-number-keyboard-operate-list"
+                    >
+                      <li
+                        class="m-number-keyboard-operate-item m-number-keyboard-operate-item-delete"
+                      >
+                        <i
+                          class="m-icon m-icon-backspace"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class=""
+                            fill="currentColor"
+                            height="1em"
+                            width="1em"
+                          >
+                            <use
+                              href="#icon-backspace"
+                            />
+                          </svg>
+                        </i>
+                      </li>
+                      <li
+                        class="m-number-keyboard-operate-item m-number-keyboard-operate-item-confirm"
+                      >
+                        确定
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
       class="m-input-item m-input-item-left"
     >
       <div
