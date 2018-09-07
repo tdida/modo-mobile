@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import NumberKeyboard from '../number-keyboard';
 import Icon from '../icon';
 
 function noop() {}
@@ -15,7 +16,7 @@ export interface InputItemProps {
   prefixCls?: string;
   className?: string;
   title?: string;
-  type?: 'text' | 'password' | 'phone' | 'digit' | 'bankCard';
+  type?: 'text' | 'password' | 'phone' | 'digit' | 'bankCard' | 'money';
   brief?: React.ReactNode | string;
   value?: string;
   defaultValue?: string;
@@ -31,6 +32,7 @@ export interface InputItemProps {
   onChange?: (val: string) => void;
   onBlur?: (val: string) => void;
   onFocus?: (val: string) => void;
+  onVirtualKeyboardConfirm?: (val: string) => void;
 }
 
 export default class InputItem extends React.Component<InputItemProps, any> {
@@ -45,6 +47,7 @@ export default class InputItem extends React.Component<InputItemProps, any> {
     onChange: noop,
     onBlur: noop,
     onFocus: noop,
+    onVirtualKeyboardConfirm: noop,
   };
 
   inputRef: HTMLInputElement;
@@ -103,11 +106,7 @@ export default class InputItem extends React.Component<InputItemProps, any> {
 
   handleOnChange = (value: string, isMutated: boolean = false) => {
     const { onChange } = this.props;
-    if (!('value' in this.props)) {
-      this.setState({ value });
-    } else {
-      this.setState({ value: this.props.value });
-    }
+    this.setState({ value });
     if (onChange) {
       isMutated ? setTimeout(() => onChange(value)) : onChange(value);
     }
@@ -115,22 +114,15 @@ export default class InputItem extends React.Component<InputItemProps, any> {
 
   onInputBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    if (this.inputRef) {
-      this.debounceTimeout = window.setTimeout(() => {
-        if (document.activeElement !== this.inputRef) {
-          this.setState({
-            focus: false,
-          });
-        }
-      }, 200);
-    }
-    if (this.props.onBlur) {
-      this.props.onBlur(value);
-    }
+    this.onBlur(value);
   };
 
   onInputFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
+    this.onFocus(value);
+  };
+
+  onFocus = (value: string) => {
     if (this.debounceTimeout) {
       clearTimeout(this.debounceTimeout);
       this.debounceTimeout = null;
@@ -140,6 +132,76 @@ export default class InputItem extends React.Component<InputItemProps, any> {
     });
     if (this.props.onFocus) {
       this.props.onFocus(value);
+    }
+  };
+
+  onBlur = (value: string) => {
+    if (this.inputRef) {
+      this.debounceTimeout = window.setTimeout(() => {
+        if (document.activeElement !== this.inputRef) {
+          this.setState({
+            focus: false,
+          });
+        }
+      }, 50);
+    }
+    if (this.props.onBlur) {
+      this.props.onBlur(value);
+    }
+  };
+
+  onVirtualFocus = () => {
+    const { disabled, readOnly } = this.props;
+    if (disabled || readOnly) {
+      return;
+    }
+    this.setState({ focus: true }, () => {
+      this.addBlurListener();
+    });
+  };
+
+  onVirtualBlur = () => {
+    const { value } = this.state;
+    this.onBlur(value);
+  };
+
+  onVirtualConfirm = () => {
+    const { value } = this.state;
+    this.onBlur(value);
+    const { onVirtualKeyboardConfirm } = this.props;
+    if (onVirtualKeyboardConfirm) onVirtualKeyboardConfirm(value);
+  };
+
+  onVirtualEnter = (num: any) => {
+    const { value } = this.state;
+    const { maxLength } = this.props;
+    if (maxLength) {
+      if (value.length < maxLength) {
+        this.handleOnChange(value + num);
+      }
+    } else {
+      this.handleOnChange(value + num);
+    }
+  };
+
+  onVirtualDelete = () => {
+    const { value } = this.state;
+    if (value === '') return;
+    this.handleOnChange(value.substr(0, value.length - 1));
+  };
+
+  addBlurListener = () => {
+    document.addEventListener('click', this.doBlur, false);
+  };
+
+  removeBlurListener = () => {
+    document.removeEventListener('click', this.doBlur, false);
+  };
+
+  doBlur = (ev: MouseEvent) => {
+    const { value } = this.state;
+    if (ev.target !== this.inputRef) {
+      this.onBlur(value);
     }
   };
 
@@ -155,9 +217,13 @@ export default class InputItem extends React.Component<InputItemProps, any> {
 
   // this is instance method for user to use
   focus = () => {
+    this.removeBlurListener();
     if (this.inputRef) {
       this.inputRef.focus();
     }
+    setTimeout(() => {
+      this.addBlurListener();
+    }, 50);
   };
 
   render() {
@@ -193,6 +259,11 @@ export default class InputItem extends React.Component<InputItemProps, any> {
       [`${prefixCls}-focus`]: focus,
       [`${prefixCls}-has-clear`]: clear,
       [`${prefixCls}-has-error`]: error,
+      [`${prefixCls}-virtual-show`]: focus && type === 'money',
+    });
+
+    const virtualCls = classnames(`${prefixCls}-virtual-value`, {
+      [`${prefixCls}-virtual-placeholder`]: !value,
     });
 
     return (
@@ -201,21 +272,40 @@ export default class InputItem extends React.Component<InputItemProps, any> {
           <div className={`${prefixCls}-extra`}>{extra}</div>
           <div className={`${prefixCls}-title`}>{title}</div>
           <div className={`${prefixCls}-control`}>
-            <input
-              className={`${prefixCls}-input`}
-              ref={(el: any) => (this.inputRef = el)}
-              type={inputType}
-              value={normalizeValue(value)}
-              name={name}
-              placeholder={placeholder}
-              readOnly={readOnly}
-              disabled={disabled}
-              maxLength={maxLength}
-              onChange={this.onInputChange}
-              onFocus={this.onInputFocus}
-              onBlur={this.onInputBlur}
-              autoComplete="off"
-            />
+            {type === 'money' ? (
+              <React.Fragment>
+                <div
+                  ref={(el: any) => (this.inputRef = el)}
+                  className={`${prefixCls}-virtual-input`}
+                  onClick={this.onVirtualFocus}
+                >
+                  <span className={virtualCls}>{focus || value ? value : placeholder}</span>
+                </div>
+                <NumberKeyboard
+                  visible={focus}
+                  onHide={this.onVirtualBlur}
+                  onDelete={this.onVirtualDelete}
+                  onEnter={this.onVirtualEnter}
+                  onConfirm={this.onVirtualConfirm}
+                />
+              </React.Fragment>
+            ) : (
+              <input
+                className={`${prefixCls}-input`}
+                ref={(el: any) => (this.inputRef = el)}
+                type={inputType}
+                value={normalizeValue(value)}
+                name={name}
+                placeholder={placeholder}
+                readOnly={readOnly}
+                disabled={disabled}
+                maxLength={maxLength}
+                onChange={this.onInputChange}
+                onFocus={this.onInputFocus}
+                onBlur={this.onInputBlur}
+                autoComplete="off"
+              />
+            )}
             {clear && !readOnly && !disabled && focus && (value && `${value}`.length > 0) ? (
               <div className={`${prefixCls}-clear`} onClick={this.clearInput}>
                 <Icon type="close-circle" />

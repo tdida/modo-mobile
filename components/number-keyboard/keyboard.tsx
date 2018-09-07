@@ -47,23 +47,26 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
     this.setState({ baseStack: keyNumberList });
   };
 
-  onNumberClick = (e: React.TouchEvent<HTMLDivElement>, num: number | string) => {
-    e.stopPropagation();
+  onNumberClick = (e: React.MouseEvent<HTMLLIElement>, num: number | string) => {
+    e.nativeEvent.stopImmediatePropagation();
     const { onEnter } = this.props;
     if (onEnter) onEnter(num);
   };
 
-  onSlideDoneClick = () => {
+  onSlideDoneClick = (e: React.MouseEvent<HTMLLIElement>) => {
+    e.nativeEvent.stopImmediatePropagation();
     const { onHide } = this.props;
     if (onHide) onHide();
   };
 
-  onDeleteClick = () => {
+  onDeleteClick = (e: React.MouseEvent<HTMLLIElement>) => {
+    e.nativeEvent.stopImmediatePropagation();
     const { onDelete } = this.props;
     if (onDelete) onDelete();
   };
 
-  onConfirmClick = () => {
+  onConfirmClick = (e: React.MouseEvent<HTMLLIElement>) => {
+    e.nativeEvent.stopImmediatePropagation();
     const { onConfirm } = this.props;
     if (onConfirm) onConfirm();
   };

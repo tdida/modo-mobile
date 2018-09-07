@@ -1,5 +1,6 @@
 @import '../../style/themes/default';
 @import '../../style/mixins/hairline.less';
+@import '../../style/mixins/word.less';
 
 @input-item-prefix-cls: ~'@{m-prefix}-input-item';
 
@@ -45,6 +46,12 @@
     .@{input-item-prefix-cls}-container {
       .hairline('bottom', @input-item-color, 2px);
     }
+
+    .@{input-item-prefix-cls}-virtual-input {
+      &::after {
+        display: inline-block;
+      }
+    }
   }
 
   &-container {
@@ -56,7 +63,7 @@
   }
 
   &-title {
-    font-size: @font-size-base;
+    font-size: @input-item-font-size;
     color: @heading-color;
     width: 5em;
     line-height: @input-item-height;
@@ -68,11 +75,12 @@
     flex: 1;
   }
 
+  &-virtual-input,
   &-input {
     width: 100%;
     height: @input-item-height;
     color: @input-item-color;
-    font-size: @font-size-base;
+    font-size: @input-item-font-size;
     font-weight: 500;
     border: none;
     background: transparent;
@@ -119,5 +127,46 @@
 
   input::placeholder {
     color: @text-color-help;
+  }
+
+  &-virtual {
+    &-input {
+      cursor: text;
+      line-height: @input-item-height;
+      .word-ellipsis();
+
+      &::after {
+        position: relative;
+        z-index: 2;
+        display: none;
+        content: ' ';
+        top: 1px;
+        height: @input-item-font-size;
+        border-right: solid 2px @input-item-color;
+        animation: keyboard-cursor infinite 1s;
+      }
+    }
+
+    &-placeholder {
+      color: @text-color-help;
+    }
+
+    &-show {
+      padding-bottom: 208px;
+    }
+  }
+}
+
+@keyframes keyboard-cursor {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
