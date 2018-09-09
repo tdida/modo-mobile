@@ -1,6 +1,6 @@
 {
   "name": "modo-mobile",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "A mobile UI toolkit, based on React",
   "homepage": "https://tdida.github.io/modo-mobile",
   "repository": {
@@ -60,6 +60,7 @@
     "lint-staged:demo": "cross-env RUN_ENV=DEMO eslint --ext '.md'"
   },
   "dependencies": {
+    "array-tree-filter": "^2.1.0",
     "classnames": "^2.2.6",
     "rc-animate": "~3.0.0-rc.6",
     "warning": "^4.0.2"
@@ -74,7 +75,7 @@
     "antd-theme-generator": "^1.0.7",
     "autoprefixer": "^9.1.1",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "^8.0.0",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -110,7 +111,7 @@
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.3.0",
     "enzyme-to-json": "^3.3.4",
-    "eslint": "^5.4.0",
+    "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-babel": "^5.1.0",

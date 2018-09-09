@@ -1,0 +1,26 @@
+export default [
+  [
+    { label: '2015', value: 1 },
+    { label: '2016', value: 2 },
+    { label: '2017', value: 3 },
+    { label: '2018', value: 4 },
+    { label: '2019', value: 5 },
+    { label: '2020', value: 6 },
+    { label: '2021', value: 7 },
+    { label: '2022', value: 8 },
+    { label: '2023', value: 9 },
+    { label: '2024', value: 10 },
+    { label: '2025', value: 11 },
+    { label: '2026', value: 12 },
+    { label: '2027', value: 13 },
+    { label: '2028', value: 14 },
+    { label: '2029', value: 15 },
+    { label: '2030', value: 16 },
+  ],
+  [
+    { label: '春', value: 1 },
+    { label: '夏', value: 2 },
+    { label: '秋', value: 3 },
+    { label: '冬', value: 4 },
+  ],
+];

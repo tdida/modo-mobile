@@ -21,6 +21,7 @@ title: Popup
 | position             | 弹出层位置 `center` `top` `bottom` `left` `right`            | String                  | `center` |
 | preventScroll        | 是否禁止滚动穿透                                             | Boolean                 | `false`  |
 | preventScrollExclude | 禁止滚动的排除元素                                           | String/HTMLElement      | -        |
+| destroyed            | 关闭是否销毁组件                                             | Boolean                 | `false`  |
 | onClose              | 弹出层隐藏事件                                               | (e: HTMLElement): void  | -        |
 | onAnimateEnd         | 弹出层动画结束事件 `exists` 为 true 弹出层开启，false 为关闭 | (exists: Boolean): void | -        |
 

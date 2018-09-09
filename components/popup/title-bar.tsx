@@ -6,8 +6,8 @@ export interface TitleBarProps {
   okText?: String | React.ReactNode;
   cancelText?: String | React.ReactNode;
   prefixCls?: string;
-  onConfirm?: () => {};
-  onCancel?: () => {};
+  onConfirm?: () => void;
+  onCancel?: () => void;
 }
 
 export default class TitleBar extends React.Component<TitleBarProps, any> {

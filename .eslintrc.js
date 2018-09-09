@@ -11,6 +11,7 @@ const eslintrc = {
   parserOptions: {
     ecmaVersion: 6,
     ecmaFeatures: {
+      legacyDecotators: true,
       jsx: true,
       experimentalObjectRestSpread: true,
     },

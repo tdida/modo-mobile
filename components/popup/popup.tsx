@@ -8,6 +8,7 @@ export interface PopupProps {
   prefixCls?: string;
   hasMask?: boolean;
   maskClosable?: boolean;
+  destroyed?: boolean;
   position?: 'bottom' | 'top' | 'right' | 'left' | 'center';
   preventScroll?: boolean;
   preventScrollExclude?: string | object;
@@ -22,6 +23,7 @@ class Popup extends React.Component<PopupProps, any> {
     closable: true,
     hasMask: true, // 是否有蒙层
     maskClosable: true, // 点击蒙层是否可关闭弹出层
+    destroyed: false,
     position: 'center', // 弹出层位置
     prefixCls: 'm-popup',
     preventScroll: false, // 防止滚动穿透
@@ -103,7 +105,7 @@ class Popup extends React.Component<PopupProps, any> {
   }
 
   render() {
-    const { prefixCls, visible, children, hasMask, position } = this.props;
+    const { prefixCls, visible, children, hasMask, position, destroyed } = this.props;
 
     const transtion = (() => {
       switch (position) {
@@ -122,13 +124,15 @@ class Popup extends React.Component<PopupProps, any> {
 
     const maskNode = hasMask && (
       <Animate component="" transitionName="fade" showProp="show">
-        <View show={visible}>
-          <div
-            ref={e => (this.maskRef = e)}
-            className={`${prefixCls}-mask`}
-            onClick={this.handleMaskClick}
-          />
-        </View>
+        {visible || !destroyed ? (
+          <View show={visible}>
+            <div
+              ref={e => (this.maskRef = e)}
+              className={`${prefixCls}-mask`}
+              onClick={this.handleMaskClick}
+            />
+          </View>
+        ) : null}
       </Animate>
     );
 
@@ -136,11 +140,13 @@ class Popup extends React.Component<PopupProps, any> {
       <div className={`${prefixCls} ${prefixCls}-${position}`}>
         {maskNode}
         <Animate component="" transitionName={transtion} showProp="show" onEnd={this.handleOnEnd}>
-          <View show={visible}>
-            <div className={`${prefixCls}-box`} ref={e => (this.boxRef = e)}>
-              {children}
-            </div>
-          </View>
+          {visible || !destroyed ? (
+            <View show={visible}>
+              <div className={`${prefixCls}-box`} ref={e => (this.boxRef = e)}>
+                {children}
+              </div>
+            </View>
+          ) : null}
         </Animate>
       </div>
     );

@@ -12,6 +12,7 @@ Array [
   "NumberKeyboard",
   "ActivityIndicator",
   "InputItem",
+  "Picker",
   "version",
 ]
 `;

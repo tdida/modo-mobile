@@ -10,7 +10,9 @@ toc: false
 `2018-09-07`
 
 - **Feature**
+  - 🌟 Add `Picker` component.
   - Add `InputItem` the amount of the keyboard.
+  - Add `Popup` destroyed props.
 
 ### 0.0.9
 

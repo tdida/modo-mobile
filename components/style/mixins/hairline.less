@@ -16,158 +16,92 @@
 }
 
 .hairline(@direction, @color: @border-color-base, @size: 1px) when (@direction = 'top') {
-  border-top: @size solid @color;
-
-  html:not([data-scale]) & {
-    @media (min-resolution: 2dppx) {
-      border-top: none;
-
-      &::before {
-        .scale-hairline-common(@color, 0, auto, auto, 0);
-        width: 100%;
-        height: @size;
-        transform-origin: 50% 50%;
-        transform: scaleY(0.5);
-
-        @media (min-resolution: 3dppx) {
-          transform: scaleY(0.33);
-        }
-      }
-    }
+  &::before {
+    .scale-hairline-common(@color, 0, auto, auto, 0);
+    width: 100%;
+    height: @size;
+    transform-origin: 50% 50%;
+    transform: scaleY(0.5);
   }
 }
 
 .hairline(@direction, @color: @border-color-base, @size: 1px) when (@direction = 'right') {
-  border-right: @size solid @color;
-
-  html:not([data-scale]) & {
-    @media (min-resolution: 2dppx) {
-      border-right: none;
-
-      &::after {
-        .scale-hairline-common(@color, 0, 0, auto, auto);
-        width: @size;
-        height: 100%;
-        background: @color;
-        transform-origin: 100% 50%;
-        transform: scaleX(0.5);
-
-        @media (min-resolution: 3dppx) {
-          transform: scaleX(0.33);
-        }
-      }
-    }
+  &::after {
+    .scale-hairline-common(@color, 0, 0, auto, auto);
+    width: @size;
+    height: 100%;
+    background: @color;
+    transform-origin: 100% 50%;
+    transform: scaleX(0.5);
   }
 }
 
 .hairline(@direction, @color: @border-color-base, @size: 1px) when (@direction = 'bottom') {
-  border-bottom: @size solid @color;
-
-  html:not([data-scale]) & {
-    @media (min-resolution: 2dppx) {
-      border-bottom: none;
-
-      &::after {
-        .scale-hairline-common(@color, auto, auto, 0, 0);
-        width: 100%;
-        height: @size;
-        transform-origin: 50% 100%;
-        transform: scaleY(0.5);
-
-        @media (min-resolution: 3dppx) {
-          transform: scaleY(0.33);
-        }
-      }
-    }
+  &::after {
+    .scale-hairline-common(@color, auto, auto, 0, 0);
+    width: 100%;
+    height: @size;
+    transform-origin: 50% 100%;
+    transform: scaleY(0.5);
   }
 }
 
 .hairline(@direction, @color: @border-color-base, @size: 1px) when (@direction = 'left') {
-  border-left: @size solid @color;
+  &::before {
+    .scale-hairline-common(@color, 0, auto, auto, 0);
+    width: @size;
+    height: 100%;
+    transform-origin: 100% 50%;
+    transform: scaleX(0.5);
 
-  html:not([data-scale]) & {
-    @media (min-resolution: 2dppx) {
-      border-left: none;
-
-      &::before {
-        .scale-hairline-common(@color, 0, auto, auto, 0);
-        width: @size;
-        height: 100%;
-        transform-origin: 100% 50%;
-        transform: scaleX(0.5);
-
-        @media (min-resolution: 3dppx) {
-          transform: scaleX(0.33);
-        }
-      }
+    @media (min-resolution: 3dppx) {
+      transform: scaleX(0.33);
     }
   }
 }
 
 .hairline(@direction, @color: @border-color-base, @radius: 0) when (@direction = 'all') {
-  border: 1px solid @color;
-  border-radius: @radius;
-
-  html:not([data-scale]) & {
-    @media (min-resolution: 2dppx) {
-      position: relative;
-      border: none;
-
-      &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 200%;
-        height: 200%;
-        border: 1px solid @color;
-        border-radius: @radius * 2;
-        transform-origin: 0 0;
-        transform: scale(0.5);
-        box-sizing: border-box;
-        pointer-events: none;
-
-        // @media (min-resolution: 3dppx) {
-        //   width: 300%;
-        //   height: 300%;
-        //   border-radius: @radius * 3;
-        //   transform: scale(0.33);
-        // }
-      }
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    border: 1px solid @color;
+    border-radius: @radius * 2;
+    transform-origin: 0 0;
+    transform: scale(0.5);
+    box-sizing: border-box;
+    pointer-events: none;
   }
 }
 
 .hairline-remove(@position) when (@position = 'left') {
-  border-left: 0;
   &:before {
     display: none !important;
   }
 }
 
 .hairline-remove(@position) when (@position = 'right') {
-  border-right: 0;
   &:after {
     display: none !important;
   }
 }
 
 .hairline-remove(@position) when (@position = 'top') {
-  border-top: 0;
   &:before {
     display: none !important;
   }
 }
 
 .hairline-remove(@position) when (@position = 'bottom') {
-  border-bottom: 0;
   &:after {
     display: none !important;
   }
 }
 
 .hairline-remove(@position) when (@position = 'all') {
-  border: 0;
   &:before {
     display: none !important;
   }

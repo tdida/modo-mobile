@@ -25,4 +25,5 @@ export { default as Popup } from './popup';
 export { default as NumberKeyboard } from './number-keyboard';
 export { default as ActivityIndicator } from './activity-indicator';
 export { default as InputItem } from './input-item';
+export { default as Picker } from './picker';
 export { default as version } from './version';
