@@ -17,7 +17,7 @@ exports[`renders ./components/picker/demo/basic.md correctly 1`] = `
       class="m-picker-column-list"
     >
       <div
-        class="m-picker-column-item m-picker-column-item-selected"
+        class="m-picker-column-item"
       >
         2015
       </div>
@@ -40,61 +40,6 @@ exports[`renders ./components/picker/demo/basic.md correctly 1`] = `
         class="m-picker-column-item"
       >
         2019
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2020
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2021
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2022
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2023
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2024
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2025
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2026
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2027
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2028
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2029
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        2030
       </div>
     </div>
   </div>
@@ -157,7 +102,7 @@ exports[`renders ./components/picker/demo/cascade.md correctly 1`] = `
         安徽省
       </div>
       <div
-        class="m-picker-column-item"
+        class="m-picker-column-item m-picker-column-item-selected"
       >
         澳门特别行政区
       </div>
@@ -166,21 +111,6 @@ exports[`renders ./components/picker/demo/cascade.md correctly 1`] = `
       >
         北京
       </div>
-      <div
-        class="m-picker-column-item"
-      >
-        广西壮族自治区
-      </div>
-      <div
-        class="m-picker-column-item m-picker-column-item-selected"
-      >
-        香港特别行政区
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        浙江省
-      </div>
     </div>
   </div>
   <div
@@ -198,17 +128,12 @@ exports[`renders ./components/picker/demo/cascade.md correctly 1`] = `
       <div
         class="m-picker-column-item"
       >
-        九龙
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        香港岛
+        澳门半岛
       </div>
       <div
         class="m-picker-column-item m-picker-column-item-selected"
       >
-        新界
+        离岛
       </div>
     </div>
   </div>
@@ -223,53 +148,7 @@ exports[`renders ./components/picker/demo/cascade.md correctly 1`] = `
     />
     <div
       class="m-picker-column-list"
-    >
-      <div
-        class="m-picker-column-item"
-      >
-        北区
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        大埔区
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        葵青区
-      </div>
-      <div
-        class="m-picker-column-item m-picker-column-item-selected"
-      >
-        离岛区
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        荃湾区
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        沙田区
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        屯门区
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        西贡区
-      </div>
-      <div
-        class="m-picker-column-item"
-      >
-        元朗区
-      </div>
-    </div>
+    />
   </div>
 </div>
 `;
@@ -364,7 +243,7 @@ exports[`renders ./components/picker/demo/popup.md correctly 1`] = `
           <div
             class="m-list-item-content"
           >
-            香港特别行政区 新界 离岛区
+            澳门特别行政区 离岛
           </div>
         </div>
       </div>

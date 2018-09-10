@@ -7,9 +7,24 @@ title:
 
 ```jsx
 import { Picker } from 'modo-mobile';
-import data from './data/simple.tsx';
 
-const App = () => <Picker isView data={data} />;
+const data = [
+  [
+    { label: '2015', value: 1 },
+    { label: '2016', value: 2 },
+    { label: '2017', value: 3 },
+    { label: '2018', value: 4 },
+    { label: '2019', value: 5 },
+  ],
+  [
+    { label: '春', value: 1 },
+    { label: '夏', value: 2 },
+    { label: '秋', value: 3 },
+    { label: '冬', value: 4 },
+  ],
+];
+
+const App = () => <Picker isView data={data} value={[null]} />;
 
 ReactDOM.render(<App />, mountNode);
 ```

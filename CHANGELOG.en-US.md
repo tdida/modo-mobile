@@ -5,6 +5,13 @@ timeline: true
 toc: false
 ---
 
+### 0.1.2
+
+`2018-09-11`
+
+- **Fix**
+  - picker `Picker` value.
+
 ### 0.1.1
 
 `2018-09-10`

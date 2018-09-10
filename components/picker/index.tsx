@@ -79,13 +79,6 @@ export default class Picker extends React.Component<PickerProps, any> {
     return value.slice(0, this.props.cols!) as Array<string | number>;
   }
 
-  isMultiPicker = () => {
-    if (!this.props.data) {
-      return false;
-    }
-    return Array.isArray(this.props.data[0]);
-  };
-
   handleChange = (value: any) => {
     this.setState({ value });
   };
@@ -117,8 +110,9 @@ export default class Picker extends React.Component<PickerProps, any> {
         return c.value === value[level];
       });
     } else {
-      treeChildren = value.map((v, i) => {
-        return (data as PickerData[][])[i].filter((col: PickerData) => col.value === v)[0];
+      value.forEach((v, i) => {
+        const item = (data as PickerData[][])[i].find((col: PickerData) => col.value === v);
+        if (item) treeChildren.push(item);
       });
     }
     return treeChildren.map(v => v.label).join(' ');
@@ -151,6 +145,8 @@ export default class Picker extends React.Component<PickerProps, any> {
         onColumnChange={onColumnChange}
       />
     );
+
+    this.getLabel();
 
     return (
       <React.Fragment>

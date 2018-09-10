@@ -2,7 +2,7 @@ const path = require('path');
 const commonConfig = require('./bisheng.common.config');
 
 const mobileConfig = {
-  port: 8002,
+  port: 7002,
   source: {
     components: './components',
   },
