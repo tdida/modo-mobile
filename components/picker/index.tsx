@@ -66,17 +66,13 @@ export default class Picker extends React.Component<PickerProps, any> {
         let data = (d || this.props.data) as PickerData[];
         const cols = data.length > this.props.cols! ? this.props.cols! : data.length;
         for (let i = 0; i < cols; i++) {
-          if (data && data.length) {
-            value[i] = data[0].value;
-          }
+          value[i] = data[0].value;
         }
       } else {
         let data = (d || this.props.data) as PickerData[][];
         const cols = data.length > this.props.cols! ? this.props.cols! : data.length;
         for (let i = 0; i < cols; i++) {
-          if (data && data.length) {
-            value[i] = data[i][0].value;
-          }
+          value[i] = data[i][0].value;
         }
       }
     }

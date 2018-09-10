@@ -5,6 +5,14 @@ timeline: true
 toc: false
 ---
 
+### 0.1.1
+
+`2018-09-10`
+
+- **Fix**
+  - 修复 `Picker` css 单独引入 bug
+  - 修复 `NumberKeyboard` css 单独引入 bug
+
 ### 0.1.0
 
 `2018-09-09`

@@ -5,6 +5,14 @@ timeline: true
 toc: false
 ---
 
+### 0.1.1
+
+`2018-09-10`
+
+- **Fix**
+  - import `Picker` css bug.
+  - import `NumberKeyboard` css bug.
+
 ### 0.1.0
 
 `2018-09-07`
@@ -28,8 +36,8 @@ toc: false
 `2018-09-04`
 
 - **Fix**
-  - import `List` css bug
-  - `NoticeBar` icon not displayed
+  - import `List` css bug.
+  - `NoticeBar` icon not displayed.
 
 ### 0.0.7
 
@@ -39,7 +47,7 @@ toc: false
 
   - Removed `ant-icons` , Reduce packet size.
   - Update `Icon` doc.
-  - Use `Icon` instead of `NumberKeyboard` img icon。
+  - Use `Icon` instead of `NumberKeyboard` img icon.
 
 - **Fix**
 
@@ -76,7 +84,7 @@ toc: false
 
   - `Button` icon and text interval.
   - href `Button` text not center, width overflow.
-  - `List` not arrow click animate。
+  - `List` not arrow click animate.
 
 ### 0.0.3
 
