@@ -7,10 +7,11 @@ toc: false
 
 ### 0.1.3
 
-`2018-09-**`
+`2018-09-11`
 
 - **Fix**
   - `Popup` iPhone X safe-area-inset-bottom.
+  - `ActivityIndicator` loadig icon disappear。
 
 ### 0.1.2
 

@@ -2,10 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import collect from 'bisheng/collect';
-import VConsole from 'vconsole';
 import { getQuery } from '../../../../utils';
-
-var vConsole = new VConsole(); // eslint-disable-line
 
 @collect(async nextProps => {
   const { pathname } = nextProps.location;
