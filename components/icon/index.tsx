@@ -34,10 +34,9 @@ export interface IconProps {
 
 const Icon: React.SFC<IconProps> = props => {
   const {
-    // affect outter <i>...</i>
+    style,
     className,
 
-    // affect inner <svg>...</svg>
     type,
     component: Component,
     viewBox,
@@ -105,11 +104,12 @@ const Icon: React.SFC<IconProps> = props => {
       [`m-icon-${type}`]: type,
       [`m-icon-spin`]: !!spin || type === 'loading',
     });
-    return <IconFont className={iconFontCls} type={`icon-${type}`} />;
+
+    return <IconFont className={iconFontCls} style={style} type={`icon-${type}`} />;
   }
 
   return (
-    <i {...restProps} className={classString}>
+    <i {...restProps} style={style} className={classString}>
       {innerNode}
     </i>
   );

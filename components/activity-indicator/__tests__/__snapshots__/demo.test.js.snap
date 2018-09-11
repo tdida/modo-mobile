@@ -12,6 +12,7 @@ exports[`renders ./components/activity-indicator/demo/basic.md correctly 1`] = `
     >
       <i
         class="m-icon m-icon-loading m-icon-spin"
+        style="color:#1e9eff;font-size:16px"
       >
         <svg
           aria-hidden="true"
@@ -40,6 +41,7 @@ exports[`renders ./components/activity-indicator/demo/basic.md correctly 1`] = `
     >
       <i
         class="m-icon m-icon-loading m-icon-spin"
+        style="color:#f5222d;font-size:26px"
       >
         <svg
           aria-hidden="true"

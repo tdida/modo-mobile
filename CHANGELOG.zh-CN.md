@@ -12,6 +12,7 @@ toc: false
 - **Fix**
   - 修复 `Popup` iPhone X 底部安全区域。
   - 修复 `ActivityIndicator` loadig icon 不显示。
+  - 修复 `ActivityIndicator` loadig icon style 样式。
 
 ### 0.1.2
 

@@ -11,7 +11,8 @@ toc: false
 
 - **Fix**
   - `Popup` iPhone X safe-area-inset-bottom.
-  - `ActivityIndicator` loadig icon disappear。
+  - `ActivityIndicator` loadig icon disappear.
+  - `ActivityIndicator` loadig icon style.
 
 ### 0.1.2
 
