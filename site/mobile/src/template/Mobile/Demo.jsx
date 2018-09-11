@@ -2,7 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import collect from 'bisheng/collect';
+import VConsole from 'vconsole';
 import { getQuery } from '../../../../utils';
+
+var vConsole = new VConsole(); // eslint-disable-line
 
 @collect(async nextProps => {
   const { pathname } = nextProps.location;
@@ -12,16 +15,18 @@ import { getQuery } from '../../../../utils';
     throw 404; // eslint-disable-line no-throw-literal
   }
 
-  const locale = getQuery('lang') || window.navigator.language;
+  const locale = (getQuery('lang') || window.navigator.language) === 'en-US' ? 'en-US' : 'zh-CN';
   const pageDataPromise =
     typeof pageData === 'function'
       ? pageData()
       : (pageData[locale] || pageData.index[locale] || pageData.index)();
+
   const demosFetcher = nextProps.utils.get(nextProps.data, [
     'components',
     nextProps.params.component,
     'demo',
   ]);
+
   if (demosFetcher) {
     const [localizedPageData, demos] = await Promise.all([pageDataPromise, demosFetcher()]);
     return { localizedPageData, demos, locale };
@@ -48,6 +53,7 @@ export default class Demo extends React.Component {
 
   render() {
     const { demos, location, picked, themeConfig: config, locale, params } = this.props;
+
     let demoMeta;
     const name = params.component;
     picked.components.forEach(i => {

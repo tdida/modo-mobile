@@ -5,6 +5,13 @@ timeline: true
 toc: false
 ---
 
+### 0.1.3
+
+`2018-09-**`
+
+- **Fix**
+  - `Popup` iPhone X safe-area-inset-bottom.
+
 ### 0.1.2
 
 `2018-09-11`
