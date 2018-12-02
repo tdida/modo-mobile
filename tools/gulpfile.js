@@ -197,7 +197,7 @@ function babelify(js, modules) {
   let stream = js.pipe(babel(babelConfig)).pipe(
     through2.obj(function z(file, encoding, next) {
       this.push(file.clone());
-      if (file.path.match(/\/style\/index\.js/)) {
+      if (file.path.match(/(\/|\\)style(\/|\\)index\.js/)) {
         const content = file.contents.toString(encoding);
         if (content.indexOf("'react-native'") !== -1) {
           // actually in antd-mobile@2.0, this case will never run,
@@ -236,10 +236,7 @@ function compile(modules) {
     .pipe(
       through2.obj(function(file, encoding, next) {
         this.push(file.clone());
-        if (
-          file.path.match(/\/style\/index\.less$/) ||
-          file.path.match(/\/style\/v2-compatible-reset\.less$/)
-        ) {
+        if (file.path.match(/(\/|\\)style(\/|\\)index\.less$/) || file.path.match(/(\/|\\)style(\/|\\)v2-compatible-reset\.less$/)) {
           transformLess(file.path)
             .then(css => {
               file.contents = Buffer.from(css);
@@ -289,7 +286,7 @@ function compile(modules) {
 }
 
 function publish(tagString, done) {
-  let args = ['publish', '--with-antd-tools'];
+  let args = ['publish', '--with-antd-tools', '--access=public'];
   if (tagString) {
     args = args.concat(['--tag', tagString]);
   }

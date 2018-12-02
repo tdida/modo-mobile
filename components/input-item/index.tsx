@@ -9,7 +9,7 @@ function normalizeValue(value?: string | number) {
   if (typeof value === 'undefined' || value === null) {
     return '';
   }
-  return value + '';
+  return `${value}`;
 }
 
 export interface InputItemProps {
@@ -51,6 +51,7 @@ export default class InputItem extends React.Component<InputItemProps, any> {
   };
 
   inputRef: HTMLInputElement;
+
   private debounceTimeout: number | null;
 
   constructor(props: InputItemProps) {

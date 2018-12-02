@@ -145,8 +145,7 @@ Copyright 2015-present, TDiDa, Inc.
 All rights reserved.
       `),
       new WebpackBar({
-        name: '📦  Webpack',
-        minimal: false,
+        name: '🚚  Modo Mobile Tools',
       }),
     ],
   };
@@ -177,7 +176,6 @@ All rights reserved.
 
     config.plugins = config.plugins.concat([
       new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
         output: {
           ascii_only: true,
         },
