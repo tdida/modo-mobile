@@ -12,5 +12,5 @@ branches:
   - master
 
 script:
-  - npm test-all
+  - npm run test-all
   - npm run codecov
