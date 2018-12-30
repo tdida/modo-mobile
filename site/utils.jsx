@@ -39,6 +39,7 @@ export function getMenuItems(moduleData, locale, categoryOrder, typeOrder) {
   return menuItems
     .map(i => {
       if (i.children) {
+        // eslint-disable-next-line
         i.children = i.children.sort(sortFn);
       }
       return i;

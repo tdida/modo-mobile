@@ -11,7 +11,7 @@ title:
 
 ## en-US
 
-There are `primary` button, `default` button, `dashed` button and `danger` button in antd.
+There are `primary` button, `default` button, `dashed` button and `danger` button in modo-mobile.
 
 ```jsx
 import { Button } from 'modo-mobile';

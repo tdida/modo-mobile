@@ -1,4 +1,5 @@
 const $ = require('dekko');
+const chalk = require('chalk');
 
 $('lib')
   .isDirectory()
@@ -18,4 +19,4 @@ $('lib/*/style')
   .hasFile('index.js');
 
 // eslint-disable-next-line
-console.log('`lib` directory is valid.');
+console.log(chalk.green('✨ `lib` directory is valid.'));

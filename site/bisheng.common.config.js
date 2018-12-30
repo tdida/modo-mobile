@@ -10,8 +10,9 @@ function alertBabelConfig(rules) {
       if (rule.options.plugins.indexOf(replaceLib) === -1) {
         rule.options.plugins.push(replaceLib);
       }
+      // eslint-disable-next-line
       rule.options.plugins = rule.options.plugins.filter(
-        plugin => !plugin.indexOf || plugin.indexOf('babel-plugin-add-module-exports') === -1
+        plugin => !plugin.indexOf || plugin.indexOf('babel-plugin-add-module-exports') === -1,
       );
     } else if (rule.use) {
       alertBabelConfig(rule.use);
@@ -77,7 +78,7 @@ module.exports = {
       site: path.join(process.cwd(), 'site'),
       'react-router': 'react-router/umd/ReactRouter',
     };
-
+    // eslint-disable-next-line
     config.externals = {
       'react-router-dom': 'ReactRouterDOM',
     };

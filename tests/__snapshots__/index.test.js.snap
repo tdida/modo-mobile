@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`modo dist files exports modules correctly 1`] = `
+exports[`modo-mobile dist files exports modules correctly 1`] = `
 Array [
   "Button",
   "Icon",

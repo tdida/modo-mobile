@@ -32,7 +32,11 @@ export interface IconProps {
   prefixCls?: string;
 }
 
-const Icon: React.SFC<IconProps> = props => {
+export interface IconComponent<P> extends React.SFC<P> {
+  createFromIconfontCN: typeof createFromIconfontCN;
+}
+
+const Icon: IconComponent<IconProps> = props => {
   const {
     style,
     className,
@@ -115,11 +119,7 @@ const Icon: React.SFC<IconProps> = props => {
   );
 };
 
-export type IconType = typeof Icon & {
-  createFromIconfontCN: typeof createFromIconfontCN;
-};
-
 Icon.displayName = 'Icon';
-(Icon as IconType).createFromIconfontCN = createFromIconfontCN;
+Icon.createFromIconfontCN = createFromIconfontCN;
 
-export default Icon as IconType;
+export default Icon as Icon;

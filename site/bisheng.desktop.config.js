@@ -9,8 +9,8 @@ const desktopConfig = {
     changelog: ['CHANGELOG.zh-CN.md', 'CHANGELOG.en-US.md'],
   },
   root: '/modo-mobile/',
-  theme: './site/desktop/src',
-  htmlTemplate: path.join(__dirname, './desktop/src/static/template.html'),
+  theme: './site/desktop',
+  htmlTemplate: path.join(__dirname, './desktop/static/template.html'),
 };
 
 module.exports = Object.assign({}, commonConfig, desktopConfig);

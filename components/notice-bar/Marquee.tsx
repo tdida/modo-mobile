@@ -2,7 +2,7 @@
  * https://github.com/jasonslyvia/react-marquee
  * remove PC
  * support React Element for text prop
-*/
+ */
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

@@ -75,17 +75,16 @@ export default class Keyboard extends React.PureComponent<KeyboardProps, any> {
     const { prefixCls, type, okText, hideDot } = this.props;
     const { baseStack } = this.state;
 
-    const numberNode = baseStack.map(
-      (num: number, index: number) =>
-        index !== 9 ? (
-          <li
-            key={num}
-            className={`${prefixCls}-number-item`}
-            onClick={(e: any) => this.onNumberClick(e, num)}
-          >
-            {num}
-          </li>
-        ) : null,
+    const numberNode = baseStack.map((num: number, index: number) =>
+      index !== 9 ? (
+        <li
+          key={num}
+          className={`${prefixCls}-number-item`}
+          onClick={(e: any) => this.onNumberClick(e, num)}
+        >
+          {num}
+        </li>
+      ) : null,
     );
 
     const numOperateNode =

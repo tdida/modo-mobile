@@ -43,7 +43,7 @@ And import stylesheets manually:
 import 'modo-mobile/dist/modo-mobile.css'; // or 'modo-mobile/dist/modo-mobile.less'
 ```
 
-### Use modularized antd
+### Use modularized modo-mobile
 
 - Use [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) (Recommended)
 

@@ -63,13 +63,13 @@ export default class Picker extends React.Component<PickerProps, any> {
     if (!value || !value.length || value.indexOf(undefined) > -1) {
       value = [];
       if (this.props.cascade) {
-        let data = (d || this.props.data) as PickerData[];
+        const data = (d || this.props.data) as PickerData[];
         const cols = data.length > this.props.cols! ? this.props.cols! : data.length;
         for (let i = 0; i < cols; i++) {
           value[i] = data[0].value;
         }
       } else {
-        let data = (d || this.props.data) as PickerData[][];
+        const data = (d || this.props.data) as PickerData[][];
         const cols = data.length > this.props.cols! ? this.props.cols! : data.length;
         for (let i = 0; i < cols; i++) {
           value[i] = data[i][0].value;

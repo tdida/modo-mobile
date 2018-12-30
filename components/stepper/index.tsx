@@ -23,22 +23,22 @@ function getDecimalNum(num: any) {
 }
 
 function accAdd(num1: any, num2: any) {
-  let r1 = getDecimalNum(num1);
-  let r2 = getDecimalNum(num2);
-  let m = Math.pow(10, Math.max(r1, r2));
+  const r1 = getDecimalNum(num1);
+  const r2 = getDecimalNum(num2);
+  const m = Math.pow(10, Math.max(r1, r2));
   return +((num1 * m + num2 * m) / m);
 }
 
 function subtr(num1: any, num2: any) {
-  let r1 = getDecimalNum(num1);
-  let r2 = getDecimalNum(num2);
-  let m = Math.pow(10, Math.max(r1, r2));
-  let n = r1 >= r2 ? r1 : r2;
+  const r1 = getDecimalNum(num1);
+  const r2 = getDecimalNum(num2);
+  const m = Math.pow(10, Math.max(r1, r2));
+  const n = r1 >= r2 ? r1 : r2;
   return +((num1 * m - num2 * m) / m).toFixed(n);
 }
 
 function getButtonStatus(value: any, min: any, max: any) {
-  let status = {
+  const status = {
     disabledReduce: false,
     disabledAdd: false,
   };
