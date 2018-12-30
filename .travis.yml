@@ -1,22 +1,16 @@
 sudo: false
-
 language: node_js
-
 node_js:
-  - 8
+  - "8"
 
 cache:
   directories:
-    - $HOME/.npm
+  - node_modules
 
-matrix:
-  fast_finish: true
-  include:
-    - env: TEST_TYPE=lint
-    - env: TEST_TYPE=test:dist
-    - env: TEST_TYPE=test:lib
-    - env: TEST_TYPE=test:es
-    - env: TEST_TYPE=test:dom
+branches:
+  only:
+  - master
 
 script:
-  - scripts/travis-script.sh
+  - npm test-all
+  - npm run codecov
