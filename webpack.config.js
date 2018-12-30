@@ -1,4 +1,4 @@
-const getWebpackConfig = require('./tools/getWebpackConfig');
+const getWebpackConfig = require('antd-tools/lib/getWebpackConfig');
 
 const webpackConfig = getWebpackConfig(false);
 

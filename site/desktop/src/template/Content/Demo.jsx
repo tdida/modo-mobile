@@ -85,6 +85,7 @@ export default class Demo extends React.Component {
     const { state } = this;
     const { props } = this;
     const { meta, content, preview, highlightedCode, style, highlightedStyle, expand } = props;
+
     const { copied } = state;
     if (!this.liveDemo) {
       this.liveDemo = preview(React, ReactDOM);

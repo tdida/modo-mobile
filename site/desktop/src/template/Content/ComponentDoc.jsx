@@ -36,6 +36,7 @@ export default class ComponentDoc extends React.Component {
     const {
       intl: { locale },
     } = this.context;
+
     const demos = Object.keys(props.demos).map(key => props.demos[key]);
     const { expandAll } = this.state;
 

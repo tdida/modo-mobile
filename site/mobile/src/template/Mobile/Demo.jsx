@@ -4,34 +4,7 @@ import ReactDOM from 'react-dom';
 import collect from 'bisheng/collect';
 import { getQuery } from '../../../../utils';
 
-@collect(async nextProps => {
-  const { pathname } = nextProps.location;
-  const pageDataPath = pathname.replace('-cn', '').split('/');
-  const pageData = nextProps.utils.get(nextProps.data, pageDataPath);
-  if (!pageData) {
-    throw 404; // eslint-disable-line no-throw-literal
-  }
-
-  const locale = (getQuery('lang') || window.navigator.language) === 'en-US' ? 'en-US' : 'zh-CN';
-  const pageDataPromise =
-    typeof pageData === 'function'
-      ? pageData()
-      : (pageData[locale] || pageData.index[locale] || pageData.index)();
-
-  const demosFetcher = nextProps.utils.get(nextProps.data, [
-    'components',
-    nextProps.params.component,
-    'demo',
-  ]);
-
-  if (demosFetcher) {
-    const [localizedPageData, demos] = await Promise.all([pageDataPromise, demosFetcher()]);
-    return { localizedPageData, demos, locale };
-  }
-
-  return { localizedPageData: await pageDataPromise, locale };
-})
-export default class Demo extends React.Component {
+class Demo extends React.Component {
   componentDidMount() {
     window.addEventListener('hashchange', this.update, false);
   }
@@ -62,6 +35,7 @@ export default class Demo extends React.Component {
 
     const demoArr = [];
     let demoContent;
+
     Object.keys(demos).forEach(k => {
       demoArr.push(demos[k]);
     });
@@ -112,3 +86,33 @@ export default class Demo extends React.Component {
     );
   }
 }
+
+
+export default collect(async nextProps => {
+  const { pathname } = nextProps.location;
+  const pageDataPath = pathname.replace('-cn', '').split('/');
+  const pageData = nextProps.utils.get(nextProps.data, pageDataPath);
+
+  if (!pageData) {
+    throw 404; // eslint-disable-line no-throw-literal
+  }
+
+  const locale = (getQuery('lang') || window.navigator.language) === 'en-US' ? 'en-US' : 'zh-CN';
+  const pageDataPromise =
+    typeof pageData === 'function'
+      ? pageData()
+      : (pageData[locale] || pageData.index[locale] || pageData.index)();
+
+  const demosFetcher = nextProps.utils.get(nextProps.data, [
+    'components',
+    nextProps.params.component,
+    'demo',
+  ]);
+
+  if (demosFetcher) {
+    const [localizedPageData, demos] = await Promise.all([pageDataPromise, demosFetcher()]);
+    return { localizedPageData, demos, locale };
+  }
+
+  return { localizedPageData: await pageDataPromise, locale };
+})(Demo);

@@ -1,7 +1,7 @@
 const path = require('path');
 const commonConfig = require('./bisheng.common.config');
 
-module.exports = Object.assign({}, commonConfig, {
+const desktopConfig = {
   port: 7001,
   source: {
     components: './components',
@@ -11,4 +11,6 @@ module.exports = Object.assign({}, commonConfig, {
   root: '/modo-mobile/',
   theme: './site/desktop/src',
   htmlTemplate: path.join(__dirname, './desktop/src/static/template.html'),
-});
+};
+
+module.exports = Object.assign({}, commonConfig, desktopConfig);

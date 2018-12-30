@@ -1,6 +1,6 @@
 const path = require('path');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
-const replaceLib = require('../tools/replaceLib');
+const replaceLib = require('antd-tools/lib/replaceLib');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -64,6 +64,9 @@ module.exports = {
     }
     return filePath;
   },
+  lessConfig: {
+    javascriptEnabled: true,
+  },
   webpackConfig(config) {
     const conf = config;
 
@@ -72,21 +75,15 @@ module.exports = {
       'modo-mobile/es': path.join(process.cwd(), 'components'),
       'modo-mobile': path.join(process.cwd(), 'index'),
       site: path.join(process.cwd(), 'site'),
+      'react-router': 'react-router/umd/ReactRouter',
     };
 
-    conf.externals = {
-      history: 'History',
-      'babel-polyfill': 'this', // hack babel-polyfill has no exports
+    config.externals = {
+      'react-router-dom': 'ReactRouterDOM',
     };
 
     if (isDev) {
       conf.devtool = 'source-map';
-    } else {
-      conf.externals = Object.assign(conf.externals, {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'react-router': 'ReactRouter',
-      });
     }
 
     alertBabelConfig(conf.module.rules);

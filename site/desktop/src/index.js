@@ -1,3 +1,4 @@
+require('core-js/es6/string');
 const path = require('path');
 const enLocale = require('./en-US');
 const cnLocale = require('./zh-CN');
@@ -10,7 +11,7 @@ function pickerGenerator(module) {
   /* eslint-disable consistent-return */
   return markdownData => {
     const { filename } = markdownData.meta;
-    if (tester.test(filename)) {
+    if (tester.test(filename) && !/\/demo$/.test(path.dirname(filename))) {
       return {
         meta: markdownData.meta,
       };
@@ -52,7 +53,7 @@ module.exports = {
   plugins: [
     'bisheng-plugin-description',
     'bisheng-plugin-toc?maxDepth=2&keepElem',
-    'bisheng-plugin-antd',
+    'bisheng-plugin-antd?injectProvider',
     'bisheng-plugin-react?lang=__react',
   ],
   routes: {
