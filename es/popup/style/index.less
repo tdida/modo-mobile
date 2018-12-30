@@ -1,0 +1,112 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/hairline.less';
+
+@popup-prefix-cls: ~'@{m-prefix}-popup';
+.@{popup-prefix-cls} {
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: @mask-background;
+    height: 100%;
+    z-index: @zindex-popup;
+  }
+
+  &-box {
+    position: fixed;
+    z-index: @zindex-popup;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    will-change: auto;
+  }
+
+  &&-center {
+    .@{popup-prefix-cls}-box {
+      top: 50%;
+      right: auto;
+      bottom: auto;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &&-left,
+  &&-right {
+    .@{popup-prefix-cls}-box {
+      height: 100%;
+    }
+  }
+
+  &&-top,
+  &&-bottom {
+    .@{popup-prefix-cls}-box {
+      width: 100%;
+    }
+  }
+
+  &&-left,
+  &&-top {
+    .@{popup-prefix-cls}-box {
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &&-right {
+    .@{popup-prefix-cls}-box {
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &&-bottom {
+    .@{popup-prefix-cls}-box {
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+  &-title-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    .hairline('bottom', @border-color-base);
+
+    &-center {
+      flex: 3;
+      text-align: center;
+    }
+
+    &-left,
+    &-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-left,
+    &-right,
+    &-center {
+      font-size: @font-size-lg;
+      font-weight: 500;
+      padding: @padding-sm 0;
+    }
+
+    &-right {
+      color: @primary-color;
+    }
+
+    &-describe {
+      font-size: @font-size-sm;
+      color: @text-color-secondary;
+    }
+  }
+}

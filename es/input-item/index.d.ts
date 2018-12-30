@@ -1,0 +1,62 @@
+import * as React from 'react';
+declare function noop(): void;
+export interface InputItemProps {
+    prefixCls?: string;
+    className?: string;
+    title?: string;
+    type?: 'text' | 'password' | 'phone' | 'digit' | 'bankCard' | 'money';
+    brief?: React.ReactNode | string;
+    value?: string;
+    defaultValue?: string;
+    name?: string;
+    placeholder?: string;
+    align?: 'left' | 'center' | 'right';
+    error?: string;
+    readOnly?: boolean;
+    disabled?: boolean;
+    clear?: boolean;
+    maxLength?: number;
+    extra?: React.ReactNode | string;
+    onChange?: (val: string) => void;
+    onBlur?: (val: string) => void;
+    onFocus?: (val: string) => void;
+    onVirtualKeyboardConfirm?: (val: string) => void;
+}
+export default class InputItem extends React.Component<InputItemProps, any> {
+    static defaultProps: {
+        prefixCls: string;
+        type: string;
+        align: string;
+        placeholder: string;
+        readOnly: boolean;
+        disabled: boolean;
+        clear: boolean;
+        onChange: typeof noop;
+        onBlur: typeof noop;
+        onFocus: typeof noop;
+        onVirtualKeyboardConfirm: typeof noop;
+    };
+    inputRef: HTMLInputElement;
+    private debounceTimeout;
+    constructor(props: InputItemProps);
+    componentWillReceiveProps(nextProps: InputItemProps): void;
+    componentWillUnmount(): void;
+    onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleOnChange: (value: string, isMutated?: boolean) => void;
+    onInputBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onInputFocus: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onFocus: (value: string) => void;
+    onBlur: (value: string) => void;
+    onVirtualFocus: () => void;
+    onVirtualBlur: () => void;
+    onVirtualConfirm: () => void;
+    onVirtualEnter: (num: any) => void;
+    onVirtualDelete: () => void;
+    addBlurListener: () => void;
+    removeBlurListener: () => void;
+    doBlur: (ev: MouseEvent) => void;
+    clearInput: () => void;
+    focus: () => void;
+    render(): JSX.Element;
+}
+export {};

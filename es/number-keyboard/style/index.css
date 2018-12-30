@@ -1,0 +1,205 @@
+.m-number-keyboard {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+.m-number-keyboard::before {
+  content: '';
+  position: absolute;
+  background-color: #e2e4ea;
+  display: block;
+  z-index: 1;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.m-number-keyboard-number {
+  -webkit-box-flex: 3;
+  -webkit-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  background-color: #fff;
+}
+.m-number-keyboard-number-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.m-number-keyboard-number-item {
+  width: 33.33333333%;
+  height: 52px;
+  position: relative;
+  text-align: center;
+  line-height: 52px;
+  font-size: 26px;
+  font-weight: 500;
+  font-family: 'DINAlternate-Bold';
+  color: #111a34;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+  background: #fff;
+}
+.m-number-keyboard-number-item::after {
+  content: '';
+  position: absolute;
+  background-color: #e2e4ea;
+  display: block;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  width: 1px;
+  height: 100%;
+  background: #e2e4ea;
+  -webkit-transform-origin: 100% 50%;
+      -ms-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  -webkit-transform: scaleX(0.5);
+      -ms-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+.m-number-keyboard-number-item::before {
+  content: '';
+  position: absolute;
+  background-color: #e2e4ea;
+  display: block;
+  z-index: 1;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.m-number-keyboard-number-item:before {
+  display: none !important;
+}
+.m-number-keyboard-number-item:nth-of-type(n + 4):before {
+  display: inline !important;
+}
+.m-number-keyboard-number-item:nth-of-type(3n)::after {
+  display: none !important;
+}
+.m-number-keyboard-number-item:active {
+  background-color: #f0f0f0;
+}
+.m-number-keyboard-number-item-no:active {
+  background-color: #fff;
+}
+.m-number-keyboard-operate {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.m-number-keyboard-operate-list {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.m-number-keyboard-operate-item {
+  width: 100%;
+  background: #fff;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
+.m-number-keyboard-operate-item-delete {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+  height: 104px;
+  line-height: 104px;
+  text-align: center;
+  color: #111a34;
+}
+.m-number-keyboard-operate-item-delete::before {
+  content: '';
+  position: absolute;
+  background-color: #e2e4ea;
+  display: block;
+  z-index: 1;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  -webkit-transform-origin: 100% 50%;
+      -ms-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  -webkit-transform: scaleX(0.5);
+      -ms-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+  .m-number-keyboard-operate-item-delete::before {
+    -webkit-transform: scaleX(0.33);
+        -ms-transform: scaleX(0.33);
+            transform: scaleX(0.33);
+  }
+}
+.m-number-keyboard-operate-item-delete i {
+  font-size: 26px;
+}
+.m-number-keyboard-operate-item-delete:active {
+  background-color: #f0f0f0;
+}
+.m-number-keyboard-operate-item-confirm {
+  overflow: hidden;
+  color: #fff;
+  font-size: 18px;
+  background-color: #1e9eff;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 500;
+}
+.m-number-keyboard-operate-item-confirm:active {
+  background-color: #1d96f2;
+}

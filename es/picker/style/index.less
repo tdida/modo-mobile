@@ -1,0 +1,76 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/hairline.less';
+
+@picker-prefix-cls: ~'@{m-prefix}-picker';
+
+.@{picker-prefix-cls} {
+  display: flex;
+  align-self: center;
+  background-color: #fff;
+
+  &-column {
+    display: block;
+    position: relative;
+    height: @picker-item-height * 7;
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
+
+    &-mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      margin: 0 auto;
+      width: 100%;
+      z-index: 3;
+      background-image: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.95),
+          rgba(255, 255, 255, 0.6)
+        ),
+        linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+      background-position: top, bottom;
+      background-size: 100% @picker-item-height * 3;
+      background-repeat: no-repeat;
+    }
+
+    &-indicator {
+      box-sizing: border-box;
+      width: 100%;
+      height: @picker-item-height;
+      position: absolute;
+      left: 0;
+      top: @picker-item-height * 3;
+      z-index: 3;
+
+      .hairline('top', @border-color-base);
+      .hairline('bottom', @border-color-base);
+    }
+
+    &-list {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      padding: @picker-item-height * 3 0;
+    }
+
+    &-item {
+      touch-action: manipulation;
+      text-align: center;
+      font-size: @picker-item-font-size;
+      height: @picker-item-height;
+      line-height: @picker-item-height;
+      color: @text-color-secondary;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      &-selected {
+        color: @primary-color;
+        font-weight: @font-weight-bold;
+      }
+    }
+  }
+}

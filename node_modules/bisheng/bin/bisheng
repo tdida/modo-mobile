@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const package = require('../package.json');
+
+program
+  .version(package.version)
+  .usage('[command] [options]')
+  .command('start [options]', 'to start a server')
+  .command('build [options]', 'to build and write static files to `config.output`')
+  .command('gh-pages [options]', 'to deploy website to gh-pages')
+  .parse(process.argv);
+
+process.on('SIGINT', function() {
+  program.runningCommand && program.runningCommand.kill('SIGKILL');
+  process.exit(0);
+});

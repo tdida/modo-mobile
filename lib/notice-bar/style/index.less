@@ -1,0 +1,39 @@
+@import '../../style/themes/default';
+
+@notice-bar-prefix-cls: ~'@{m-prefix}-notice-bar';
+
+.@{notice-bar-prefix-cls} {
+  position: relative;
+  color: @noticebar-color;
+  height: @noticebar-height;
+  line-height: @noticebar-height;
+  background-color: @noticebar-bg;
+  display: flex;
+  font-size: @font-size-sm;
+
+  &-content {
+    flex: 1;
+    margin: auto 10px;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+    & + div {
+      margin-left: 10px;
+    }
+  }
+
+  &-close-icon {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    color: @noticebar-color;
+  }
+}
